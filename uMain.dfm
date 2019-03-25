@@ -11,7 +11,7 @@ object fmMain: TfmMain
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object plMainClient: TPanel
@@ -29,23 +29,421 @@ object fmMain: TfmMain
       Height = 405
       Align = alClient
       TabOrder = 0
+      ExplicitLeft = 2
+      ExplicitTop = 46
       object TPage
         Left = 0
         Top = 0
         Caption = '0'
-        object vstTreeRootTemplates: TVirtualStringTree
+        object TreeList1: TTreeList
           Left = 0
           Top = 0
-          Width = 200
+          Width = 250
           Height = 405
           Align = alLeft
-          Header.AutoSizeIndex = 0
-          Header.MainColumn = -1
-          RootNodeCount = 1
+          ChangeDelay = 500
+          Images = dmBase.imgSmall
+          Indent = 20
+          ReadOnly = True
+          RowSelect = True
+          ShowButtons = False
+          ShowRoot = False
           TabOrder = 0
-          TreeOptions.SelectionOptions = [toFullRowSelect]
-          OnFreeNode = vstTreeRootTemplatesFreeNode
-          Columns = <>
+          Visible = True
+          Items.NodeData = {
+            0301000000200000000100000002000000FFFFFFFFFFFFFFFF00000000000000
+            000000000001013100}
+          Columns = <
+            item
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              Image = True
+              Width = 50
+            end>
+          Separator = ';'
+          ItemHeight = 20
+          HeaderSettings.Color = clBtnFace
+          HeaderSettings.Font.Charset = DEFAULT_CHARSET
+          HeaderSettings.Font.Color = clWindowText
+          HeaderSettings.Font.Height = -11
+          HeaderSettings.Font.Name = 'Tahoma'
+          HeaderSettings.Font.Style = []
+          HeaderSettings.Height = 18
+          HeaderSettings.Visible = False
+          Version = '1.1.1.4'
+          ExplicitLeft = 48
+          ExplicitTop = 32
+          ExplicitHeight = 305
+        end
+        object AdvTreeView1: TAdvTreeView
+          Left = 304
+          Top = 56
+          Width = 300
+          Height = 276
+          Color = clWhite
+          TabOrder = 2
+          TabStop = True
+          Groups = <>
+          GroupsAppearance.TopSize = 50.000000000000000000
+          GroupsAppearance.BottomSize = 50.000000000000000000
+          GroupsAppearance.TopFill.Kind = tvbkNone
+          GroupsAppearance.BottomFill.Kind = tvbkNone
+          GroupsAppearance.TopFont.Charset = DEFAULT_CHARSET
+          GroupsAppearance.TopFont.Color = clWindowText
+          GroupsAppearance.TopFont.Height = -11
+          GroupsAppearance.TopFont.Name = 'Tahoma'
+          GroupsAppearance.TopFont.Style = []
+          GroupsAppearance.BottomFont.Charset = DEFAULT_CHARSET
+          GroupsAppearance.BottomFont.Color = clWindowText
+          GroupsAppearance.BottomFont.Height = -11
+          GroupsAppearance.BottomFont.Name = 'Tahoma'
+          GroupsAppearance.BottomFont.Style = []
+          GroupsAppearance.TopStroke.Color = 11119017
+          GroupsAppearance.BottomStroke.Color = 11119017
+          ColumnStroke.Color = clNone
+          Columns = <
+            item
+              Name = 'Column0'
+              Text = 'Model'
+              Width = 100.000000000000000000
+              Fill.Color = clNone
+              Stroke.Color = 11119017
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              TopFill.Kind = tvbkNone
+              TopStroke.Color = 11119017
+              TopFont.Charset = DEFAULT_CHARSET
+              TopFont.Color = clWindowText
+              TopFont.Height = -11
+              TopFont.Name = 'Tahoma'
+              TopFont.Style = []
+              BottomFill.Kind = tvbkNone
+              BottomStroke.Color = 11119017
+              BottomFont.Charset = DEFAULT_CHARSET
+              BottomFont.Color = clWindowText
+              BottomFont.Height = -11
+              BottomFont.Name = 'Tahoma'
+              BottomFont.Style = []
+            end
+            item
+              Name = 'Column1'
+              Text = 'Year'
+              Width = 100.000000000000000000
+              Fill.Color = clNone
+              Stroke.Color = 11119017
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              TopFill.Kind = tvbkNone
+              TopStroke.Color = 11119017
+              TopFont.Charset = DEFAULT_CHARSET
+              TopFont.Color = clWindowText
+              TopFont.Height = -11
+              TopFont.Name = 'Tahoma'
+              TopFont.Style = []
+              BottomFill.Kind = tvbkNone
+              BottomStroke.Color = 11119017
+              BottomFont.Charset = DEFAULT_CHARSET
+              BottomFont.Color = clWindowText
+              BottomFont.Height = -11
+              BottomFont.Name = 'Tahoma'
+              BottomFont.Style = []
+            end
+            item
+              Name = 'Column2'
+              Text = 'Miles'
+              Width = 100.000000000000000000
+              Fill.Color = clNone
+              Stroke.Color = 11119017
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              TopFill.Kind = tvbkNone
+              TopStroke.Color = 11119017
+              TopFont.Charset = DEFAULT_CHARSET
+              TopFont.Color = clWindowText
+              TopFont.Height = -11
+              TopFont.Name = 'Tahoma'
+              TopFont.Style = []
+              BottomFill.Kind = tvbkNone
+              BottomStroke.Color = 11119017
+              BottomFont.Charset = DEFAULT_CHARSET
+              BottomFont.Color = clWindowText
+              BottomFont.Height = -11
+              BottomFont.Name = 'Tahoma'
+              BottomFont.Style = []
+            end>
+          Nodes = <
+            item
+              Values = <
+                item
+                  Text = 'Audi'
+                end>
+              Expanded = True
+              Extended = True
+              Tag = 0
+              Nodes = <
+                item
+                  Values = <
+                    item
+                      Text = '2010'
+                    end
+                    item
+                      Text = '159'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <>
+                end
+                item
+                  Values = <
+                    item
+                      Text = 'A5 series'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <
+                    item
+                      Values = <
+                        item
+                          Text = 'S5'
+                        end
+                        item
+                          Text = '2015'
+                        end
+                        item
+                          Text = '40,000'
+                        end>
+                      Expanded = True
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'RS5'
+                        end
+                        item
+                          Text = '2012'
+                        end
+                        item
+                          Text = '15,000'
+                        end>
+                      Expanded = True
+                      Tag = 0
+                      Nodes = <>
+                    end>
+                end
+                item
+                  Values = <
+                    item
+                      Text = 'A8'
+                    end
+                    item
+                      Text = '2005'
+                    end
+                    item
+                      Text = '80,000'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <>
+                end>
+            end>
+          ColumnsAppearance.TopSize = 25.000000000000000000
+          ColumnsAppearance.BottomSize = 25.000000000000000000
+          ColumnsAppearance.TopFont.Charset = DEFAULT_CHARSET
+          ColumnsAppearance.TopFont.Color = clWindowText
+          ColumnsAppearance.TopFont.Height = -11
+          ColumnsAppearance.TopFont.Name = 'Tahoma'
+          ColumnsAppearance.TopFont.Style = []
+          ColumnsAppearance.BottomFont.Charset = DEFAULT_CHARSET
+          ColumnsAppearance.BottomFont.Color = clWindowText
+          ColumnsAppearance.BottomFont.Height = -11
+          ColumnsAppearance.BottomFont.Name = 'Tahoma'
+          ColumnsAppearance.BottomFont.Style = []
+          ColumnsAppearance.TopFill.Kind = tvbkNone
+          ColumnsAppearance.BottomFill.Kind = tvbkNone
+          ColumnsAppearance.TopStroke.Color = 11119017
+          ColumnsAppearance.BottomStroke.Color = 11119017
+          NodesAppearance.ExpandWidth = 15.000000000000000000
+          NodesAppearance.ExpandHeight = 15.000000000000000000
+          NodesAppearance.LevelIndent = 20.000000000000000000
+          NodesAppearance.FixedHeight = 25.000000000000000000
+          NodesAppearance.VariableMinimumHeight = 25.000000000000000000
+          NodesAppearance.Fill.Color = clNone
+          NodesAppearance.Stroke.Color = 11119017
+          NodesAppearance.Stroke.Style = psClear
+          NodesAppearance.ColumnStroke.Color = clNone
+          NodesAppearance.LineStroke.Color = 11119017
+          NodesAppearance.LineStroke.Style = psDot
+          NodesAppearance.Font.Charset = DEFAULT_CHARSET
+          NodesAppearance.Font.Color = clWindowText
+          NodesAppearance.Font.Height = -11
+          NodesAppearance.Font.Name = 'Tahoma'
+          NodesAppearance.Font.Style = []
+          NodesAppearance.SelectedFill.Color = 16297243
+          NodesAppearance.SelectedStroke.Color = 11119017
+          NodesAppearance.SelectedStroke.Style = psClear
+          NodesAppearance.DisabledFill.Color = 11119017
+          NodesAppearance.DisabledStroke.Color = 11119017
+          NodesAppearance.DisabledStroke.Style = psClear
+          NodesAppearance.ExtendedFill.Color = 16053492
+          NodesAppearance.ExtendedStroke.Color = 11119017
+          NodesAppearance.ExtendedFont.Charset = DEFAULT_CHARSET
+          NodesAppearance.ExtendedFont.Color = clWindowText
+          NodesAppearance.ExtendedFont.Height = -11
+          NodesAppearance.ExtendedFont.Name = 'Tahoma'
+          NodesAppearance.ExtendedFont.Style = []
+          NodesAppearance.ExtendedSelectedFill.Color = 16297243
+          NodesAppearance.ExtendedSelectedStroke.Color = 11119017
+          NodesAppearance.ExtendedSelectedStroke.Style = psClear
+          NodesAppearance.ExtendedDisabledFill.Color = 11119017
+          NodesAppearance.ExtendedDisabledStroke.Color = 11119017
+          NodesAppearance.ExtendedDisabledStroke.Style = psClear
+          NodesAppearance.ExpandNodeIcon.Data = {
+            07544269746D6170C2010000424DC20100000000000036000000280000000B00
+            00000B00000001001800000000008C0100000000000000000000000000000000
+            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFF
+            FFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A
+            FFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFF
+            FF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFF4A4D4A4A
+            4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFFFF7B7D7B0000007B7D7BFFFFFF
+            FFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D
+            7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B00
+            00007B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF
+            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF7B7D7B0000007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B000000}
+          NodesAppearance.CollapseNodeIcon.Data = {
+            07544269746D6170C2010000424DC20100000000000036000000280000000B00
+            00000B00000001001800000000008C0100000000000000000000000000000000
+            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFF4A
+            4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D
+            7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B00
+            00007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF7B7D7B0000007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B000000}
+          NodesAppearance.ExpandNodeIconLarge.Data = {
+            07544269746D61700E060000424D0E0600000000000036000000280000001600
+            0000160000000100180000000000D80500000000000000000000000000000000
+            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
+            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A
+            4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
+            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
+            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFF4A4D4A4A4D4A4A4D4A4A
+            4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFF4A4D4A4A4D4A
+            4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D
+            4A4A4D4AFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
+            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A
+            4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
+            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
+            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
+          NodesAppearance.CollapseNodeIconLarge.Data = {
+            07544269746D61700E060000424D0E0600000000000036000000280000001600
+            0000160000000100180000000000D80500000000000000000000000000000000
+            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
+            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
+            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
+            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A
+            4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFFFFFFFFFF
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
+            4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFF
+            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
+            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
+            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
+            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
+          Version = '1.1.0.6'
         end
       end
       object TPage
@@ -91,12 +489,16 @@ object fmMain: TfmMain
     BevelOuter = bvLowered
     ParentBackground = False
     TabOrder = 1
-    object AdvGlassButton1: TAdvGlassButton
-      Left = 4
-      Top = 4
+    DesignSize = (
+      44
+      445)
+    object sbReConnect: TAdvGlassButton
+      Left = 2
+      Top = 408
       Width = 36
       Height = 36
       ParentCustomHint = False
+      Anchors = [akLeft, akBottom]
       BackColor = clSilver
       CornerRadius = 2
       Font.Charset = DEFAULT_CHARSET
@@ -194,7 +596,7 @@ object fmMain: TfmMain
       TabOrder = 0
       TabStop = False
       Version = '1.3.0.2'
-      OnClick = AdvGlassButton1Click
+      OnClick = sbReConnectClick
     end
   end
 end
