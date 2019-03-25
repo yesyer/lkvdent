@@ -11,6 +11,7 @@ object fmMain: TfmMain
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object plMainClient: TPanel
@@ -43,9 +44,7 @@ object fmMain: TfmMain
           RootNodeCount = 1
           TabOrder = 0
           TreeOptions.SelectionOptions = [toFullRowSelect]
-          ExplicitLeft = 160
-          ExplicitTop = 40
-          ExplicitHeight = 100
+          OnFreeNode = vstTreeRootTemplatesFreeNode
           Columns = <>
         end
       end
@@ -195,6 +194,7 @@ object fmMain: TfmMain
       TabOrder = 0
       TabStop = False
       Version = '1.3.0.2'
+      OnClick = AdvGlassButton1Click
     end
   end
 end

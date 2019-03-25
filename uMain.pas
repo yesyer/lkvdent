@@ -16,8 +16,11 @@ type
     plMainTop: TPanel;
     AdvGlassButton1: TAdvGlassButton;
     vstTreeRootTemplates: TVirtualStringTree;
-    procedure Panel1Click(Sender: TObject);
     procedure Notebook1PageChanged(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure vstTreeRootTemplatesFreeNode(Sender: TBaseVirtualTree;
+      Node: PVirtualNode);
+    procedure AdvGlassButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,17 +34,46 @@ implementation
 
 {$R *.dfm}
 
+uses uBase;
+type
+  PTreeRec = ^TTreeRec;
+  TTreeRec = record
+    id:  Integer;
+    Caption: String;
+    Visible: Boolean;
+  end;
+
+procedure TfmMain.AdvGlassButton1Click(Sender: TObject);
+var
+  i, c:Integer;
+  p:PVirtualNode;
+begin
+  dmBase.fdSQLiteConnection.Connected:= true;
+  dmBase.qTreeRoot.Active:= true;
+  dmBase.qTreeRoot.Last;
+  c:=dmBase.qTreeRoot.RecordCount;
+  dmBase.qTreeRoot.First;
+  for i:= 0 to c do
+    vstTreeRootTemplates.EditNode(p,0).
+end;
+
+procedure TfmMain.FormCreate(Sender: TObject);
+begin
+  vstTreeRootTemplates.NodeDataSize := SizeOf(TTreeRec);
+end;
+
 procedure TfmMain.Notebook1PageChanged(Sender: TObject);
 begin
   //fmMain.Caption:=Notebook1.ActivePage;
 end;
 
-procedure TfmMain.Panel1Click(Sender: TObject);
+procedure TfmMain.vstTreeRootTemplatesFreeNode(Sender: TBaseVirtualTree;
+  Node: PVirtualNode);
+var
+  Data: PTreeRec;
 begin
-  {if Notebook1.ActivePage= '1' then
-    Notebook1.ActivePage:= '0'
-  else
-    Notebook1.ActivePage:= '1'}
+  Data := Sender.GetNodeData(Node);
+  Finalize(Data^);
 end;
 
 end.
