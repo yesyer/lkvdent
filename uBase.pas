@@ -20,6 +20,7 @@ type
     imgSmall: TImageList;
     PictureContainer1: TPictureContainer;
     qTreeNodes: TFDQuery;
+    FDQuery1: TFDQuery;
   private
     { Private declarations }
   public

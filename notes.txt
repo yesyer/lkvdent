@@ -1,1 +1,5 @@
-https://github.com/virtual-treeview/virtual-treeview
+--ссылка на компонет
+https://github.com/virtual-treeview/virtual-treeview 
+--Способы хранения деревьев в реляционных базах данных
+--есть варианты выборки из Tree таблицы
+https://bitworks.software/2017-10-20-storing-trees-in-rdbms.html

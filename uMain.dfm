@@ -63,7 +63,6 @@ object fmMain: TfmMain
           ShowRoot = False
           TabOrder = 0
           Visible = True
-          OnClick = TreeList1Click
           OnCollapsing = TreeList1Collapsing
           Items.NodeData = {
             0301000000240000000000000000000000FFFFFFFFFFFFFFFF00000000000000
@@ -127,10 +126,6 @@ object fmMain: TfmMain
           HeaderSettings.Height = 18
           HeaderSettings.Visible = False
           Version = '1.1.1.4'
-          ExplicitLeft = 352
-          ExplicitTop = 168
-          ExplicitWidth = 121
-          ExplicitHeight = 97
         end
       end
       object TPage

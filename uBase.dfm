@@ -7,6 +7,7 @@ object dmBase: TdmBase
       'Database=C:\git\lkvdent\DB.db'
       'StringFormat=Unicode'
       'DriverID=SQLite')
+    Connected = True
     Left = 40
     Top = 8
   end
@@ -33,7 +34,7 @@ object dmBase: TdmBase
     Left = 40
     Top = 104
     Bitmap = {
-      494C0101040008001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000800200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -421,5 +422,10 @@ object dmBase: TdmBase
       'ORDER  BY [tg_path];')
     Left = 136
     Top = 56
+  end
+  object FDQuery1: TFDQuery
+    Connection = fdSQLiteConnection
+    Left = 424
+    Top = 184
   end
 end
