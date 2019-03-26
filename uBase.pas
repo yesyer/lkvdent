@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs, FireDAC.VCLUI.Wait,
   FireDAC.Comp.UI, Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param,
   FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet,
-  System.ImageList, Vcl.ImgList, Vcl.Controls;
+  System.ImageList, Vcl.ImgList, Vcl.Controls, PictureContainer;
 
 type
   TdmBase = class(TDataModule)
@@ -18,6 +18,8 @@ type
     qTreeRoot: TFDQuery;
     DataSource1: TDataSource;
     imgSmall: TImageList;
+    PictureContainer1: TPictureContainer;
+    qTreeNodes: TFDQuery;
   private
     { Private declarations }
   public
