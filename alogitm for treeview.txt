@@ -1,0 +1,44 @@
+procedure TfmMain.BuildTree(IntRn: Integer; TreeNodeTemp: TTreeNode;
+  TTree: TTreeList);
+var
+  qNode: TFDQuery;
+  bFlag: Boolean;
+begin
+  qNode := TFDQuery.Create(nil);
+  qNode.Connection := dmBase.fdSQLiteConnection;
+  qNode.Close;
+  qNode.SQL.Clear;
+  bFlag := False;
+  if IntRn = -1 then
+  begin
+    qNode.SQL.Add('select * from tg_TreeGuide');
+    qNode.Open;
+    qNode.First;
+    IntRn := qNode.FieldByName('tg_id').AsInteger;
+    qNode.Close;
+    qNode.SQL.Clear;
+    bFlag := true;
+  end;
+  qNode.SQL.Add('select * from tg_TreeGuide where tg_parent_id = ' +
+    IntToStr(IntRn));
+  qNode.Open;
+  qNode.First;
+  while not qNode.Eof do
+  begin
+    if bFlag = true then
+      BuildTree(qNode.FieldByName('tg_id').AsInteger,
+        TTree.Items.AddObject(nil, IntToStr(qNode.FieldByName('tg_id')
+        .AsInteger) + ':' + IntToStr(qNode.FieldByName('tg_parent_id')
+        .AsInteger) + ':' + qNode.FieldByName('tg_content').AsString,
+        nil), TTree)
+    else
+      BuildTree(qNode.FieldByName('tg_id').AsInteger,
+        TTree.Items.AddChildObject(TreeNodeTemp,
+        IntToStr(qNode.FieldByName('tg_id').AsInteger) + ':' +
+        {IntToStr(qNode.FieldByName('tg_parent_id').AsInteger) + ':' +}
+        qNode.FieldByName('tg_content').AsString, nil), TTree); // рекурсия
+    qNode.Next;
+  end;
+  qNode.Close;
+  qNode.Destroy;
+end;
