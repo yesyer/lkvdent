@@ -29,6 +29,7 @@ object fmMain: TfmMain
       Height = 405
       Align = alClient
       TabOrder = 0
+      OnPageChanged = nbPagesPageChanged
       object TPage
         Left = 0
         Top = 0
@@ -41,456 +42,6 @@ object fmMain: TfmMain
           Align = alLeft
           Color = clWhite
           TabOrder = 0
-          TabStop = True
-          Groups = <>
-          GroupsAppearance.TopSize = 50.000000000000000000
-          GroupsAppearance.BottomSize = 50.000000000000000000
-          GroupsAppearance.TopFill.Kind = tvbkNone
-          GroupsAppearance.BottomFill.Kind = tvbkNone
-          GroupsAppearance.TopFont.Charset = DEFAULT_CHARSET
-          GroupsAppearance.TopFont.Color = clWindowText
-          GroupsAppearance.TopFont.Height = -11
-          GroupsAppearance.TopFont.Name = 'Tahoma'
-          GroupsAppearance.TopFont.Style = []
-          GroupsAppearance.BottomFont.Charset = DEFAULT_CHARSET
-          GroupsAppearance.BottomFont.Color = clWindowText
-          GroupsAppearance.BottomFont.Height = -11
-          GroupsAppearance.BottomFont.Name = 'Tahoma'
-          GroupsAppearance.BottomFont.Style = []
-          GroupsAppearance.TopStroke.Color = 11119017
-          GroupsAppearance.BottomStroke.Color = 11119017
-          ColumnStroke.Color = clNone
-          Columns = <
-            item
-              Name = 'Column0'
-              Text = 'Model'
-              Width = 100.000000000000000000
-              Fill.Color = clNone
-              Stroke.Color = 11119017
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              TopFill.Kind = tvbkNone
-              TopStroke.Color = 11119017
-              TopFont.Charset = DEFAULT_CHARSET
-              TopFont.Color = clWindowText
-              TopFont.Height = -11
-              TopFont.Name = 'Tahoma'
-              TopFont.Style = []
-              BottomFill.Kind = tvbkNone
-              BottomStroke.Color = 11119017
-              BottomFont.Charset = DEFAULT_CHARSET
-              BottomFont.Color = clWindowText
-              BottomFont.Height = -11
-              BottomFont.Name = 'Tahoma'
-              BottomFont.Style = []
-            end
-            item
-              Name = 'Column1'
-              Text = 'Year'
-              Width = 100.000000000000000000
-              Fill.Color = clNone
-              Stroke.Color = 11119017
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              TopFill.Kind = tvbkNone
-              TopStroke.Color = 11119017
-              TopFont.Charset = DEFAULT_CHARSET
-              TopFont.Color = clWindowText
-              TopFont.Height = -11
-              TopFont.Name = 'Tahoma'
-              TopFont.Style = []
-              BottomFill.Kind = tvbkNone
-              BottomStroke.Color = 11119017
-              BottomFont.Charset = DEFAULT_CHARSET
-              BottomFont.Color = clWindowText
-              BottomFont.Height = -11
-              BottomFont.Name = 'Tahoma'
-              BottomFont.Style = []
-            end
-            item
-              Name = 'Column2'
-              Text = 'Miles'
-              Width = 100.000000000000000000
-              Fill.Color = clNone
-              Stroke.Color = 11119017
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              TopFill.Kind = tvbkNone
-              TopStroke.Color = 11119017
-              TopFont.Charset = DEFAULT_CHARSET
-              TopFont.Color = clWindowText
-              TopFont.Height = -11
-              TopFont.Name = 'Tahoma'
-              TopFont.Style = []
-              BottomFill.Kind = tvbkNone
-              BottomStroke.Color = 11119017
-              BottomFont.Charset = DEFAULT_CHARSET
-              BottomFont.Color = clWindowText
-              BottomFont.Height = -11
-              BottomFont.Name = 'Tahoma'
-              BottomFont.Style = []
-            end>
-          Nodes = <
-            item
-              Values = <
-                item
-                  Text = 'Audi'
-                  CollapsedIcon.Data = {
-                    0954506E67496D61676589504E470D0A1A0A0000000D49484452000000100000
-                    001008060000001FF3FF610000000467414D410000AFC837058AE90000001974
-                    455874536F6674776172650041646F626520496D616765526561647971C9653C
-                    000000A34944415478DA63FCFFFF3F032580719818707A8905888D6C1223218D
-                    A63127500CF86F1A930D973CBD642A5E4BB11A60E0E3C9F0EFD755B020139B36
-                    4EDD17B66C07EBC33040C75E9FE1CAC18B447B1DC30088B3B289D20DF222D000
-                    460C0340AEF8FBED2C5ECDCC5CC66097623540CFCD96E1DF0FFCDE60E2D067B8
-                    B4EB3076038C822218FEFFBD85DFF3CC6A0CE7D6ADC06E002561006293922451
-                    63811240B1010032A27BE120F0C7160000000049454E44AE426082}
-                  ExpandedIcon.Data = {
-                    0954506E67496D61676589504E470D0A1A0A0000000D49484452000000100000
-                    001008060000001FF3FF610000000467414D410000AFC837058AE90000001974
-                    455874536F6674776172650041646F626520496D616765526561647971C9653C
-                    000000C54944415478DA63FCFFFF3F032580719818707A8905888D6C1223319A
-                    4D634EC00DF86F1A930D9738BD642A5E4BB11A60E0E3C9F0EFD755B004139B36
-                    4EDD17B66C871B8262808EBD3EC3DF6F67C18AAE9F6621CAFB2806E83A1A33FC
-                    FD7E8EE1DA89FF0CC8DEC10540DE041AC0083740CFCD96E1D2AEC30CC82EC106
-                    98B98C19AE1CBC88E902501880FC0732E8DF8F8B380D60E2D0075B84610048C4
-                    282882E1FFDF5BB83DCDACC6706EDD0AB0D341518F6100297E47370024476C92
-                    C44C0794008A0D0000451F8FE18109F1F30000000049454E44AE426082}
-                end>
-              Expanded = True
-              Extended = True
-              Tag = 0
-              Nodes = <
-                item
-                  Values = <
-                    item
-                      Text = 'A3'
-                    end
-                    item
-                      Text = '2010'
-                    end
-                    item
-                      Text = '32,300'
-                    end>
-                  Expanded = True
-                  Tag = 0
-                  Nodes = <>
-                end
-                item
-                  Values = <
-                    item
-                      Text = 'A5 series'
-                    end>
-                  Expanded = True
-                  Tag = 0
-                  Nodes = <
-                    item
-                      Values = <
-                        item
-                          Text = 'S5'
-                        end
-                        item
-                          Text = '2015'
-                        end
-                        item
-                          Text = '40,000'
-                        end>
-                      Expanded = True
-                      Tag = 0
-                      Nodes = <>
-                    end
-                    item
-                      Values = <
-                        item
-                          Text = 'RS5'
-                        end
-                        item
-                          Text = '2012'
-                        end
-                        item
-                          Text = '15,000'
-                        end>
-                      Expanded = True
-                      Tag = 0
-                      Nodes = <>
-                    end>
-                end
-                item
-                  Values = <
-                    item
-                      Text = 'A8'
-                    end
-                    item
-                      Text = '2005'
-                    end
-                    item
-                      Text = '80,000'
-                    end>
-                  Expanded = True
-                  Tag = 0
-                  Nodes = <>
-                end>
-            end
-            item
-              Values = <
-                item
-                  Text = 'Mercedes'
-                end>
-              Expanded = True
-              Extended = True
-              Tag = 0
-              Nodes = <
-                item
-                  Values = <
-                    item
-                      Text = 'SLS'
-                    end
-                    item
-                      Text = '2000'
-                    end
-                    item
-                      Text = '300,000'
-                    end>
-                  Expanded = True
-                  Tag = 0
-                  Nodes = <>
-                end
-                item
-                  Values = <
-                    item
-                      Text = 'SLK'
-                    end
-                    item
-                      Text = '2010'
-                    end
-                    item
-                      Text = '20,000'
-                    end>
-                  Expanded = True
-                  Tag = 0
-                  Nodes = <>
-                end
-                item
-                  Values = <
-                    item
-                      Text = 'GLA'
-                    end
-                    item
-                      Text = '2012'
-                    end
-                    item
-                      Text = '14,500'
-                    end>
-                  Expanded = True
-                  Tag = 0
-                  Nodes = <>
-                end>
-            end>
-          ColumnsAppearance.TopSize = 25.000000000000000000
-          ColumnsAppearance.BottomSize = 25.000000000000000000
-          ColumnsAppearance.TopFont.Charset = DEFAULT_CHARSET
-          ColumnsAppearance.TopFont.Color = clWindowText
-          ColumnsAppearance.TopFont.Height = -11
-          ColumnsAppearance.TopFont.Name = 'Tahoma'
-          ColumnsAppearance.TopFont.Style = []
-          ColumnsAppearance.BottomFont.Charset = DEFAULT_CHARSET
-          ColumnsAppearance.BottomFont.Color = clWindowText
-          ColumnsAppearance.BottomFont.Height = -11
-          ColumnsAppearance.BottomFont.Name = 'Tahoma'
-          ColumnsAppearance.BottomFont.Style = []
-          ColumnsAppearance.TopFill.Kind = tvbkNone
-          ColumnsAppearance.BottomFill.Kind = tvbkNone
-          ColumnsAppearance.TopStroke.Color = 11119017
-          ColumnsAppearance.BottomStroke.Color = 11119017
-          NodesAppearance.ExpandWidth = 15.000000000000000000
-          NodesAppearance.ExpandHeight = 15.000000000000000000
-          NodesAppearance.LevelIndent = 20.000000000000000000
-          NodesAppearance.FixedHeight = 25.000000000000000000
-          NodesAppearance.VariableMinimumHeight = 25.000000000000000000
-          NodesAppearance.Fill.Color = clNone
-          NodesAppearance.Stroke.Color = 11119017
-          NodesAppearance.Stroke.Style = psClear
-          NodesAppearance.ColumnStroke.Color = clNone
-          NodesAppearance.LineStroke.Color = 11119017
-          NodesAppearance.LineStroke.Style = psDot
-          NodesAppearance.Font.Charset = DEFAULT_CHARSET
-          NodesAppearance.Font.Color = clWindowText
-          NodesAppearance.Font.Height = -11
-          NodesAppearance.Font.Name = 'Tahoma'
-          NodesAppearance.Font.Style = []
-          NodesAppearance.SelectedFill.Color = 16297243
-          NodesAppearance.SelectedStroke.Color = 11119017
-          NodesAppearance.SelectedStroke.Style = psClear
-          NodesAppearance.DisabledFill.Color = 11119017
-          NodesAppearance.DisabledStroke.Color = 11119017
-          NodesAppearance.DisabledStroke.Style = psClear
-          NodesAppearance.ExtendedFill.Color = 16053492
-          NodesAppearance.ExtendedStroke.Color = 11119017
-          NodesAppearance.ExtendedFont.Charset = DEFAULT_CHARSET
-          NodesAppearance.ExtendedFont.Color = clWindowText
-          NodesAppearance.ExtendedFont.Height = -11
-          NodesAppearance.ExtendedFont.Name = 'Tahoma'
-          NodesAppearance.ExtendedFont.Style = []
-          NodesAppearance.ExtendedSelectedFill.Color = 16297243
-          NodesAppearance.ExtendedSelectedStroke.Color = 11119017
-          NodesAppearance.ExtendedSelectedStroke.Style = psClear
-          NodesAppearance.ExtendedDisabledFill.Color = 11119017
-          NodesAppearance.ExtendedDisabledStroke.Color = 11119017
-          NodesAppearance.ExtendedDisabledStroke.Style = psClear
-          NodesAppearance.ExpandNodeIcon.Data = {
-            07544269746D6170C2010000424DC20100000000000036000000280000000B00
-            00000B00000001001800000000008C0100000000000000000000000000000000
-            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
-            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFF
-            FFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A
-            FFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFF
-            FF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFF4A4D4A4A
-            4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFFFF7B7D7B0000007B7D7BFFFFFF
-            FFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D
-            7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B00
-            00007B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF
-            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFF7B7D7B0000007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
-            7D7B7B7D7B7B7D7B7B7D7B000000}
-          NodesAppearance.CollapseNodeIcon.Data = {
-            07544269746D6170C2010000424DC20100000000000036000000280000000B00
-            00000B00000001001800000000008C0100000000000000000000000000000000
-            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
-            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFF4A
-            4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D
-            7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B00
-            00007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFF7B7D7B0000007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
-            7D7B7B7D7B7B7D7B7B7D7B000000}
-          NodesAppearance.ExpandNodeIconLarge.Data = {
-            07544269746D61700E060000424D0E0600000000000036000000280000001600
-            0000160000000100180000000000D80500000000000000000000000000000000
-            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
-            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
-            7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
-            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
-            7D7B7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
-            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A
-            4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
-            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
-            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFF4A4D4A4A4D4A4A4D4A4A
-            4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A
-            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFF4A4D4A4A4D4A
-            4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D
-            4A4A4D4AFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
-            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A
-            4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
-            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
-            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D
-            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
-            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B
-            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
-            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
-          NodesAppearance.CollapseNodeIconLarge.Data = {
-            07544269746D61700E060000424D0E0600000000000036000000280000001600
-            0000160000000100180000000000D80500000000000000000000000000000000
-            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
-            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
-            7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
-            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
-            7D7B7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
-            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
-            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
-            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A
-            4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFFFFFFFFFF
-            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
-            4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFF
-            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
-            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
-            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
-            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D
-            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
-            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B
-            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
-            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
-          Version = '1.1.0.6'
-          OnGetNodeIcon = advMainTreeRootGetNodeIcon
-          OnAfterSelectNode = advMainTreeRootAfterSelectNode
-          ExplicitTop = 6
-        end
-        object advMainTreeNode: TAdvTreeView
-          Left = 200
-          Top = 0
-          Width = 510
-          Height = 405
-          Align = alClient
-          Color = clWhite
-          TabOrder = 1
           TabStop = True
           Groups = <>
           GroupsAppearance.TopSize = 50.000000000000000000
@@ -909,7 +460,442 @@ object fmMain: TfmMain
             7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
             7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
           Version = '1.1.0.6'
-          OnGetNodeIcon = advMainTreeNodeGetNodeIcon
+          OnGetNodeIcon = advMainTreeRootGetNodeIcon
+          OnAfterSelectNode = advMainTreeRootAfterSelectNode
+          ExplicitLeft = 2
+          ExplicitTop = 6
+        end
+        object advMainTreeNodes: TAdvTreeView
+          Left = 200
+          Top = 0
+          Width = 510
+          Height = 405
+          Align = alClient
+          Color = clWhite
+          TabOrder = 1
+          TabStop = True
+          OnMouseUp = advMainTreeNodesMouseUp
+          PictureContainer = dmBase.PictureContainer1
+          Groups = <>
+          GroupsAppearance.TopSize = 50.000000000000000000
+          GroupsAppearance.BottomSize = 50.000000000000000000
+          GroupsAppearance.TopFill.Kind = tvbkNone
+          GroupsAppearance.BottomFill.Kind = tvbkNone
+          GroupsAppearance.TopFont.Charset = DEFAULT_CHARSET
+          GroupsAppearance.TopFont.Color = clWindowText
+          GroupsAppearance.TopFont.Height = -11
+          GroupsAppearance.TopFont.Name = 'Tahoma'
+          GroupsAppearance.TopFont.Style = []
+          GroupsAppearance.BottomFont.Charset = DEFAULT_CHARSET
+          GroupsAppearance.BottomFont.Color = clWindowText
+          GroupsAppearance.BottomFont.Height = -11
+          GroupsAppearance.BottomFont.Name = 'Tahoma'
+          GroupsAppearance.BottomFont.Style = []
+          GroupsAppearance.TopStroke.Color = 11119017
+          GroupsAppearance.BottomStroke.Color = 11119017
+          ColumnStroke.Color = clNone
+          Columns = <
+            item
+              Name = 'Column0'
+              Text = 'Model'
+              Width = 100.000000000000000000
+              Fill.Color = clNone
+              Stroke.Color = 11119017
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              TopFill.Kind = tvbkNone
+              TopStroke.Color = 11119017
+              TopFont.Charset = DEFAULT_CHARSET
+              TopFont.Color = clWindowText
+              TopFont.Height = -11
+              TopFont.Name = 'Tahoma'
+              TopFont.Style = []
+              BottomFill.Kind = tvbkNone
+              BottomStroke.Color = 11119017
+              BottomFont.Charset = DEFAULT_CHARSET
+              BottomFont.Color = clWindowText
+              BottomFont.Height = -11
+              BottomFont.Name = 'Tahoma'
+              BottomFont.Style = []
+            end
+            item
+              Name = 'Column1'
+              Text = 'Year'
+              Width = 100.000000000000000000
+              Fill.Color = clNone
+              Stroke.Color = 11119017
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              TopFill.Kind = tvbkNone
+              TopStroke.Color = 11119017
+              TopFont.Charset = DEFAULT_CHARSET
+              TopFont.Color = clWindowText
+              TopFont.Height = -11
+              TopFont.Name = 'Tahoma'
+              TopFont.Style = []
+              BottomFill.Kind = tvbkNone
+              BottomStroke.Color = 11119017
+              BottomFont.Charset = DEFAULT_CHARSET
+              BottomFont.Color = clWindowText
+              BottomFont.Height = -11
+              BottomFont.Name = 'Tahoma'
+              BottomFont.Style = []
+            end
+            item
+              Name = 'Column2'
+              Text = 'Miles'
+              Width = 100.000000000000000000
+              Fill.Color = clNone
+              Stroke.Color = 11119017
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              TopFill.Kind = tvbkNone
+              TopStroke.Color = 11119017
+              TopFont.Charset = DEFAULT_CHARSET
+              TopFont.Color = clWindowText
+              TopFont.Height = -11
+              TopFont.Name = 'Tahoma'
+              TopFont.Style = []
+              BottomFill.Kind = tvbkNone
+              BottomStroke.Color = 11119017
+              BottomFont.Charset = DEFAULT_CHARSET
+              BottomFont.Color = clWindowText
+              BottomFont.Height = -11
+              BottomFont.Name = 'Tahoma'
+              BottomFont.Style = []
+            end>
+          Nodes = <
+            item
+              Values = <
+                item
+                  Text = 'Audi'
+                end>
+              Expanded = True
+              Extended = True
+              Tag = 0
+              Nodes = <
+                item
+                  Values = <
+                    item
+                      Text = 'A3'
+                    end
+                    item
+                      Text = '2010'
+                    end
+                    item
+                      Text = '32,300'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <>
+                end
+                item
+                  Values = <
+                    item
+                      Text = 'A5 series'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <
+                    item
+                      Values = <
+                        item
+                          Text = 'S5'
+                        end
+                        item
+                          Text = '2015'
+                        end
+                        item
+                          Text = '40,000'
+                        end>
+                      Expanded = True
+                      Tag = 0
+                      Nodes = <>
+                    end
+                    item
+                      Values = <
+                        item
+                          Text = 'RS5'
+                        end
+                        item
+                          Text = '2012'
+                        end
+                        item
+                          Text = '15,000'
+                        end>
+                      Expanded = True
+                      Tag = 0
+                      Nodes = <>
+                    end>
+                end
+                item
+                  Values = <
+                    item
+                      Text = 'A8'
+                    end
+                    item
+                      Text = '2005'
+                    end
+                    item
+                      Text = '80,000'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <>
+                end>
+            end
+            item
+              Values = <
+                item
+                  Text = 'Mercedes'
+                end>
+              Expanded = True
+              Extended = True
+              Tag = 0
+              Nodes = <
+                item
+                  Values = <
+                    item
+                      Text = 'SLS'
+                    end
+                    item
+                      Text = '2000'
+                    end
+                    item
+                      Text = '300,000'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <>
+                end
+                item
+                  Values = <
+                    item
+                      Text = 'SLK'
+                    end
+                    item
+                      Text = '2010'
+                    end
+                    item
+                      Text = '20,000'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <>
+                end
+                item
+                  Values = <
+                    item
+                      Text = 'GLA'
+                    end
+                    item
+                      Text = '2012'
+                    end
+                    item
+                      Text = '14,500'
+                    end>
+                  Expanded = True
+                  Tag = 0
+                  Nodes = <>
+                end>
+            end>
+          ColumnsAppearance.Layouts = []
+          ColumnsAppearance.TopSize = 25.000000000000000000
+          ColumnsAppearance.BottomSize = 25.000000000000000000
+          ColumnsAppearance.TopFont.Charset = DEFAULT_CHARSET
+          ColumnsAppearance.TopFont.Color = clWindowText
+          ColumnsAppearance.TopFont.Height = -11
+          ColumnsAppearance.TopFont.Name = 'Tahoma'
+          ColumnsAppearance.TopFont.Style = []
+          ColumnsAppearance.BottomFont.Charset = DEFAULT_CHARSET
+          ColumnsAppearance.BottomFont.Color = clWindowText
+          ColumnsAppearance.BottomFont.Height = -11
+          ColumnsAppearance.BottomFont.Name = 'Tahoma'
+          ColumnsAppearance.BottomFont.Style = []
+          ColumnsAppearance.TopFill.Kind = tvbkNone
+          ColumnsAppearance.BottomFill.Kind = tvbkNone
+          ColumnsAppearance.TopStroke.Color = 11119017
+          ColumnsAppearance.BottomStroke.Color = 11119017
+          NodesAppearance.ExpandWidth = 15.000000000000000000
+          NodesAppearance.ExpandHeight = 15.000000000000000000
+          NodesAppearance.LevelIndent = 20.000000000000000000
+          NodesAppearance.FixedHeight = 25.000000000000000000
+          NodesAppearance.VariableMinimumHeight = 25.000000000000000000
+          NodesAppearance.Fill.Color = clNone
+          NodesAppearance.Stroke.Color = 11119017
+          NodesAppearance.Stroke.Style = psClear
+          NodesAppearance.ColumnStroke.Color = clNone
+          NodesAppearance.LineStroke.Color = 11119017
+          NodesAppearance.LineStroke.Style = psDot
+          NodesAppearance.Font.Charset = DEFAULT_CHARSET
+          NodesAppearance.Font.Color = clWindowText
+          NodesAppearance.Font.Height = -11
+          NodesAppearance.Font.Name = 'Tahoma'
+          NodesAppearance.Font.Style = []
+          NodesAppearance.SelectedFill.Color = 16297243
+          NodesAppearance.SelectedStroke.Color = 11119017
+          NodesAppearance.SelectedStroke.Style = psClear
+          NodesAppearance.DisabledFill.Color = 11119017
+          NodesAppearance.DisabledStroke.Color = 11119017
+          NodesAppearance.DisabledStroke.Style = psClear
+          NodesAppearance.ExtendedFill.Color = 16053492
+          NodesAppearance.ExtendedStroke.Color = 11119017
+          NodesAppearance.ExtendedFont.Charset = DEFAULT_CHARSET
+          NodesAppearance.ExtendedFont.Color = clWindowText
+          NodesAppearance.ExtendedFont.Height = -11
+          NodesAppearance.ExtendedFont.Name = 'Tahoma'
+          NodesAppearance.ExtendedFont.Style = []
+          NodesAppearance.ExtendedSelectedFill.Color = 16297243
+          NodesAppearance.ExtendedSelectedStroke.Color = 11119017
+          NodesAppearance.ExtendedSelectedStroke.Style = psClear
+          NodesAppearance.ExtendedDisabledFill.Color = 11119017
+          NodesAppearance.ExtendedDisabledStroke.Color = 11119017
+          NodesAppearance.ExtendedDisabledStroke.Style = psClear
+          NodesAppearance.ExpandNodeIcon.Data = {
+            07544269746D6170C2010000424DC20100000000000036000000280000000B00
+            00000B00000001001800000000008C0100000000000000000000000000000000
+            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFF
+            FFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A
+            FFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFF
+            FF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFF4A4D4A4A
+            4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFFFF7B7D7B0000007B7D7BFFFFFF
+            FFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D
+            7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B00
+            00007B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4AFFFFFFFFFFFFFFFFFFFFFFFF
+            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF7B7D7B0000007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B000000}
+          NodesAppearance.CollapseNodeIcon.Data = {
+            07544269746D6170C2010000424DC20100000000000036000000280000000B00
+            00000B00000001001800000000008C0100000000000000000000000000000000
+            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFFFFFFFF4A
+            4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFFFFFFFFFF7B7D7B0000007B7D7BFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B0000007B7D
+            7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B00
+            00007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            7B7D7B0000007B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF7B7D7B0000007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B000000}
+          NodesAppearance.ExpandNodeIconLarge.Data = {
+            07544269746D61700E060000424D0E0600000000000036000000280000001600
+            0000160000000100180000000000D80500000000000000000000000000000000
+            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
+            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A
+            4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
+            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
+            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFF4A4D4A4A4D4A4A4D4A4A
+            4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFF4A4D4A4A4D4A
+            4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D
+            4A4A4D4AFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A4D4AFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
+            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A
+            4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
+            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
+            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF4A4D4A4A4D4AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
+          NodesAppearance.CollapseNodeIconLarge.Data = {
+            07544269746D61700E060000424D0E0600000000000036000000280000001600
+            0000160000000100180000000000D80500000000000000000000000000000000
+            00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
+            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
+            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
+            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF4A4D4A4A
+            4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFFFFFFFFFF
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
+            4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4A4A4D4AFFFF
+            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D
+            7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B
+            00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7D
+            7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7BFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B7D7B7B7D
+            7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B00007B7D7B7B7D7B7B7D7B7B
+            7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
+            7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
+          Version = '1.1.0.6'
+          OnGetNodeIcon = advMainTreeNodesGetNodeIcon
+          ExplicitLeft = 206
+          ExplicitTop = 6
         end
       end
       object TPage
@@ -955,13 +941,12 @@ object fmMain: TfmMain
     BevelOuter = bvLowered
     ParentBackground = False
     TabOrder = 1
-    OnClick = plMainLeftClick
     DesignSize = (
       44
       445)
     object sbReConnect: TAdvGlassButton
-      Left = 2
-      Top = 409
+      Left = 4
+      Top = 407
       Width = 36
       Height = 36
       ParentCustomHint = False
@@ -1064,6 +1049,125 @@ object fmMain: TfmMain
       TabStop = False
       Version = '1.3.0.2'
       OnClick = sbReConnectClick
+    end
+    object btnTemplates: TAdvGlassButton
+      Left = 4
+      Top = 365
+      Width = 36
+      Height = 36
+      ParentCustomHint = False
+      Anchors = [akLeft, akBottom]
+      BackColor = clSilver
+      CornerRadius = 2
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ForeColor = clWhite
+      GlowColor = clWhite
+      InnerBorderColor = clMedGray
+      OuterBorderColor = clBtnFace
+      Picture.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000000467414D410000B18F0BFC6105000000206348524D00007A26000080
+        840000FA00000080E8000075300000EA6000003A98000017709CBA513C000000
+        06624B474400FF00FF00FFA0BDA7930000000970485973000016250000162501
+        495224F00000000774494D4507E3031C0A2118930F59180000061D4944415458
+        C3ED974B8C1D571186BF3AE774F77DCE7B6C5F676C070CC601D9529085782844
+        880DCA0A81B08382C40A1440EC9022C102B1444262C10A16260B5820A3208420
+        485178C85262B1706C84ED6008B13DC6613C339999FBBEFD38C5A27B66FA661E
+        B684041B4A3AB7BBABAB4FFDA7EAAF3AE7C2FFE57F2CB29BF2E4CF6E21C602BA
+        CB5B05A4F40B8A206A00B87176E13F0370F2C29DF28B3AF05EC0015DA0073A02
+        192A8C044DD1CC8B58D5DDD7320EBD58CFEB678FEE04F0D885DB5B8F02783823
+        F02DE009C00023605800E914D736B00E6C1463BDF4DC2E6C0AE06C88B0B109E2
+        C6E78E6E0378DF85450C9A0754B5AEC817ADF01C70544B28774BC82EE28B9100
+        438191420CDC057E84F25320F5287F3D7B0C0760C5A32AA02C807C6F32349F71
+        86609429B1CF979F69712F6005529F0372260FADD75C8F605431803342B514FA
+        A3C0298436F08BCDD5B8DC40883DC609DF78B25539F7EC63138446E8A54A3FF5
+        B4634F3BF1B413A51D7B3A49AEEB269E7EA67413CF20555285D82B8354F3782A
+        A49A47B0F0D7043EAB5E7F6944FC160050BC6AB311DA8F7CE13D4D1E9F8DF627
+        13F98A13AFE451CAAFBD54E9259E5EAA7412CFD220E3C5C53ED7D7E32D0202B3
+        62C41669DA040099620323B6116CB33953B8D54968D51C3527630806A9A71E18
+        2A767FF67FF46085AFBFB2C2DD5EBA1989619E94FC3B532A07F58AA67EFBE3FB
+        838C3F2D8FB8B991909618F8DAEA881F5C6BF3EAD270CCD952613FC8B68D8F37
+        1D8F361D996EA521CE01E8360045109134F53A8CFDF6C78957A623C39B9D84B4
+        A4BFD54D393119F08F4E3A06E0D2FD215756475C5B8BC7F4250EEC10B369A2BA
+        553E63B91E663B5B8C5788AC6064A77EA1EE18A4FB16EC980FC703C4EB769EBC
+        C2EFEE0DB8BC32A2E68461A65C5D8D393D1B22E475F7E07E485FF15EB00F07A0
+        1CC676E2B9B11EF3D5F74FE0153662CF1FDF1AD0AA590E542D91A5CCF6AD286E
+        532E5F87904201C0946CBD32966A8CE423D33C6EA1119C116E77537AA9672A32
+        5823A485D738CB27294BEA61F44E65098ECB1F15AF9A7A65E48BC90699F2463B
+        E14E3727DADA28E370CDF1D4911A3FF97B07AFD04F95270E55A83BC3CBF706DC
+        EE268C32980C0DC7271C876B6E2B022549DC725B7BF1C6FE29B8BC324215CECC
+        457453E5F24A8C9D178E351C1F980E0944588F3D4F1DA9B158D4F8974F4ED04F
+        F36E797535E640D5E66B1D27C6F0D0573EC84B22FB0348BCB2D0701C6F061881
+        AB6FC72C0F330E566D5EC5A549EBCE3048956B6B31756708ACD00C0D5214A001
+        9C147CC852F392C8A65FDD13C0E999904BF747BCB8D8A76285B98AE563072BBB
+        DACE4486C7E7227E7BB74F5854C2C75B15AC8047735E14CDC00FBA15600AC880
+        2407A09E54D52BF413BF39A9E5F44CC846EC495579B2556136B27BE1A555B33C
+        DA7054AC50B1C291BADB2261ECB5F02F64ED5507B4C8B7EB41DE09BD27BD7F1B
+        AF9ABD93B146A0E90C51A9EB94CF089BE2757BECD98604B27E270466813960CA
+        007CF8DCBB18FDE51583FAB1E6361D19B2628B8D4A9B4E64847F0DD23D9DEC29
+        0A7ED04B80B0E05F4E86E773466AF2C9736B6FF5B331727DFA581D80A004EDCC
+        7CC4CBF7FCD8B66D056A4EB8D34DF9D081A8ECB32843C1C783D5DE953FFC99BC
+        AD0C81EE665205D0C6279EB6AB52FDD4E17A506904822A44D610DAF116DB080C
+        A76642E62BE39C3858B53C5277B46A8EA2CAE8A7CA0BB77A2CF7E351EFB5DF3F
+        BF74FEDBAF0203600D582FCF6B2A474ED45BCFFDF899F943AD67E7EBE123D391
+        AD36021B4D86C6CE55AD4C0696D98A6126B234026126B2D49C50B542D5094E76
+        6E507FDB48F8D2C5656E5DBFF2F3C5EF7CFEBCEFB73B85F315A0B3652ED68966
+        A90582A967BE79C82D9C6899FAE4B4A936A65D549DB341386F83702E0C83B920
+        08A62BCE4ED543375575A6DE0C6D7532B2956660DD5CD5CA5468988E0CA1117E
+        7DA7CFC59B8B17FFF9FDAF7DB77FFDD232F929F96DF253F3681CAF1841BD1429
+        198B0EF9EE61CD4CCB45EF3EE5C2E3A76B66F240C33667264C736ACAD427A75C
+        A53E6BC370DE583717066E5E8CA98EBA9D9BEBBFFAE10B6BBF39BF04A440BF00
+        1103D97E9C957DEECB95583EB54B01D699E64C609AD326BDF7465E2E22A0EA0B
+        104941C487D9BEF7157980AE7CAFA5EB43FEC5F82FC8BF012E5DBFAC4CD6319E
+        0000002574455874646174653A63726561746500323031392D30332D32385431
+        303A33333A32342B30303A303089DB8B340000002574455874646174653A6D6F
+        6469667900323031392D30332D32385431303A33333A32342B30303A3030F886
+        33880000001974455874536F6674776172650041646F626520496D6167655265
+        61647971C9653C0000000049454E44AE426082}
+      ParentFont = False
+      ParentShowHint = False
+      ParentBiDiMode = False
+      ShineColor = clWhite
+      ShowCaption = False
+      ShowHint = False
+      TabOrder = 1
+      TabStop = False
+      Version = '1.3.0.2'
+      OnClick = btnTemplatesClick
+    end
+  end
+  object AdvPopupMenu1: TAdvPopupMenu
+    AutoPopup = False
+    BiDiMode = bdLeftToRight
+    OwnerDraw = False
+    ParentBiDiMode = False
+    ShowNotes = False
+    Version = '2.6.2.1'
+    Left = 388
+    Top = 296
+    object pmNodeAddRoot: TMenuItem
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074' '#1082#1086#1088#1077#1085#1100'...'
+      OnClick = pmNodeAddRootClick
+    end
+    object pmNodeAddChild: TMenuItem
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100'...'
+      ImageIndex = 3
+      OnClick = pmNodeAddChildClick
+    end
+    object pmNodeModify: TMenuItem
+      Caption = #1048#1079#1084#1077#1085#1080#1090#1100'...'
+      OnClick = pmNodeModifyClick
+    end
+    object pmLine: TMenuItem
+      Caption = '-'
+    end
+    object pmNodeDelete: TMenuItem
+      Caption = #1059#1076#1072#1083#1080#1090#1100
+      OnClick = pmNodeDeleteClick
     end
   end
 end

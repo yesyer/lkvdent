@@ -7,7 +7,6 @@ object dmBase: TdmBase
       'Database=C:\git\lkvdent\DB.db'
       'StringFormat=Unicode'
       'DriverID=SQLite')
-    Connected = True
     Left = 40
     Top = 8
   end
@@ -20,7 +19,7 @@ object dmBase: TdmBase
     Connection = fdSQLiteConnection
     SQL.Strings = (
       'SELECT *'
-      'FROM   [tg_TreeGuide]'
+      'FROM   [tb_TreeGuide]'
       'WHERE  ([tg_parent_id] IS NULL)'
       '       AND ([tg_visible] = 1);')
     Left = 136
@@ -34,7 +33,7 @@ object dmBase: TdmBase
     Left = 40
     Top = 104
     Bitmap = {
-      494C010104000800240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000800280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -429,9 +428,9 @@ object dmBase: TdmBase
     Connection = fdSQLiteConnection
     SQL.Strings = (
       'SELECT *'
-      'FROM   [tg_TreeGuide]'
+      'FROM   [tb_TreeGuide]'
       'WHERE  ([tg_path] LIKE (SELECT [tg_path] || '#39'%'#39
-      '       FROM   [tg_TreeGuide]'
+      '       FROM   [tb_TreeGuide]'
       '       WHERE  [tg_id] = 1))'
       '       AND ([tg_parent_id] NOT NULL)'
       'ORDER  BY [tg_path];')

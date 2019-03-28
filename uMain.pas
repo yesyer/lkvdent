@@ -7,7 +7,8 @@ uses
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls,
   AdvGlassButton,  TreeList, FireDAC.Comp.Client,
-  AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView;
+  AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView, AdvMenus,
+  Vcl.Menus;
 
 type
   TfmMain = class(TForm)
@@ -17,12 +18,16 @@ type
     plMainTop: TPanel;
     sbReConnect: TAdvGlassButton;
     advMainTreeRoot: TAdvTreeView;
-    advMainTreeNode: TAdvTreeView;
+    advMainTreeNodes: TAdvTreeView;
+    AdvPopupMenu1: TAdvPopupMenu;
+    pmNodeAddRoot: TMenuItem;
+    pmNodeAddChild: TMenuItem;
+    pmNodeModify: TMenuItem;
+    pmNodeDelete: TMenuItem;
+    btnTemplates: TAdvGlassButton;
     procedure sbReConnectClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure TreeList1Collapsing(Sender: TObject; Node: TTreeNode;
-      var AllowCollapse: Boolean);
-    procedure advMainTreeNodeGetNodeIcon(Sender: TObject;
+    procedure advMainTreeNodesGetNodeIcon(Sender: TObject;
       ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
       var AIcon: TGraphic);
     procedure advMainTreeRootGetNodeIcon(Sender: TObject;
@@ -30,12 +35,20 @@ type
       var AIcon: TGraphic);
     procedure advMainTreeRootAfterSelectNode(Sender: TObject;
       ANode: TAdvTreeViewVirtualNode);
-    procedure plMainLeftClick(Sender: TObject);
+    procedure advMainTreeNodesMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure pmNodeAddChildClick(Sender: TObject);
+    procedure pmNodeAddRootClick(Sender: TObject);
+    procedure pmNodeModifyClick(Sender: TObject);
+    procedure pmNodeDeleteClick(Sender: TObject);
+    procedure nbPagesPageChanged(Sender: TObject);
+    procedure btnTemplatesClick(Sender: TObject);
   private
     { Private declarations }
-    procedure SQliteDataBaseConnection;
-    procedure BuildAdvTree(IntRn: Integer; PNode: TAdvTreeViewNode;
-  TTree: TAdvTreeView);
+    ModifyNode: TAdvTreeViewVirtualNode;
+    procedure aaaSQliteDataBaseConnection;
+    procedure aaaBuildAdvTree(IntRn: Integer; PNode: TAdvTreeViewNode;
+      TTree: TAdvTreeView);
   public
     { Public declarations }
   end;
@@ -49,39 +62,7 @@ implementation
 
 uses uBase;
 
-procedure TfmMain.advMainTreeNodeGetNodeIcon(Sender: TObject;
-  ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
-  var AIcon: TGraphic);
-begin
-  if (ANode.GetChildCount = 0) and (AColumn = 0) then
-    AIcon:=dmBase.PictureContainer1.Items[3].Picture;
-end;
-
-procedure TfmMain.advMainTreeRootAfterSelectNode(Sender: TObject;
-  ANode: TAdvTreeViewVirtualNode);
-var
-  i: integer;
-begin
-  advMainTreeRoot.Nodes[ANode.Index].Expanded:=true;
-  advMainTreeNode.BeginUpdate;
-  advMainTreeNode.ClearColumns;
-  advMainTreeNode.ClearNodes;
-  advMainTreeNode.Columns.Add;
-  advMainTreeNode.Columns.Add;
-  i:= StrToInt(advMainTreeRoot.Nodes[ANode.Index].Text[1]);
-  BuildAdvTree(i, nil,advMainTreeNode);
-  advMainTreeNode.EndUpdate;
-end;
-
-procedure TfmMain.advMainTreeRootGetNodeIcon(Sender: TObject;
-  ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
-  var AIcon: TGraphic);
-begin
-  if (ANode.GetChildCount = 0) and (AColumn = 0) then
-    AIcon:=dmBase.PictureContainer1.Items[1].Picture;
-end;
-
-procedure TfmMain.BuildAdvTree(IntRn: Integer; PNode: TAdvTreeViewNode;
+procedure TfmMain.aaaBuildAdvTree(IntRn: Integer; PNode: TAdvTreeViewNode;
   TTree: TAdvTreeView);
 var
   qNode: TFDQuery;
@@ -91,8 +72,11 @@ begin
   qNode.Connection := dmBase.fdSQLiteConnection;
   qNode.Close;
   qNode.SQL.Clear;
-  qNode.SQL.Add('select * from tg_TreeGuide where tg_parent_id = ' +
-    IntToStr(IntRn));
+  qNode.SQL.Add(
+    'SELECT * ' +
+    'FROM tb_TreeGuide ' +
+    'WHERE (tg_parent_id = ' + IntToStr(IntRn) + ') ' +
+      'AND (tg_visible = 1)');
   qNode.Open;
   qNode.First;
 
@@ -103,14 +87,14 @@ begin
     CNode.Text[1]:= qNode.FieldByName('tg_id').AsString;
     CNode.CollapsedIconNames[0,false]:= 'FOLDER';
     CNode.ExpandedIconNames[0,false]:= 'FOLDER_OPEN';
-    BuildAdvTree(qNode.FieldByName('tg_id').AsInteger, CNode, TTree);
+    aaaBuildAdvTree(qNode.FieldByName('tg_id').AsInteger, CNode, TTree);
     qNode.Next;
   end;
   qNode.Close;
   qNode.Destroy;
 end;
 
-procedure TfmMain.SQliteDataBaseConnection;
+procedure TfmMain.aaaSQliteDataBaseConnection;
 begin
   with dmBase do
   begin
@@ -120,13 +104,68 @@ begin
   end;
 end;
 
-procedure TfmMain.TreeList1Collapsing(Sender: TObject; Node: TTreeNode;
-  var AllowCollapse: Boolean);
+procedure TfmMain.advMainTreeNodesGetNodeIcon(Sender: TObject;
+  ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
+  var AIcon: TGraphic);
 begin
-  AllowCollapse := False;
+  if (ANode.GetChildCount = 0) and (AColumn = 0) then
+    AIcon:=dmBase.PictureContainer1.Items[3].Picture;
 end;
 
-procedure TfmMain.sbReConnectClick(Sender: TObject);
+procedure TfmMain.advMainTreeNodesMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  if Button = mbRight then
+    begin
+      ModifyNode:=nil;
+      ModifyNode:= advMainTreeNodes.XYToNode(x,y);
+      if Assigned(ModifyNode)=true then
+        begin
+          fmMain.Caption:= ModifyNode.Node.Text[0];
+          advMainTreeNodes.SelectNode(ModifyNode.Node);
+          pmNodeAddRoot.Enabled:=false;
+          pmNodeAddChild.Enabled:= true;
+          pmNodeModify.Enabled:= true;
+          pmNodeDelete.Enabled:= true;
+          AdvPopupMenu1.PopupAtCursor;
+        end
+      else
+        begin
+          pmNodeAddRoot.Enabled:= true;
+          pmNodeAddChild.Enabled:= false;
+          pmNodeModify.Enabled:= false;
+          pmNodeDelete.Enabled:= false;
+          AdvPopupMenu1.PopupAtCursor;
+        end;
+    end;
+end;
+
+procedure TfmMain.advMainTreeRootAfterSelectNode(Sender: TObject;
+  ANode: TAdvTreeViewVirtualNode);
+var
+  i: integer;
+begin
+  advMainTreeRoot.Nodes[ANode.Index].Expanded:=true;
+  advMainTreeNodes.BeginUpdate;
+  advMainTreeNodes.ClearColumns;
+  advMainTreeNodes.ClearNodes;
+  advMainTreeNodes.Columns.Add.Text:= 'Наименование';
+  advMainTreeNodes.Columns.Add.Text:= 'Код tg_id';
+  advMainTreeNodes.Columns.Add.Text:= 'Новый tg_parent_id';
+  i:= StrToInt(ANode.Node.Text[1]);
+  aaaBuildAdvTree(i, nil,advMainTreeNodes);
+  advMainTreeNodes.EndUpdate;
+end;
+
+procedure TfmMain.advMainTreeRootGetNodeIcon(Sender: TObject;
+  ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
+  var AIcon: TGraphic);
+begin
+  if (ANode.GetChildCount = 0) and (AColumn = 0) then
+    AIcon:=dmBase.PictureContainer1.Items[2].Picture;
+end;
+
+procedure TfmMain.btnTemplatesClick(Sender: TObject);
 var
   i, c: Integer;
   r, n: TTreeNode;
@@ -136,6 +175,7 @@ begin
   c := dmBase.qTreeRoot.RecordCount;
   dmBase.qTreeRoot.First;
 
+  advMainTreeRoot.BeginUpdate;
   advMainTreeRoot.ClearColumns;
   advMainTreeRoot.ClearNodes;
 
@@ -147,20 +187,92 @@ begin
     advNode:= advMainTreeRoot.Nodes.Add;
     advNode.Text[0]:=dmBase.qTreeRoot.FieldByName('tg_content').AsString;
     advNode.Text[1]:=dmBase.qTreeRoot.FieldByName('tg_id').AsString;
-    advNode.ExpandedIconNames[0,false]:='FOLDER_FILES';
-    advNode.CollapsedIconNames[0,false]:='FOLDER';
     dmBase.qTreeRoot.Next;
   end;
+  advMainTreeRoot.SetFocus;
+  advMainTreeRoot.SelectedNodes[0];
+  advMainTreeRoot.EndUpdate;
+end;
+
+procedure TfmMain.sbReConnectClick(Sender: TObject);
+begin
+  aaaSQliteDataBaseConnection;
 end;
 
 procedure TfmMain.FormShow(Sender: TObject);
 begin
-  SQliteDataBaseConnection;
+  aaaSQliteDataBaseConnection;
 end;
 
-procedure TfmMain.plMainLeftClick(Sender: TObject);
+procedure TfmMain.nbPagesPageChanged(Sender: TObject);
 begin
-  fmMain.Caption:= advMainTreeRoot.SelectedNode.Text[1];
+  //
+end;
+
+procedure TfmMain.pmNodeAddChildClick(Sender: TObject);
+var
+  NewString: string;
+  ClickedOK: Boolean;
+  CNode: TAdvTreeViewNode;
+begin
+  NewString := 'Введите текст шаблона';
+  ClickedOK := InputQuery('Добавление', 'Текст шаблона', NewString);
+  if ClickedOK = true then            { NewString contains new input string. }
+    begin
+      fmMain.Caption := NewString;
+      CNode:= advMainTreeNodes.AddNode(ModifyNode.Node);
+      CNode.Text[0]:= NewString;
+      CNode.Text[1]:= '';
+      CNode.Text[2]:= ModifyNode.Node.Text[1];
+      CNode.CollapsedIconNames[0,false]:= 'FOLDER';
+      CNode.ExpandedIconNames[0,false]:= 'FOLDER_OPEN';
+      ModifyNode.Node.Expanded:= true;
+    end;
+end;
+
+procedure TfmMain.pmNodeAddRootClick(Sender: TObject);
+var
+  NewString: string;
+  ClickedOK: Boolean;
+  CNode: TAdvTreeViewNode;
+begin
+  NewString := 'Введите текст шаблона';
+  ClickedOK := InputQuery('Добавление в корень', 'Текст шаблона', NewString);
+  if ClickedOK = true then            { NewString contains new input string. }
+    begin
+      CNode:= advMainTreeNodes.AddNode(nil);
+      CNode.Text[0]:= NewString;
+      CNode.Text[1]:= '';
+      CNode.Text[2]:= advMainTreeRoot.SelectedNode.Text[1];
+      CNode.CollapsedIconNames[0,false]:= 'FOLDER';
+      CNode.ExpandedIconNames[0,false]:= 'FOLDER_OPEN';
+    end;
+end;
+
+procedure TfmMain.pmNodeDeleteClick(Sender: TObject);
+var
+  i: Integer;
+begin
+  i:= MessageDlg('Вы увереня что хотиде удалить ветку и все существующие подветви "' +
+    ModifyNode.Node.Text[0] + '"?',
+    mtConfirmation, mbOKCancel,0);
+  if i = mrOk then
+    advMainTreeNodes.RemoveNode(ModifyNode.Node);
+end;
+
+procedure TfmMain.pmNodeModifyClick(Sender: TObject);
+var
+  NewString: String;
+  ClickedOK: Boolean;
+  CNode: TAdvTreeViewNode;
+begin
+  NewString := ModifyNode.Node.Text[0];
+  ClickedOK := InputQuery('Изменить шаблон', 'Текст шаблона', NewString);
+  if ClickedOK = true then            { NewString contains new input string. }
+    begin
+      ModifyNode.Node.Text[0]:= NewString;
+      ModifyNode.Node.Text[2]:= ModifyNode.Node.Text[1];
+    end;
 end;
 
 end.
