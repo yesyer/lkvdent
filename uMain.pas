@@ -8,23 +8,48 @@ uses
   Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls,
   AdvGlassButton,  TreeList, FireDAC.Comp.Client,
   AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView, AdvMenus,
-  Vcl.Menus;
+  Vcl.Menus, Vcl.Mask, AdvPanel;
 
 type
   TfmMain = class(TForm)
     plMainClient: TPanel;
     plMainLeft: TPanel;
     nbPages: TNotebook;
-    plMainTop: TPanel;
     sbReConnect: TAdvGlassButton;
     advMainTreeRoot: TAdvTreeView;
     advMainTreeNodes: TAdvTreeView;
-    AdvPopupMenu1: TAdvPopupMenu;
+    pmTreeGuide: TAdvPopupMenu;
     pmNodeAddRoot: TMenuItem;
     pmNodeAddChild: TMenuItem;
     pmNodeModify: TMenuItem;
     pmNodeDelete: TMenuItem;
     btnTemplates: TAdvGlassButton;
+    AdvPanelGroup1: TAdvPanelGroup;
+    AdvPanel1: TAdvPanel;
+    AdvPanel2: TAdvPanel;
+    ButtonedEdit1: TButtonedEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    ButtonedEdit2: TButtonedEdit;
+    ButtonedEdit3: TButtonedEdit;
+    Label3: TLabel;
+    dtpBirthday: TDateTimePicker;
+    Label4: TLabel;
+    ButtonedEdit4: TButtonedEdit;
+    Label5: TLabel;
+    ButtonedEdit5: TButtonedEdit;
+    Label6: TLabel;
+    Label7: TLabel;
+    ButtonedEdit6: TButtonedEdit;
+    Label8: TLabel;
+    ButtonedEdit7: TButtonedEdit;
+    AdvPanel3: TAdvPanel;
+    Label9: TLabel;
+    Label10: TLabel;
+    MaskEdit1: TMaskEdit;
+    MaskEdit2: TMaskEdit;
+    cbxSex: TComboBox;
+    Label11: TLabel;
     procedure sbReConnectClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure advMainTreeNodesGetNodeIcon(Sender: TObject;
@@ -127,7 +152,7 @@ begin
           pmNodeAddChild.Enabled:= true;
           pmNodeModify.Enabled:= true;
           pmNodeDelete.Enabled:= true;
-          AdvPopupMenu1.PopupAtCursor;
+          pmTreeGuide.PopupAtCursor;
         end
       else
         begin
@@ -135,7 +160,7 @@ begin
           pmNodeAddChild.Enabled:= false;
           pmNodeModify.Enabled:= false;
           pmNodeDelete.Enabled:= false;
-          AdvPopupMenu1.PopupAtCursor;
+          pmTreeGuide.PopupAtCursor;
         end;
     end;
 end;
