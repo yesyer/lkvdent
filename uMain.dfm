@@ -2,8 +2,8 @@ object fmMain: TfmMain
   Left = 0
   Top = 0
   Caption = 'fmMain'
-  ClientHeight = 465
-  ClientWidth = 668
+  ClientHeight = 592
+  ClientWidth = 898
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,35 +19,35 @@ object fmMain: TfmMain
   object plMainClient: TPanel
     Left = 44
     Top = 0
-    Width = 624
-    Height = 465
+    Width = 854
+    Height = 592
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 721
-    ExplicitHeight = 496
+    ExplicitWidth = 624
+    ExplicitHeight = 465
     object nbPages: TNotebook
       Left = 0
       Top = 0
-      Width = 624
-      Height = 465
+      Width = 854
+      Height = 592
       Align = alClient
       PageIndex = 1
       TabOrder = 0
       OnPageChanged = nbPagesPageChanged
-      ExplicitWidth = 721
-      ExplicitHeight = 496
+      ExplicitWidth = 624
+      ExplicitHeight = 465
       object TPage
         Left = 0
         Top = 0
         Caption = '0'
-        ExplicitWidth = 721
-        ExplicitHeight = 496
+        ExplicitWidth = 624
+        ExplicitHeight = 465
         object advMainTreeRoot: TAdvTreeView
           Left = 0
           Top = 0
           Width = 200
-          Height = 465
+          Height = 592
           Align = alLeft
           Color = clWhite
           TabOrder = 0
@@ -471,13 +471,13 @@ object fmMain: TfmMain
           Version = '1.1.0.6'
           OnGetNodeIcon = advMainTreeRootGetNodeIcon
           OnAfterSelectNode = advMainTreeRootAfterSelectNode
-          ExplicitHeight = 496
+          ExplicitHeight = 465
         end
         object advMainTreeNodes: TAdvTreeView
           Left = 200
           Top = 0
-          Width = 424
-          Height = 465
+          Width = 654
+          Height = 592
           Align = alClient
           Color = clWhite
           TabOrder = 1
@@ -902,382 +902,331 @@ object fmMain: TfmMain
             7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
           Version = '1.1.0.6'
           OnGetNodeIcon = advMainTreeNodesGetNodeIcon
-          ExplicitWidth = 521
-          ExplicitHeight = 496
+          ExplicitWidth = 424
+          ExplicitHeight = 465
         end
       end
       object TPage
         Left = 0
         Top = 0
         Caption = '1'
-        ExplicitWidth = 721
-        ExplicitHeight = 496
-        object AdvPanelGroup1: TAdvPanelGroup
+        ExplicitWidth = 624
+        ExplicitHeight = 465
+        object Panel1: TPanel
           Left = 0
           Top = 0
-          Width = 369
-          Height = 465
+          Width = 372
+          Height = 592
           Align = alLeft
           BevelOuter = bvLowered
           TabOrder = 0
-          UseDockManager = True
-          Version = '2.5.4.1'
-          Caption.Color = clHighlight
-          Caption.ColorTo = clNone
-          Caption.Font.Charset = DEFAULT_CHARSET
-          Caption.Font.Color = clWindowText
-          Caption.Font.Height = -11
-          Caption.Font.Name = 'Tahoma'
-          Caption.Font.Style = []
-          Caption.Indent = 0
-          DoubleBuffered = False
-          StatusBar.Font.Charset = DEFAULT_CHARSET
-          StatusBar.Font.Color = clWindowText
-          StatusBar.Font.Height = -11
-          StatusBar.Font.Name = 'Tahoma'
-          StatusBar.Font.Style = []
-          Text = ''
-          Columns = 1
-          DefaultPanel.AnchorHint = False
-          DefaultPanel.BevelInner = bvNone
-          DefaultPanel.BevelOuter = bvNone
-          DefaultPanel.BevelWidth = 1
-          DefaultPanel.BorderColor = clBlack
-          DefaultPanel.BorderShadow = False
-          DefaultPanel.BorderStyle = bsSingle
-          DefaultPanel.BorderWidth = 0
-          DefaultPanel.BottomIndent = 0
-          DefaultPanel.CanMove = False
-          DefaultPanel.CanSize = False
-          DefaultPanel.Caption.Color = clHighlight
-          DefaultPanel.Caption.ColorTo = clNone
-          DefaultPanel.Caption.Font.Charset = DEFAULT_CHARSET
-          DefaultPanel.Caption.Font.Color = clHighlightText
-          DefaultPanel.Caption.Font.Height = -11
-          DefaultPanel.Caption.Font.Name = 'Tahoma'
-          DefaultPanel.Caption.Font.Style = []
-          DefaultPanel.Caption.Indent = 0
-          DefaultPanel.Collaps = False
-          DefaultPanel.CollapsColor = clBtnFace
-          DefaultPanel.CollapsDelay = 0
-          DefaultPanel.CollapsSteps = 0
-          DefaultPanel.Color = clBtnFace
-          DefaultPanel.ColorTo = clNone
-          DefaultPanel.ColorMirror = clNone
-          DefaultPanel.ColorMirrorTo = clNone
-          DefaultPanel.Cursor = crDefault
-          DefaultPanel.Font.Charset = DEFAULT_CHARSET
-          DefaultPanel.Font.Color = clWindowText
-          DefaultPanel.Font.Height = -11
-          DefaultPanel.Font.Name = 'Tahoma'
-          DefaultPanel.Font.Style = []
-          DefaultPanel.FixedTop = False
-          DefaultPanel.FixedLeft = False
-          DefaultPanel.FixedHeight = False
-          DefaultPanel.FixedWidth = False
-          DefaultPanel.Height = 120
-          DefaultPanel.Hover = False
-          DefaultPanel.HoverColor = clNone
-          DefaultPanel.HoverFontColor = clNone
-          DefaultPanel.Indent = 0
-          DefaultPanel.ShadowColor = clBlack
-          DefaultPanel.ShadowOffset = 0
-          DefaultPanel.ShowHint = False
-          DefaultPanel.ShowMoveCursor = False
-          DefaultPanel.StatusBar.Font.Charset = DEFAULT_CHARSET
-          DefaultPanel.StatusBar.Font.Color = clWindowText
-          DefaultPanel.StatusBar.Font.Height = -11
-          DefaultPanel.StatusBar.Font.Name = 'Tahoma'
-          DefaultPanel.StatusBar.Font.Style = []
-          DefaultPanel.TextVAlign = tvaTop
-          DefaultPanel.TopIndent = 0
-          DefaultPanel.URLColor = clBlue
-          DefaultPanel.Width = 0
-          GroupStyle = gsVertical
-          MouseWheelDelta = 0
-          HorzPadding = 8
-          VertPadding = 8
-          FullHeight = 200
-          object AdvPanel1: TAdvPanel
-            Left = 8
-            Top = 224
-            Width = 353
-            Height = 120
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 1
-            UseDockManager = True
-            Version = '2.5.4.1'
-            Caption.Color = clHighlight
-            Caption.ColorTo = clNone
-            Caption.Font.Charset = DEFAULT_CHARSET
-            Caption.Font.Color = clWindowText
-            Caption.Font.Height = -11
-            Caption.Font.Name = 'Tahoma'
-            Caption.Font.Style = []
-            Caption.Height = 23
-            Caption.Indent = 4
-            Caption.Text = #1040#1076#1088#1077#1089
-            Caption.TopIndent = 4
-            Caption.Visible = True
-            DoubleBuffered = True
-            StatusBar.Font.Charset = DEFAULT_CHARSET
-            StatusBar.Font.Color = clWindowText
-            StatusBar.Font.Height = -11
-            StatusBar.Font.Name = 'Tahoma'
-            StatusBar.Font.Style = []
-            Text = ''
-            FullHeight = 177
-            object Label6: TLabel
-              Left = 14
-              Top = 35
-              Width = 133
-              Height = 13
-              Alignment = taRightJustify
-              Caption = #1043#1086#1088#1086#1076'/'#1085#1072#1089#1077#1083#1077#1085#1085#1099#1081' '#1087#1091#1085#1082'*:'
-            end
-            object Label7: TLabel
-              Left = 48
-              Top = 62
-              Width = 99
-              Height = 13
-              Alignment = taRightJustify
-              Caption = #1059#1083#1080#1094#1072'/'#1084#1080#1082#1088#1086#1088#1072#1081#1086#1085':'
-            end
-            object Label8: TLabel
-              Left = 71
-              Top = 89
-              Width = 76
-              Height = 13
-              Alignment = taRightJustify
-              Caption = #1044#1086#1084'/'#1082#1074#1072#1088#1090#1080#1088#1072':'
-            end
-            object ButtonedEdit5: TButtonedEdit
-              Left = 153
-              Top = 32
-              Width = 185
-              Height = 21
-              TabOrder = 0
-              Text = 'ButtonedEdit5'
-            end
-            object ButtonedEdit6: TButtonedEdit
-              Left = 153
-              Top = 59
-              Width = 185
-              Height = 21
-              TabOrder = 1
-              Text = 'ButtonedEdit5'
-            end
-            object ButtonedEdit7: TButtonedEdit
-              Left = 153
-              Top = 86
-              Width = 185
-              Height = 21
-              TabOrder = 2
-              Text = 'ButtonedEdit5'
-            end
-          end
-          object AdvPanel2: TAdvPanel
+          ExplicitLeft = 377
+          object Panel2: TPanel
             Left = 8
             Top = 8
-            Width = 353
-            Height = 208
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 2
-            UseDockManager = True
-            Version = '2.5.4.1'
-            Caption.Color = clHighlight
-            Caption.ColorTo = clNone
-            Caption.Font.Charset = DEFAULT_CHARSET
-            Caption.Font.Color = clWindowText
-            Caption.Font.Height = -11
-            Caption.Font.Name = 'Tahoma'
-            Caption.Font.Style = []
-            Caption.Height = 23
-            Caption.Indent = 4
-            Caption.Text = #1051#1080#1095#1085#1099#1077' '#1076#1072#1085#1085#1099#1077
-            Caption.TopIndent = 4
-            Caption.Visible = True
-            DoubleBuffered = True
-            StatusBar.Font.Charset = DEFAULT_CHARSET
-            StatusBar.Font.Color = clWindowText
-            StatusBar.Font.Height = -11
-            StatusBar.Font.Name = 'Tahoma'
-            StatusBar.Font.Style = []
-            Text = ''
-            FullHeight = 177
-            object Label1: TLabel
+            Width = 355
+            Height = 198
+            TabOrder = 0
+            object Label13: TLabel
               Left = 93
-              Top = 35
+              Top = 33
               Width = 54
               Height = 13
               Alignment = taRightJustify
               Caption = #1060#1072#1084#1080#1083#1080#1103'*:'
             end
-            object Label2: TLabel
-              Left = 118
-              Top = 62
+            object Label14: TLabel
+              Left = 116
+              Top = 60
               Width = 29
               Height = 13
               Alignment = taRightJustify
               Caption = #1048#1084#1103'*:'
             end
-            object Label3: TLabel
-              Left = 94
-              Top = 89
+            object Label15: TLabel
+              Left = 92
+              Top = 87
               Width = 53
               Height = 13
               Alignment = taRightJustify
               Caption = #1054#1090#1095#1077#1089#1090#1074#1086':'
             end
-            object Label4: TLabel
+            object Label16: TLabel
               Left = 63
-              Top = 117
+              Top = 115
               Width = 84
               Height = 13
               Alignment = taRightJustify
               Caption = #1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103':'
             end
-            object Label5: TLabel
+            object Label17: TLabel
               Left = 118
-              Top = 143
+              Top = 141
               Width = 29
               Height = 13
               Alignment = taRightJustify
               Caption = #1055#1086#1083'*:'
             end
-            object Label11: TLabel
+            object Label18: TLabel
               Left = 82
-              Top = 170
+              Top = 168
               Width = 65
               Height = 13
               Alignment = taRightJustify
               Caption = #1055#1088#1086#1092#1077#1089#1089#1080#1103'*:'
             end
-            object ButtonedEdit1: TButtonedEdit
+            object ButtonedEdit8: TButtonedEdit
               Left = 153
-              Top = 32
+              Top = 165
               Width = 185
               Height = 21
               TabOrder = 0
               Text = 'ButtonedEdit1'
             end
-            object ButtonedEdit3: TButtonedEdit
+            object ComboBox1: TComboBox
               Left = 153
-              Top = 86
-              Width = 185
+              Top = 138
+              Width = 184
               Height = 21
+              ItemIndex = 1
               TabOrder = 1
-              Text = 'ButtonedEdit1'
+              Text = #1052#1091#1078
+              Items.Strings = (
+                #1046#1077#1085
+                #1052#1091#1078)
             end
-            object dtpBirthday: TDateTimePicker
+            object DateTimePicker1: TDateTimePicker
               Left = 153
-              Top = 113
+              Top = 111
               Width = 185
               Height = 21
               Date = 43553.686131493060000000
               Time = 43553.686131493060000000
               TabOrder = 2
             end
-            object ButtonedEdit4: TButtonedEdit
+            object ButtonedEdit9: TButtonedEdit
               Left = 153
-              Top = 167
+              Top = 84
               Width = 185
               Height = 21
               TabOrder = 3
               Text = 'ButtonedEdit1'
             end
-            object cbxSex: TComboBox
+            object ButtonedEdit10: TButtonedEdit
               Left = 153
-              Top = 140
-              Width = 184
+              Top = 57
+              Width = 185
               Height = 21
-              ItemIndex = 1
               TabOrder = 4
-              Text = #1052#1091#1078
-              Items.Strings = (
-                #1046#1077#1085
-                #1052#1091#1078)
+              Text = 'ButtonedEdit1'
+            end
+            object ButtonedEdit11: TButtonedEdit
+              Left = 153
+              Top = 30
+              Width = 185
+              Height = 21
+              TabOrder = 5
+              Text = 'ButtonedEdit1'
+            end
+            object Panel3: TPanel
+              Left = 1
+              Top = 1
+              Width = 353
+              Height = 23
+              Align = alTop
+              Alignment = taLeftJustify
+              BevelOuter = bvNone
+              Caption = '    '#1051#1080#1095#1085#1099#1077' '#1076#1072#1085#1085#1099#1077
+              Color = clMenuHighlight
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentBackground = False
+              ParentFont = False
+              TabOrder = 6
+              ExplicitWidth = 358
             end
           end
-          object AdvPanel3: TAdvPanel
+          object Panel4: TPanel
             Left = 8
-            Top = 352
-            Width = 353
-            Height = 88
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 3
-            UseDockManager = True
-            Version = '2.5.4.1'
-            Caption.Color = clHighlight
-            Caption.ColorTo = clNone
-            Caption.Font.Charset = DEFAULT_CHARSET
-            Caption.Font.Color = clWindowText
-            Caption.Font.Height = -11
-            Caption.Font.Name = 'Tahoma'
-            Caption.Font.Style = []
-            Caption.Height = 23
-            Caption.Indent = 4
-            Caption.Text = #1050#1086#1085#1090#1072#1082#1090#1085#1099#1077' '#1076#1072#1085#1085#1099#1077
-            Caption.TopIndent = 4
-            Caption.Visible = True
-            DoubleBuffered = True
-            StatusBar.Font.Charset = DEFAULT_CHARSET
-            StatusBar.Font.Color = clWindowText
-            StatusBar.Font.Height = -11
-            StatusBar.Font.Name = 'Tahoma'
-            StatusBar.Font.Style = []
-            Text = ''
-            FullHeight = 177
-            object Label9: TLabel
+            Top = 214
+            Width = 355
+            Height = 117
+            TabOrder = 1
+            object Label19: TLabel
+              Left = 14
+              Top = 33
+              Width = 133
+              Height = 13
+              Alignment = taRightJustify
+              Caption = #1043#1086#1088#1086#1076'/'#1085#1072#1089#1077#1083#1077#1085#1085#1099#1081' '#1087#1091#1085#1082'*:'
+            end
+            object Label20: TLabel
+              Left = 48
+              Top = 60
+              Width = 99
+              Height = 13
+              Alignment = taRightJustify
+              Caption = #1059#1083#1080#1094#1072'/'#1084#1080#1082#1088#1086#1088#1072#1081#1086#1085':'
+            end
+            object Label21: TLabel
+              Left = 71
+              Top = 87
+              Width = 76
+              Height = 13
+              Alignment = taRightJustify
+              Caption = #1044#1086#1084'/'#1082#1074#1072#1088#1090#1080#1088#1072':'
+            end
+            object Panel5: TPanel
+              Left = 1
+              Top = 1
+              Width = 353
+              Height = 23
+              Align = alTop
+              Alignment = taLeftJustify
+              BevelOuter = bvNone
+              Caption = '    '#1040#1076#1088#1077#1089
+              Color = clMenuHighlight
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentBackground = False
+              ParentFont = False
+              TabOrder = 0
+              ExplicitLeft = -10
+              ExplicitTop = 49
+              ExplicitWidth = 358
+            end
+            object ButtonedEdit12: TButtonedEdit
+              Left = 153
+              Top = 30
+              Width = 185
+              Height = 21
+              TabOrder = 1
+              Text = 'ButtonedEdit5'
+            end
+            object ButtonedEdit13: TButtonedEdit
+              Left = 153
+              Top = 57
+              Width = 185
+              Height = 21
+              TabOrder = 2
+              Text = 'ButtonedEdit5'
+            end
+            object ButtonedEdit14: TButtonedEdit
+              Left = 153
+              Top = 84
+              Width = 185
+              Height = 21
+              TabOrder = 3
+              Text = 'ButtonedEdit5'
+            end
+          end
+          object Panel6: TPanel
+            Left = 8
+            Top = 339
+            Width = 355
+            Height = 90
+            TabOrder = 2
+            object Label22: TLabel
               Left = 47
-              Top = 35
+              Top = 33
               Width = 100
               Height = 13
               Alignment = taRightJustify
               Caption = #1050#1086#1085#1090#1072#1082#1090#1085#1099#1081' '#1085#1086#1084#1077#1088':'
             end
-            object Label10: TLabel
+            object Label23: TLabel
               Left = 22
-              Top = 62
+              Top = 60
               Width = 125
               Height = 13
               Alignment = taRightJustify
               Caption = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1099#1081' '#1085#1086#1084#1077#1088':'
             end
-            object MaskEdit1: TMaskEdit
-              Left = 153
-              Top = 32
-              Width = 185
-              Height = 21
-              EditMask = '!\+7(000\)000-00-09;0;_'
-              MaxLength = 16
+            object Panel7: TPanel
+              Left = 1
+              Top = 1
+              Width = 353
+              Height = 23
+              Align = alTop
+              Alignment = taLeftJustify
+              BevelOuter = bvNone
+              Caption = '    '#1050#1086#1085#1090#1072#1082#1090#1085#1099#1077' '#1076#1072#1085#1085#1099#1077
+              Color = clMenuHighlight
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentBackground = False
+              ParentFont = False
               TabOrder = 0
-              Text = ''
+              ExplicitWidth = 358
             end
-            object MaskEdit2: TMaskEdit
+            object ButtonedEdit15: TButtonedEdit
               Left = 153
-              Top = 59
+              Top = 30
               Width = 185
               Height = 21
-              EditMask = '!\+7(000\)000-00-09;0;_'
-              MaxLength = 16
               TabOrder = 1
-              Text = ''
+              Text = 'ButtonedEdit5'
+            end
+            object ButtonedEdit16: TButtonedEdit
+              Left = 153
+              Top = 57
+              Width = 185
+              Height = 21
+              TabOrder = 2
+              Text = 'ButtonedEdit5'
+            end
+          end
+          object Panel8: TPanel
+            Left = 8
+            Top = 437
+            Width = 355
+            Height = 118
+            TabOrder = 3
+            object Label24: TLabel
+              Left = 15
+              Top = 30
+              Width = 100
+              Height = 13
+              Alignment = taRightJustify
+              Caption = #1050#1086#1085#1090#1072#1082#1090#1085#1099#1081' '#1085#1086#1084#1077#1088':'
+            end
+            object Panel9: TPanel
+              Left = 1
+              Top = 1
+              Width = 353
+              Height = 23
+              Align = alTop
+              Alignment = taLeftJustify
+              BevelOuter = bvNone
+              Caption = '    '#1050#1086#1085#1090#1072#1082#1090#1085#1099#1077' '#1076#1072#1085#1085#1099#1077
+              Color = clMenuHighlight
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentBackground = False
+              ParentFont = False
+              TabOrder = 0
+              ExplicitWidth = 358
+            end
+            object Memo2: TMemo
+              Left = 14
+              Top = 49
+              Width = 324
+              Height = 59
+              MaxLength = 200
+              ScrollBars = ssVertical
+              TabOrder = 1
             end
           end
         end
@@ -1302,18 +1251,18 @@ object fmMain: TfmMain
     Left = 0
     Top = 0
     Width = 44
-    Height = 465
+    Height = 592
     Align = alLeft
     BevelOuter = bvLowered
     ParentBackground = False
     TabOrder = 1
-    ExplicitHeight = 496
+    ExplicitHeight = 465
     DesignSize = (
       44
-      465)
+      592)
     object sbReConnect: TAdvGlassButton
       Left = 4
-      Top = 427
+      Top = 554
       Width = 36
       Height = 36
       ParentCustomHint = False
@@ -1416,11 +1365,11 @@ object fmMain: TfmMain
       TabStop = False
       Version = '1.3.0.2'
       OnClick = sbReConnectClick
-      ExplicitTop = 458
+      ExplicitTop = 427
     end
     object btnTemplates: TAdvGlassButton
       Left = 4
-      Top = 385
+      Top = 512
       Width = 36
       Height = 36
       ParentCustomHint = False
@@ -1506,16 +1455,8 @@ object fmMain: TfmMain
       TabStop = False
       Version = '1.3.0.2'
       OnClick = btnTemplatesClick
-      ExplicitTop = 416
+      ExplicitTop = 385
     end
-  end
-  object ButtonedEdit2: TButtonedEdit
-    Left = 205
-    Top = 67
-    Width = 185
-    Height = 21
-    TabOrder = 2
-    Text = 'ButtonedEdit1'
   end
   object pmTreeGuide: TAdvPopupMenu
     AutoPopup = False
@@ -1523,8 +1464,8 @@ object fmMain: TfmMain
     ParentBiDiMode = False
     ShowNotes = False
     Version = '2.6.2.1'
-    Left = 708
-    Top = 8
+    Left = 820
+    Top = 24
     object pmNodeAddRoot: TMenuItem
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074' '#1082#1086#1088#1077#1085#1100'...'
       OnClick = pmNodeAddRootClick

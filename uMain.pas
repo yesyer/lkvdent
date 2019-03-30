@@ -6,9 +6,9 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls,
-  AdvGlassButton,  TreeList, FireDAC.Comp.Client,
+  AdvGlassButton, FireDAC.Comp.Client,
   AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView, AdvMenus,
-  Vcl.Menus, Vcl.Mask, AdvPanel;
+  Vcl.Menus, Vcl.Mask;
 
 type
   TfmMain = class(TForm)
@@ -24,32 +24,39 @@ type
     pmNodeModify: TMenuItem;
     pmNodeDelete: TMenuItem;
     btnTemplates: TAdvGlassButton;
-    AdvPanelGroup1: TAdvPanelGroup;
-    AdvPanel1: TAdvPanel;
-    AdvPanel2: TAdvPanel;
-    ButtonedEdit1: TButtonedEdit;
-    Label1: TLabel;
-    Label2: TLabel;
-    ButtonedEdit2: TButtonedEdit;
-    ButtonedEdit3: TButtonedEdit;
-    Label3: TLabel;
-    dtpBirthday: TDateTimePicker;
-    Label4: TLabel;
-    ButtonedEdit4: TButtonedEdit;
-    Label5: TLabel;
-    ButtonedEdit5: TButtonedEdit;
-    Label6: TLabel;
-    Label7: TLabel;
-    ButtonedEdit6: TButtonedEdit;
-    Label8: TLabel;
-    ButtonedEdit7: TButtonedEdit;
-    AdvPanel3: TAdvPanel;
-    Label9: TLabel;
-    Label10: TLabel;
-    MaskEdit1: TMaskEdit;
-    MaskEdit2: TMaskEdit;
-    cbxSex: TComboBox;
-    Label11: TLabel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    ButtonedEdit8: TButtonedEdit;
+    ComboBox1: TComboBox;
+    DateTimePicker1: TDateTimePicker;
+    ButtonedEdit9: TButtonedEdit;
+    ButtonedEdit10: TButtonedEdit;
+    ButtonedEdit11: TButtonedEdit;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Label19: TLabel;
+    ButtonedEdit12: TButtonedEdit;
+    Label20: TLabel;
+    ButtonedEdit13: TButtonedEdit;
+    Label21: TLabel;
+    ButtonedEdit14: TButtonedEdit;
+    Panel6: TPanel;
+    Label22: TLabel;
+    Label23: TLabel;
+    Panel7: TPanel;
+    ButtonedEdit15: TButtonedEdit;
+    ButtonedEdit16: TButtonedEdit;
+    Panel8: TPanel;
+    Label24: TLabel;
+    Panel9: TPanel;
+    Memo2: TMemo;
     procedure sbReConnectClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure advMainTreeNodesGetNodeIcon(Sender: TObject;
