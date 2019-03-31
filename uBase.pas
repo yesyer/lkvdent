@@ -21,6 +21,25 @@ type
     PictureContainer1: TPictureContainer;
     qTreeNodes: TFDQuery;
     FDQuery1: TFDQuery;
+    qTreeNodestg_id: TFDAutoIncField;
+    qTreeNodestg_parent_id: TIntegerField;
+    qTreeNodestg_path: TWideMemoField;
+    qTreeNodestg_content: TWideMemoField;
+    qTreeNodestg_visible: TBooleanField;
+    tClient: TFDTable;
+    tClientcl_id: TFDAutoIncField;
+    tClientcl_fname: TWideStringField;
+    tClientcl_name: TWideStringField;
+    tClientcl_lname: TWideStringField;
+    tClientcl_birthday: TDateField;
+    tClientcl_sex: TBooleanField;
+    tClientcl_proff: TWideStringField;
+    tClientcl_address1: TWideStringField;
+    tClientcl_address2: TWideStringField;
+    tClientcl_address3: TWideStringField;
+    tClientcl_fone1: TWideStringField;
+    tClientcl_fone2: TWideStringField;
+    tClientcl_notes: TWideStringField;
   private
     { Private declarations }
   public

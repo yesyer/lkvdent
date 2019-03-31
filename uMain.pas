@@ -8,13 +8,12 @@ uses
   Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls,
   AdvGlassButton, FireDAC.Comp.Client,
   AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView, AdvMenus,
-  Vcl.Menus, Vcl.Mask;
+  Vcl.Menus, Vcl.Mask, AdvUtil, Vcl.Grids, AdvObj, BaseGrid, AdvGrid, DBAdvGrid,
+  AdvEdit;
 
 type
   TfmMain = class(TForm)
-    plMainClient: TPanel;
     plMainLeft: TPanel;
-    nbPages: TNotebook;
     sbReConnect: TAdvGlassButton;
     advMainTreeRoot: TAdvTreeView;
     advMainTreeNodes: TAdvTreeView;
@@ -24,7 +23,7 @@ type
     pmNodeModify: TMenuItem;
     pmNodeDelete: TMenuItem;
     btnTemplates: TAdvGlassButton;
-    Panel1: TPanel;
+    pnClientModify: TPanel;
     Panel2: TPanel;
     Label13: TLabel;
     Label14: TLabel;
@@ -51,12 +50,18 @@ type
     Label22: TLabel;
     Label23: TLabel;
     Panel7: TPanel;
-    ButtonedEdit15: TButtonedEdit;
-    ButtonedEdit16: TButtonedEdit;
     Panel8: TPanel;
-    Label24: TLabel;
     Panel9: TPanel;
-    Memo2: TMemo;
+    txtNoteClient: TMemo;
+    DBAdvGrid1: TDBAdvGrid;
+    AdvGlassButton1: TAdvGlassButton;
+    StatusBar1: TStatusBar;
+    pageClientView: TPanel;
+    Panel1: TPanel;
+    Panel10: TPanel;
+    MaskEdit1: TMaskEdit;
+    MaskEdit2: TMaskEdit;
+    AdvGlassButton2: TAdvGlassButton;
     procedure sbReConnectClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure advMainTreeNodesGetNodeIcon(Sender: TObject;
@@ -75,6 +80,7 @@ type
     procedure pmNodeDeleteClick(Sender: TObject);
     procedure nbPagesPageChanged(Sender: TObject);
     procedure btnTemplatesClick(Sender: TObject);
+    procedure plMainLeftClick(Sender: TObject);
   private
     { Private declarations }
     ModifyNode: TAdvTreeViewVirtualNode;
@@ -239,6 +245,11 @@ end;
 procedure TfmMain.nbPagesPageChanged(Sender: TObject);
 begin
   //
+end;
+
+procedure TfmMain.plMainLeftClick(Sender: TObject);
+begin
+  DBAdvGrid1.AutoSizeColumns(false,4);
 end;
 
 procedure TfmMain.pmNodeAddChildClick(Sender: TObject);
