@@ -16,7 +16,7 @@ type
     fdSQLiteConnection: TFDConnection;
     fdGUIxWaitCursor: TFDGUIxWaitCursor;
     qTreeRoot: TFDQuery;
-    DataSource1: TDataSource;
+    ds_tClient: TDataSource;
     imgSmall: TImageList;
     PictureContainer1: TPictureContainer;
     qTreeNodes: TFDQuery;
@@ -40,6 +40,8 @@ type
     tClientcl_fone1: TWideStringField;
     tClientcl_fone2: TWideStringField;
     tClientcl_notes: TWideStringField;
+    qCardClientView: TFDQuery;
+    ds_qCardClientView: TDataSource;
   private
     { Private declarations }
   public

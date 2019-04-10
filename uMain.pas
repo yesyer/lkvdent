@@ -4,26 +4,26 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls,
-  AdvGlassButton, FireDAC.Comp.Client,
-  AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView, AdvMenus,
-  Vcl.Menus, Vcl.Mask, AdvUtil, Vcl.Grids, AdvObj, BaseGrid, AdvGrid, DBAdvGrid,
-  AdvEdit;
+  System.Classes, Vcl.Forms, Vcl.Menus, Vcl.ComCtrls, Vcl.StdCtrls,
+  Vcl.Mask, Vcl.Controls, Vcl.ExtCtrls, Vcl.Graphics, Vcl.Grids,  Vcl.Dialogs,
+  FireDAC.Comp.Client,
+  AdvObj, AdvUtil,  AdvMenus, BaseGrid, AdvGrid, DBAdvGrid, AdvGlassButton,
+  AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView, Vcl.Buttons,
+  AdvGlowButton, AdvMetroButton, AdvCardList, AeroButtons, AdvBadge;
+
 
 type
   TfmMain = class(TForm)
-    plMainLeft: TPanel;
+    pnMainLeft: TPanel;
     sbReConnect: TAdvGlassButton;
-    advMainTreeRoot: TAdvTreeView;
-    advMainTreeNodes: TAdvTreeView;
+    trvTemplateRoot: TAdvTreeView;
+    trvTemplateNodes: TAdvTreeView;
     pmTreeGuide: TAdvPopupMenu;
     pmNodeAddRoot: TMenuItem;
     pmNodeAddChild: TMenuItem;
     pmNodeModify: TMenuItem;
     pmNodeDelete: TMenuItem;
-    btnTemplates: TAdvGlassButton;
-    pnClientModify: TPanel;
+    pnClientModifyFields: TPanel;
     Panel2: TPanel;
     Label13: TLabel;
     Label14: TLabel;
@@ -31,62 +31,107 @@ type
     Label16: TLabel;
     Label17: TLabel;
     Label18: TLabel;
-    ButtonedEdit8: TButtonedEdit;
-    ComboBox1: TComboBox;
-    DateTimePicker1: TDateTimePicker;
-    ButtonedEdit9: TButtonedEdit;
-    ButtonedEdit10: TButtonedEdit;
-    ButtonedEdit11: TButtonedEdit;
+    txtClientProff: TButtonedEdit;
+    cmbClientSex: TComboBox;
+    txtClientBirthday: TDateTimePicker;
+    txtClientLName: TButtonedEdit;
+    txtClientName: TButtonedEdit;
+    txtClientFName: TButtonedEdit;
     Panel3: TPanel;
     Panel4: TPanel;
     Panel5: TPanel;
     Label19: TLabel;
-    ButtonedEdit12: TButtonedEdit;
+    txtClientAddress1: TButtonedEdit;
     Label20: TLabel;
-    ButtonedEdit13: TButtonedEdit;
+    txtClientAddress2: TButtonedEdit;
     Label21: TLabel;
-    ButtonedEdit14: TButtonedEdit;
+    txtClientAddress3: TButtonedEdit;
     Panel6: TPanel;
     Label22: TLabel;
     Label23: TLabel;
     Panel7: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
-    txtNoteClient: TMemo;
+    txtClientNote: TMemo;
     DBAdvGrid1: TDBAdvGrid;
     AdvGlassButton1: TAdvGlassButton;
     StatusBar1: TStatusBar;
     pageClientView: TPanel;
-    Panel1: TPanel;
+    pageTemplateTree: TPanel;
+    txtClientFone1: TMaskEdit;
+    txtClientFone2: TMaskEdit;
+    pnClientModify: TPanel;
+    pnClientModifyMenu: TPanel;
+    btnClientSave: TAdvGlassButton;
+    btnClientCancel: TAdvGlassButton;
     Panel10: TPanel;
-    MaskEdit1: TMaskEdit;
-    MaskEdit2: TMaskEdit;
+    btnCardView: TAdvGlassButton;
+    btnClientAppend: TAdvGlassButton;
+    btnClientModify: TAdvGlassButton;
+    Label1: TLabel;
+    Panel1: TPanel;
+    Label2: TLabel;
+    pageCardView: TPanel;
+    Panel11: TPanel;
+    Label3: TLabel;
+    DBAdvGrid2: TDBAdvGrid;
+    btnClientCardAppend: TAdvGlassButton;
+    pageCardModify: TPanel;
+    Panel12: TPanel;
+    Label4: TLabel;
     AdvGlassButton2: TAdvGlassButton;
+    trvCard—ontentRoot: TAdvTreeView;
+    tabCardTreeGuide: TTabControl;
+    trvCardContentNodes: TAdvTreeView;
+    Panel14: TPanel;
+    pnTooths: TPanel;
+    btnTemplates: TAdvGlassButton;
+    AdvGlassButton3: TAdvGlassButton;
+    btnToothTmp: TAdvGlassButton;
+    btnTooth15: TAdvGlassButton;
+    btnTooth13: TAdvGlassButton;
+    btnTooth12: TAdvGlassButton;
+    btnTooth11: TAdvGlassButton;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    TabSheet4: TTabSheet;
     procedure sbReConnectClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure advMainTreeNodesGetNodeIcon(Sender: TObject;
+    procedure trvTemplateNodesGetNodeIcon(Sender: TObject;
       ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
       var AIcon: TGraphic);
-    procedure advMainTreeRootGetNodeIcon(Sender: TObject;
+    procedure trvTemplateRootGetNodeIcon(Sender: TObject;
       ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
       var AIcon: TGraphic);
-    procedure advMainTreeRootAfterSelectNode(Sender: TObject;
+    procedure trvTemplateRootAfterSelectNode(Sender: TObject;
       ANode: TAdvTreeViewVirtualNode);
-    procedure advMainTreeNodesMouseUp(Sender: TObject; Button: TMouseButton;
+    procedure trvTemplateNodesMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure pmNodeAddChildClick(Sender: TObject);
     procedure pmNodeAddRootClick(Sender: TObject);
     procedure pmNodeModifyClick(Sender: TObject);
     procedure pmNodeDeleteClick(Sender: TObject);
-    procedure nbPagesPageChanged(Sender: TObject);
     procedure btnTemplatesClick(Sender: TObject);
-    procedure plMainLeftClick(Sender: TObject);
+    procedure pnMainLeftClick(Sender: TObject);
+    procedure btnClientAppendClick(Sender: TObject);
+    procedure btnClientCancelClick(Sender: TObject);
+    procedure btnClientSaveClick(Sender: TObject);
+    procedure btnClientModifyClick(Sender: TObject);
+    procedure btnClientCardAppendClick(Sender: TObject);
+    procedure tabCardTreeGuideChange(Sender: TObject);
+    procedure trvCardContentNodesDblClick(Sender: TObject);
+    procedure trvCard—ontentRootDblClick(Sender: TObject);
+    procedure AdvGlassButton3Click(Sender: TObject);
   private
     { Private declarations }
-    ModifyNode: TAdvTreeViewVirtualNode;
+    glModifyNode: TAdvTreeViewVirtualNode;
+    glModifyClient: Boolean; // true - append, false - modify
     procedure aaaSQliteDataBaseConnection;
     procedure aaaBuildAdvTree(IntRn: Integer; PNode: TAdvTreeViewNode;
       TTree: TAdvTreeView);
+    procedure aaaClientModifyFieldClear;
   public
     { Public declarations }
   end;
@@ -136,13 +181,188 @@ procedure TfmMain.aaaSQliteDataBaseConnection;
 begin
   with dmBase do
   begin
-    fdSQLiteConnection.Connected := true;
+    fdSQLiteConnection.Connected:= false;
+    fdSQLiteConnection.Connected:= true;
 
-    qTreeRoot.Active := true;
+    qTreeRoot.Active:= true;
+    qCardClientView.Active:= true;
+
+    tClient.Active:= true;
   end;
 end;
 
-procedure TfmMain.advMainTreeNodesGetNodeIcon(Sender: TObject;
+procedure TfmMain.AdvGlassButton3Click(Sender: TObject);
+
+procedure SetBtnTooth(Name, Top, Left: Integer);
+var
+  btnTooth: TAdvGlassButton;
+begin
+  btnTooth:= TAdvGlassButton.Create(pnTooths);
+  btnTooth.Parent:= pnTooths;
+  btnTooth.Top:= Top;
+  btnTooth.Left:= Left;
+  btnTooth.Height:= 38;
+  btnTooth.Width:= 24;
+  btnTooth.Name:= 'btnTooth' + IntToStr(Name);
+  btnTooth.Caption:= IntToStr(Name);
+
+  btnTooth.GroupIndex:= Name;
+  btnTooth.AllowAllUp:= true;
+
+  btnTooth.BackColor:= clSilver;
+  btnTooth.CornerRadius:= 2;
+  btnTooth.ForeColor:= clWhite;
+  btnTooth.GlowColor:= clWhite;
+  btnTooth.InnerBorderColor:= clNone;
+  btnTooth.OuterBorderColor:= clGray;
+  btnTooth.Layout:= blGlyphTop;
+  btnTooth.ShineColor:= clWhite;
+  btnTooth.Picture:= btnToothTmp.Picture;
+  btnTooth.PictureDown:= btnToothTmp.PictureDown;
+end;
+
+var
+  i, c, l: Integer;
+begin
+  l:= 8;
+  for i:= 18 downto 11 do
+    begin
+      SetBtnTooth(i,6,l);
+      l:= l +30;
+    end;
+  for i:= 21 to 28 do
+    begin
+      SetBtnTooth(i,6,l);
+      l:= l +30;
+    end;
+  l:= 8;
+  for i:= 48 downto 41 do
+    begin
+      SetBtnTooth(i,50,l);
+      l:= l +30;
+    end;
+  for i:= 31 to 38 do
+    begin
+      SetBtnTooth(i,50,l);
+      l:= l +30;
+    end;
+
+end;
+
+procedure TfmMain.aaaClientModifyFieldClear;
+begin
+  txtClientFName.Clear;
+  txtClientName.Clear;
+  txtClientLName.Clear;
+  txtClientBirthday.DateTime:= Now;
+  cmbClientSex.ItemIndex:= 1;
+  txtClientProff.Clear;
+
+  txtClientAddress1.Clear;
+  txtClientAddress2.Clear;
+  txtClientAddress3.Clear;
+
+  txtClientFone1.Clear;
+  txtClientFone2.Clear;
+
+  txtClientNote.Lines.Clear;
+end;
+
+procedure TfmMain.btnClientCancelClick(Sender: TObject);
+begin
+  pnClientModify.Visible:= false;
+end;
+
+procedure TfmMain.btnClientCardAppendClick(Sender: TObject);
+var
+  i, c: Integer;
+  RNode: TAdvTreeViewNode;
+begin
+  trvCard—ontentRoot.BeginUpdate;
+  trvCard—ontentRoot.ClearColumns;
+  trvCard—ontentRoot.ClearNodes;
+
+  trvCard—ontentRoot.Columns.Add;
+  trvCard—ontentRoot.Columns.Add;
+  trvCard—ontentRoot.Columns[1].Visible:= false;
+
+  dmBase.qTreeRoot.Last;
+  c:= dmBase.qTreeRoot.RecordCount;
+  dmBase.qTreeRoot.First;
+  tabCardTreeGuide.Tabs.Clear;
+
+  for i := 0 to c - 1 do
+  begin
+    RNode:= trvCard—ontentRoot.Nodes.Add;
+    RNode.Text[0]:=dmBase.qTreeRoot.FieldByName('tg_content').AsString;
+    tabCardTreeGuide.Tabs.Add(dmBase.qTreeRoot.FieldByName('tg_content').AsString);
+    RNode.Text[1]:=dmBase.qTreeRoot.FieldByName('tg_id').AsString;
+    RNode.Extended:= true;
+    dmBase.qTreeRoot.Next;
+  end;
+  trvCard—ontentRoot.SetFocus;
+  trvCard—ontentRoot.SelectedNodes[0];
+  trvCard—ontentRoot.EndUpdate;
+
+
+end;
+
+procedure TfmMain.btnClientModifyClick(Sender: TObject);
+begin
+  glModifyClient:= false;
+  aaaClientModifyFieldClear;
+  with dmBase do
+    begin
+      txtClientFName.Text:= tClientcl_fname.AsString;
+      txtClientName.Text:= tClientcl_name.AsString;
+      txtClientLName.Text:= tClientcl_lname.AsString;
+      txtClientBirthday.DateTime:= tClientcl_birthday.AsDateTime;
+      if tClientcl_sex.AsBoolean = true then
+        cmbClientSex.ItemIndex:= 1
+      else
+        cmbClientSex.ItemIndex:= 0;
+      txtClientProff.Text:= tClientcl_proff.AsString;
+      txtClientAddress1.Text:= tClientcl_address1.AsString;
+      txtClientAddress2.Text:= tClientcl_address2.AsString;
+      txtClientAddress3.Text:= tClientcl_address3.AsString;
+      txtClientFone1.Text:= tClientcl_fone1.AsString;
+      txtClientFone2.Text:= tClientcl_fone2.AsString;
+      txtClientNote.Lines.Text:= tClientcl_notes.AsString;
+    end;
+  pnClientModify.Visible:= true;
+end;
+
+procedure TfmMain.btnClientSaveClick(Sender: TObject);
+begin
+  with dmBase do
+    begin
+      if glModifyClient = true then
+        tClient.Insert
+      else
+        tClient.Edit;
+
+      tClientcl_fname.AsString:= txtClientFName.Text;
+      tClientcl_name.AsString:= txtClientName.Text;
+      tClientcl_lname.AsString:= txtClientLName.Text;
+      tClientcl_birthday.AsDateTime:= txtClientBirthday.DateTime;
+      if cmbClientSex.ItemIndex = 1 then
+        tClientcl_sex.AsBoolean:= true
+      else
+        tClientcl_sex.AsBoolean:= false;
+      tClientcl_proff.AsString:= txtClientProff.Text;
+      tClientcl_address1.AsString:= txtClientAddress1.Text;
+      tClientcl_address2.AsString:= txtClientAddress2.Text;
+      tClientcl_address3.AsString:= txtClientAddress3.Text;
+      tClientcl_fone1.AsString:= txtClientFone1.Text;
+      tClientcl_fone2.AsString:= txtClientFone2.Text;
+      tClientcl_notes.AsString:= txtClientNote.Lines.Text;
+      tClient.Post;
+
+      pnClientModify.Visible:= false;
+    end;
+end;
+
+procedure TfmMain.trvTemplateNodesGetNodeIcon(Sender: TObject;
   ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
   var AIcon: TGraphic);
 begin
@@ -150,17 +370,17 @@ begin
     AIcon:=dmBase.PictureContainer1.Items[3].Picture;
 end;
 
-procedure TfmMain.advMainTreeNodesMouseUp(Sender: TObject; Button: TMouseButton;
+procedure TfmMain.trvTemplateNodesMouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   if Button = mbRight then
     begin
-      ModifyNode:=nil;
-      ModifyNode:= advMainTreeNodes.XYToNode(x,y);
-      if Assigned(ModifyNode)=true then
+      glModifyNode:=nil;
+      glModifyNode:= trvTemplateNodes.XYToNode(x,y);
+      if Assigned(glModifyNode)=true then
         begin
-          fmMain.Caption:= ModifyNode.Node.Text[0];
-          advMainTreeNodes.SelectNode(ModifyNode.Node);
+          fmMain.Caption:= glModifyNode.Node.Text[0];
+          trvTemplateNodes.SelectNode(glModifyNode.Node);
           pmNodeAddRoot.Enabled:=false;
           pmNodeAddChild.Enabled:= true;
           pmNodeModify.Enabled:= true;
@@ -178,24 +398,25 @@ begin
     end;
 end;
 
-procedure TfmMain.advMainTreeRootAfterSelectNode(Sender: TObject;
+procedure TfmMain.trvTemplateRootAfterSelectNode(Sender: TObject;
   ANode: TAdvTreeViewVirtualNode);
 var
   i: integer;
 begin
-  advMainTreeRoot.Nodes[ANode.Index].Expanded:=true;
-  advMainTreeNodes.BeginUpdate;
-  advMainTreeNodes.ClearColumns;
-  advMainTreeNodes.ClearNodes;
-  advMainTreeNodes.Columns.Add.Text:= 'Õ‡ËÏÂÌÓ‚‡ÌËÂ';
-  advMainTreeNodes.Columns.Add.Text:= ' Ó‰ tg_id';
-  advMainTreeNodes.Columns.Add.Text:= 'ÕÓ‚˚È tg_parent_id';
+  trvTemplateRoot.Nodes[ANode.Index].Expanded:=true;
+  trvTemplateNodes.BeginUpdate;
+  trvTemplateNodes.ClearColumns;
+  trvTemplateNodes.ClearNodes;
+  trvTemplateNodes.Columns.Add.Text:= 'Õ‡ËÏÂÌÓ‚‡ÌËÂ';
+  trvTemplateNodes.Columns.Add.Text:= ' Ó‰ tg_id';
+  trvTemplateNodes.Columns.Add.Text:= 'ÕÓ‚˚È tg_parent_id';
   i:= StrToInt(ANode.Node.Text[1]);
-  aaaBuildAdvTree(i, nil,advMainTreeNodes);
-  advMainTreeNodes.EndUpdate;
+  aaaBuildAdvTree(i, nil,trvTemplateNodes);
+
+  trvTemplateNodes.EndUpdate;
 end;
 
-procedure TfmMain.advMainTreeRootGetNodeIcon(Sender: TObject;
+procedure TfmMain.trvTemplateRootGetNodeIcon(Sender: TObject;
   ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
   var AIcon: TGraphic);
 begin
@@ -203,33 +424,39 @@ begin
     AIcon:=dmBase.PictureContainer1.Items[2].Picture;
 end;
 
+procedure TfmMain.btnClientAppendClick(Sender: TObject);
+begin
+  glModifyClient:= true;
+  aaaClientModifyFieldClear;
+  pnClientModify.Visible:= true;
+end;
+
 procedure TfmMain.btnTemplatesClick(Sender: TObject);
 var
   i, c: Integer;
-  r, n: TTreeNode;
   advNode: TAdvTreeViewNode;
 begin
   dmBase.qTreeRoot.Last;
   c := dmBase.qTreeRoot.RecordCount;
   dmBase.qTreeRoot.First;
 
-  advMainTreeRoot.BeginUpdate;
-  advMainTreeRoot.ClearColumns;
-  advMainTreeRoot.ClearNodes;
+  trvTemplateRoot.BeginUpdate;
+  trvTemplateRoot.ClearColumns;
+  trvTemplateRoot.ClearNodes;
 
-  advMainTreeRoot.Columns.Add;
-  advMainTreeRoot.Columns.Add;
+  trvTemplateRoot.Columns.Add;
+  trvTemplateRoot.Columns.Add;
   dmBase.qTreeRoot.First;
   for i := 0 to c - 1 do
   begin
-    advNode:= advMainTreeRoot.Nodes.Add;
+    advNode:= trvTemplateRoot.Nodes.Add;
     advNode.Text[0]:=dmBase.qTreeRoot.FieldByName('tg_content').AsString;
     advNode.Text[1]:=dmBase.qTreeRoot.FieldByName('tg_id').AsString;
     dmBase.qTreeRoot.Next;
   end;
-  advMainTreeRoot.SetFocus;
-  advMainTreeRoot.SelectedNodes[0];
-  advMainTreeRoot.EndUpdate;
+  trvTemplateRoot.SetFocus;
+  trvTemplateRoot.SelectedNodes[0];
+  trvTemplateRoot.EndUpdate;
 end;
 
 procedure TfmMain.sbReConnectClick(Sender: TObject);
@@ -237,17 +464,70 @@ begin
   aaaSQliteDataBaseConnection;
 end;
 
+procedure TfmMain.tabCardTreeGuideChange(Sender: TObject);
+begin
+  trvCardContentNodes.BeginUpdate;
+  trvCardContentNodes.ClearColumns;
+  trvCardContentNodes.ClearNodes;
+  trvCardContentNodes.Columns.Add.Text:= 'Õ‡ËÏÂÌÓ‚‡ÌËÂ';
+  trvCardContentNodes.Columns.Add.Text:= ' Ó‰ tg_id';
+  case tabCardTreeGuide.TabIndex of
+    0:aaaBuildAdvTree(1, nil,trvCardContentNodes);
+    1:aaaBuildAdvTree(2, nil,trvCardContentNodes);
+  end;
+
+  trvCardContentNodes.EndUpdate;
+end;
+
+procedure TfmMain.trvCardContentNodesDblClick(Sender: TObject);
+var
+  TNode: TAdvTreeViewNode;
+  s, id: String;
+begin
+  TNode:=trvCardContentNodes.SelectedNode;
+  if TNode.GetChildCount = 0 then
+    begin
+      s:= TNode.Text[0];
+      id:= TNode.Text[1];
+      TNode:= TNode.GetParent;
+      while TNode <> nil do
+        begin
+          s:= TNode.Text[0] + '/' + s;
+          TNode:= TNode.GetParent;
+        end;
+    end;
+
+  if s <> '' then
+    begin
+      trvCard—ontentRoot.BeginUpdate;
+      TNode:= trvCard—ontentRoot.AddNode(trvCard—ontentRoot.Nodes[tabCardTreeGuide.TabIndex]);
+      TNode.Text[0]:= s;
+      TNode.Text[1]:= id;
+      trvCard—ontentRoot.ExpandAll;
+      trvCard—ontentRoot.EndUpdate;
+    end;
+end;
+
+procedure TfmMain.trvCard—ontentRootDblClick(Sender: TObject);
+var
+  TNode: TAdvTreeViewNode;
+begin
+  TNode:= trvCard—ontentRoot.SelectedNode;
+  if TNode.GetChildCount = 0 then
+    begin
+      trvCard—ontentRoot.BeginUpdate;
+      trvCard—ontentRoot.RemoveSelectedNodes;
+      trvCard—ontentRoot.EndUpdate;
+    end;
+end;
+
 procedure TfmMain.FormShow(Sender: TObject);
 begin
   aaaSQliteDataBaseConnection;
+  pnClientModify.Visible:= false;
 end;
 
-procedure TfmMain.nbPagesPageChanged(Sender: TObject);
-begin
-  //
-end;
-
-procedure TfmMain.plMainLeftClick(Sender: TObject);
+procedure TfmMain.pnMainLeftClick(Sender: TObject);
 begin
   DBAdvGrid1.AutoSizeColumns(false,4);
 end;
@@ -263,13 +543,13 @@ begin
   if ClickedOK = true then            { NewString contains new input string. }
     begin
       fmMain.Caption := NewString;
-      CNode:= advMainTreeNodes.AddNode(ModifyNode.Node);
+      CNode:= trvTemplateNodes.AddNode(glModifyNode.Node);
       CNode.Text[0]:= NewString;
       CNode.Text[1]:= '';
-      CNode.Text[2]:= ModifyNode.Node.Text[1];
+      CNode.Text[2]:= glModifyNode.Node.Text[1];
       CNode.CollapsedIconNames[0,false]:= 'FOLDER';
       CNode.ExpandedIconNames[0,false]:= 'FOLDER_OPEN';
-      ModifyNode.Node.Expanded:= true;
+      glModifyNode.Node.Expanded:= true;
     end;
 end;
 
@@ -283,10 +563,10 @@ begin
   ClickedOK := InputQuery('ƒÓ·‡‚ÎÂÌËÂ ‚ ÍÓÂÌ¸', '“ÂÍÒÚ ¯‡·ÎÓÌ‡', NewString);
   if ClickedOK = true then            { NewString contains new input string. }
     begin
-      CNode:= advMainTreeNodes.AddNode(nil);
+      CNode:= trvTemplateNodes.AddNode(nil);
       CNode.Text[0]:= NewString;
       CNode.Text[1]:= '';
-      CNode.Text[2]:= advMainTreeRoot.SelectedNode.Text[1];
+      CNode.Text[2]:= trvTemplateRoot.SelectedNode.Text[1];
       CNode.CollapsedIconNames[0,false]:= 'FOLDER';
       CNode.ExpandedIconNames[0,false]:= 'FOLDER_OPEN';
     end;
@@ -297,10 +577,10 @@ var
   i: Integer;
 begin
   i:= MessageDlg('¬˚ Û‚ÂÂÌˇ ˜ÚÓ ıÓÚË‰Â Û‰‡ÎËÚ¸ ‚ÂÚÍÛ Ë ‚ÒÂ ÒÛ˘ÂÒÚ‚Û˛˘ËÂ ÔÓ‰‚ÂÚ‚Ë "' +
-    ModifyNode.Node.Text[0] + '"?',
+    glModifyNode.Node.Text[0] + '"?',
     mtConfirmation, mbOKCancel,0);
   if i = mrOk then
-    advMainTreeNodes.RemoveNode(ModifyNode.Node);
+    trvTemplateNodes.RemoveNode(glModifyNode.Node);
 end;
 
 procedure TfmMain.pmNodeModifyClick(Sender: TObject);
@@ -309,12 +589,12 @@ var
   ClickedOK: Boolean;
   CNode: TAdvTreeViewNode;
 begin
-  NewString := ModifyNode.Node.Text[0];
+  NewString := glModifyNode.Node.Text[0];
   ClickedOK := InputQuery('»ÁÏÂÌËÚ¸ ¯‡·ÎÓÌ', '“ÂÍÒÚ ¯‡·ÎÓÌ‡', NewString);
   if ClickedOK = true then            { NewString contains new input string. }
     begin
-      ModifyNode.Node.Text[0]:= NewString;
-      ModifyNode.Node.Text[2]:= ModifyNode.Node.Text[1];
+      glModifyNode.Node.Text[0]:= NewString;
+      glModifyNode.Node.Text[2]:= glModifyNode.Node.Text[1];
     end;
 end;
 
