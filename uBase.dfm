@@ -7,6 +7,7 @@ object dmBase: TdmBase
       'Database=C:\git\lkvdent\DB.db'
       'StringFormat=Unicode'
       'DriverID=SQLite')
+    Connected = True
     Left = 40
     Top = 8
   end
@@ -24,6 +25,33 @@ object dmBase: TdmBase
       '       AND ([tg_visible] = 1);')
     Left = 136
     Top = 8
+    object qTreeRoottg_id: TFDAutoIncField
+      FieldName = 'tg_id'
+      Origin = 'tg_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object qTreeRoottg_parent_id: TIntegerField
+      FieldName = 'tg_parent_id'
+      Origin = 'tg_parent_id'
+    end
+    object qTreeRoottg_path: TWideMemoField
+      FieldName = 'tg_path'
+      Origin = 'tg_path'
+      Required = True
+      BlobType = ftWideMemo
+    end
+    object qTreeRoottg_content: TWideMemoField
+      FieldName = 'tg_content'
+      Origin = 'tg_content'
+      Required = True
+      BlobType = ftWideMemo
+    end
+    object qTreeRoottg_visible: TBooleanField
+      FieldName = 'tg_visible'
+      Origin = 'tg_visible'
+      Required = True
+    end
   end
   object ds_tClient: TDataSource
     DataSet = tClient
@@ -34,7 +62,7 @@ object dmBase: TdmBase
     Left = 40
     Top = 104
     Bitmap = {
-      494C010106000800480010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101060008005C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -477,57 +505,57 @@ object dmBase: TdmBase
     Left = 40
     Top = 152
   end
-  object qTreeNodes: TFDQuery
+  object qTreeNodes11: TFDQuery
     Connection = fdSQLiteConnection
     SQL.Strings = (
       'SELECT *'
       'FROM   [tb_TreeGuide]'
       'WHERE  ([tg_path] LIKE (SELECT [tg_path] || '#39'%'#39
       '       FROM   [tb_TreeGuide]'
-      '       WHERE  [tg_id] = 1))'
+      '       WHERE  [tg_id] = :p1))'
       '       AND ([tg_parent_id] NOT NULL)'
       'ORDER  BY [tg_path];')
-    Left = 136
-    Top = 56
-    object qTreeNodestg_id: TFDAutoIncField
+    Left = 152
+    Top = 280
+    ParamData = <
+      item
+        Name = 'P1'
+        ParamType = ptInput
+      end>
+    object qTreeNodes11tg_id: TFDAutoIncField
       FieldName = 'tg_id'
       Origin = 'tg_id'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
     end
-    object qTreeNodestg_parent_id: TIntegerField
+    object qTreeNodes11tg_parent_id: TIntegerField
       FieldName = 'tg_parent_id'
       Origin = 'tg_parent_id'
     end
-    object qTreeNodestg_path: TWideMemoField
+    object qTreeNodes11tg_path: TWideMemoField
       FieldName = 'tg_path'
       Origin = 'tg_path'
       Required = True
       BlobType = ftWideMemo
     end
-    object qTreeNodestg_content: TWideMemoField
+    object qTreeNodes11tg_content: TWideMemoField
       FieldName = 'tg_content'
       Origin = 'tg_content'
       Required = True
       BlobType = ftWideMemo
     end
-    object qTreeNodestg_visible: TBooleanField
+    object qTreeNodes11tg_visible: TBooleanField
       FieldName = 'tg_visible'
       Origin = 'tg_visible'
       Required = True
     end
-  end
-  object FDQuery1: TFDQuery
-    Connection = fdSQLiteConnection
-    Left = 424
-    Top = 184
   end
   object tClient: TFDTable
     IndexFieldNames = 'cl_id'
     Connection = fdSQLiteConnection
     UpdateOptions.UpdateTableName = 'tb_Client'
     TableName = 'tb_Client'
-    Left = 296
+    Left = 312
     Top = 8
     object tClientcl_id: TFDAutoIncField
       FieldName = 'cl_id'
@@ -617,13 +645,227 @@ object dmBase: TdmBase
       'FROM   [tb_Cards] [cd]'
       '       JOIN [tb_Client] [cl] ON [cl].[cl_id] = [cd].[cd_cl_id]'
       '       JOIN [tb_Employee] [em] ON [em].[em_id] = [cd].[cd_em_id]'
-      'WHERE  [cl].[cl_id] = 1;')
+      'WHERE  [cl].[cl_id] = :p1;')
     Left = 136
     Top = 104
+    ParamData = <
+      item
+        Name = 'P1'
+        ParamType = ptInput
+      end>
+    object qCardClientViewcd_id: TFDAutoIncField
+      FieldName = 'cd_id'
+      Origin = 'cd_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object qCardClientViewcd_data: TDateTimeField
+      FieldName = 'cd_data'
+      Origin = 'cd_data'
+    end
+    object qCardClientViewcd_cl_id: TIntegerField
+      FieldName = 'cd_cl_id'
+      Origin = 'cd_cl_id'
+    end
+    object qCardClientViewcl_fname: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cl_fname'
+      Origin = 'cl_fname'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object qCardClientViewcl_name: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cl_name'
+      Origin = 'cl_name'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object qCardClientViewcl_lname: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cl_lname'
+      Origin = 'cl_lname'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object qCardClientViewcd_em_id: TIntegerField
+      FieldName = 'cd_em_id'
+      Origin = 'cd_em_id'
+    end
+    object qCardClientViewem_name: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'em_name'
+      Origin = 'em_name'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
   end
   object ds_qCardClientView: TDataSource
     DataSet = qCardClientView
     Left = 232
     Top = 104
+  end
+  object tCardNodes: TFDTable
+    IndexFieldNames = 'cn_id'
+    Connection = fdSQLiteConnection
+    UpdateOptions.UpdateTableName = 'tb_CardNodes'
+    TableName = 'tb_CardNodes'
+    Left = 312
+    Top = 104
+    object tCardNodescn_id: TFDAutoIncField
+      FieldName = 'cn_id'
+      Origin = 'cn_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object tCardNodescn_cd_id: TIntegerField
+      FieldName = 'cn_cd_id'
+      Origin = 'cn_cd_id'
+    end
+    object tCardNodescn_tg_id: TIntegerField
+      FieldName = 'cn_tg_id'
+      Origin = 'cn_tg_id'
+    end
+    object tCardNodescn_tooth: TWideMemoField
+      FieldName = 'cn_tooth'
+      Origin = 'cn_tooth'
+      BlobType = ftWideMemo
+    end
+  end
+  object tCards: TFDTable
+    IndexFieldNames = 'cd_id'
+    Connection = fdSQLiteConnection
+    UpdateOptions.UpdateTableName = 'tb_Cards'
+    TableName = 'tb_Cards'
+    Left = 312
+    Top = 56
+    object tCardscd_id: TFDAutoIncField
+      FieldName = 'cd_id'
+      Origin = 'cd_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object tCardscd_data: TDateTimeField
+      FieldName = 'cd_data'
+      Origin = 'cd_data'
+    end
+    object tCardscd_cl_id: TIntegerField
+      FieldName = 'cd_cl_id'
+      Origin = 'cd_cl_id'
+    end
+    object tCardscd_notes: TWideStringField
+      FieldName = 'cd_notes'
+      Origin = 'cd_notes'
+      Size = 400
+    end
+    object tCardscd_em_id: TIntegerField
+      FieldName = 'cd_em_id'
+      Origin = 'cd_em_id'
+    end
+  end
+  object tEmployee: TFDTable
+    IndexFieldNames = 'em_id'
+    Connection = fdSQLiteConnection
+    UpdateOptions.UpdateTableName = 'tb_Employee'
+    TableName = 'tb_Employee'
+    Left = 312
+    Top = 152
+    object tEmployeeem_id: TFDAutoIncField
+      FieldName = 'em_id'
+      Origin = 'em_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object tEmployeeem_name: TWideStringField
+      FieldName = 'em_name'
+      Origin = 'em_name'
+      Size = 50
+    end
+  end
+  object qCardNodesView: TFDQuery
+    Connection = fdSQLiteConnection
+    SQL.Strings = (
+      'SELECT '
+      '       [cn].[cn_id], '
+      '       [cn].[cn_cd_id], '
+      '       [cn].[cn_tg_id], '
+      '       [cn].[cn_tooth], '
+      '       [tg].[tg_path]'
+      'FROM   [tb_CardNodes] [cn]'
+      
+        '       JOIN [tb_TreeGuide] [tg] ON [cn].[cn_tg_id] = [tg].[tg_id' +
+        ']'
+      'WHERE  [cn_cd_id] = :p1;')
+    Left = 136
+    Top = 152
+    ParamData = <
+      item
+        Name = 'P1'
+        ParamType = ptInput
+      end>
+    object qCardNodesViewcn_id: TFDAutoIncField
+      FieldName = 'cn_id'
+      Origin = 'cn_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object qCardNodesViewcn_cd_id: TIntegerField
+      FieldName = 'cn_cd_id'
+      Origin = 'cn_cd_id'
+    end
+    object qCardNodesViewcn_tg_id: TIntegerField
+      FieldName = 'cn_tg_id'
+      Origin = 'cn_tg_id'
+    end
+    object qCardNodesViewcn_tooth: TWideMemoField
+      FieldName = 'cn_tooth'
+      Origin = 'cn_tooth'
+      BlobType = ftWideMemo
+    end
+    object qCardNodesViewtg_path: TWideMemoField
+      AutoGenerateValue = arDefault
+      FieldName = 'tg_path'
+      Origin = 'tg_path'
+      ProviderFlags = []
+      ReadOnly = True
+      BlobType = ftWideMemo
+    end
+  end
+  object tTreeGuide: TFDTable
+    IndexFieldNames = 'tg_id'
+    Connection = fdSQLiteConnection
+    UpdateOptions.UpdateTableName = 'tb_TreeGuide'
+    TableName = 'tb_TreeGuide'
+    Left = 312
+    Top = 200
+    object tTreeGuidetg_id: TFDAutoIncField
+      FieldName = 'tg_id'
+      Origin = 'tg_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object tTreeGuidetg_parent_id: TIntegerField
+      FieldName = 'tg_parent_id'
+      Origin = 'tg_parent_id'
+    end
+    object tTreeGuidetg_path: TWideMemoField
+      FieldName = 'tg_path'
+      Origin = 'tg_path'
+      Required = True
+      BlobType = ftWideMemo
+    end
+    object tTreeGuidetg_content: TWideMemoField
+      FieldName = 'tg_content'
+      Origin = 'tg_content'
+      Required = True
+      BlobType = ftWideMemo
+    end
+    object tTreeGuidetg_visible: TBooleanField
+      FieldName = 'tg_visible'
+      Origin = 'tg_visible'
+      Required = True
+    end
   end
 end
