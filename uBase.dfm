@@ -7,7 +7,6 @@ object dmBase: TdmBase
       'Database=C:\git\lkvdent\DB.db'
       'StringFormat=Unicode'
       'DriverID=SQLite')
-    Connected = True
     Left = 40
     Top = 8
   end
@@ -62,7 +61,7 @@ object dmBase: TdmBase
     Left = 40
     Top = 104
     Bitmap = {
-      494C0101060008005C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000800640010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -515,8 +514,8 @@ object dmBase: TdmBase
       '       WHERE  [tg_id] = :p1))'
       '       AND ([tg_parent_id] NOT NULL)'
       'ORDER  BY [tg_path];')
-    Left = 152
-    Top = 280
+    Left = 144
+    Top = 240
     ParamData = <
       item
         Name = 'P1'
@@ -657,6 +656,7 @@ object dmBase: TdmBase
       FieldName = 'cd_id'
       Origin = 'cd_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object qCardClientViewcd_data: TDateTimeField
       FieldName = 'cd_data'
@@ -714,7 +714,7 @@ object dmBase: TdmBase
     UpdateOptions.UpdateTableName = 'tb_CardNodes'
     TableName = 'tb_CardNodes'
     Left = 312
-    Top = 104
+    Top = 152
     object tCardNodescn_id: TFDAutoIncField
       FieldName = 'cn_id'
       Origin = 'cn_id'
@@ -772,7 +772,7 @@ object dmBase: TdmBase
     UpdateOptions.UpdateTableName = 'tb_Employee'
     TableName = 'tb_Employee'
     Left = 312
-    Top = 152
+    Top = 104
     object tEmployeeem_id: TFDAutoIncField
       FieldName = 'em_id'
       Origin = 'em_id'
@@ -845,6 +845,7 @@ object dmBase: TdmBase
       FieldName = 'tg_id'
       Origin = 'tg_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object tTreeGuidetg_parent_id: TIntegerField
       FieldName = 'tg_parent_id'

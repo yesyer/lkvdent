@@ -94,6 +94,7 @@ type
     txtCardEmployee: TComboBox;
     txtCardEmployeeID: TComboBox;
     btnClientCardModify: TAdvGlassButton;
+    memCardTreeGuideID: TMemo;
     procedure sbReConnectClick(Sender: TObject);
     procedure trvTemplateNodesGetNodeIcon(Sender: TObject;
       ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
@@ -133,8 +134,8 @@ type
     procedure aaaBuildAdvTree(IntRn: Integer; PNode: TAdvTreeViewNode;
       TTree: TAdvTreeView);
     procedure aaaClientModifyFieldClear;
-    procedure aaaSetToothButtons;
-
+    procedure aaaToothButtonsSet;
+    procedure aaaToothButtonUncheck;
     { вызываем когда добавляем или редактируем сотрудника, на данный момент
       меняем комбобокс выбора острудника при добавлении карты }
     procedure aaaSetEmployee;
@@ -223,7 +224,7 @@ begin
 end;
 
 {рисуем кнопки "зубы"}
-procedure TfmMain.aaaSetToothButtons;
+procedure TfmMain.aaaToothButtonsSet;
   procedure SetToothButton(Name, Top, Left: Integer);
   var
     btnTooth: TAdvGlassButton;
@@ -238,6 +239,7 @@ procedure TfmMain.aaaSetToothButtons;
     btnTooth.Caption:= IntToStr(Name);
 
     btnTooth.GroupIndex:= Name;
+    // btnTooth.Tag:=0; // это мы не указываем явно при создании т.к. 0 значение по умолчанию
     btnTooth.AllowAllUp:= true;
 
     btnTooth.BackColor:= clSilver;
@@ -279,6 +281,37 @@ begin
     end;
 end;
 
+{ нормализуем кнопки зубов в нормальный вид при отмене выбора в окне
+  добавления/изменения карточки пациента, учитываем то что 1 зуб может быть
+  выбран несколько раз }
+procedure TfmMain.aaaToothButtonUncheck;
+var
+  i: Integer;
+  sTooth, sTooths: String;
+begin
+  if trvCardContentRoot.SelectedNode.Text[2] <> '' then
+    begin
+      sTooths:= trvCardContentRoot.SelectedNode.Text[2];
+      while Length(sTooths) <> 0 do
+        begin
+          sTooth:= Copy(sTooths, 1, AnsiPos(':',sTooths)-1);
+          for i:= 0 to pnTooths.ComponentCount-1 do
+            if pnTooths.Components[i] is TAdvGlassButton then
+              if (pnTooths.Components[i] as TAdvGlassButton).GroupIndex = StrToInt(sTooth) then
+                begin
+                  (pnTooths.Components[i] as TAdvGlassButton).Tag:= (pnTooths.Components[i] as TAdvGlassButton).Tag - 1;
+                  if (pnTooths.Components[i] as TAdvGlassButton).Tag = 0 then
+                    begin
+                      (pnTooths.Components[i] as TAdvGlassButton).Picture:= btnToothTmp.Picture;
+                      (pnTooths.Components[i] as TAdvGlassButton).Down:= false;
+                    end;
+                end;
+          Delete(sTooths,1,AnsiPos(':',sTooths));
+          //a:= AnsiPos(':',trvCardContentRoot.SelectedNode.Text[2]);
+        end;
+    end;
+end;
+
 procedure TfmMain.aaaSetEmployee;
 var
   i, c: Integer;
@@ -311,10 +344,11 @@ begin
   trvCardContentRoot.ClearColumns;
   trvCardContentRoot.ClearNodes;
   tabCardTreeGuide.Tabs.Clear;
+  memCardTreeGuideID.Lines.Clear;
 
   trvCardContentRoot.Columns.Add; // наименование
-  trvCardContentRoot.Columns.Add; // tg_id
-  trvCardContentRoot.Columns.Add; // tg_path
+  trvCardContentRoot.Columns.Add; // tg_id - обязательно к заполнению
+  trvCardContentRoot.Columns.Add; // cn_tooth
   trvCardContentRoot.Columns[1].Visible:= false;
   trvCardContentRoot.Columns[2].Visible:= false;
   with dmBase do
@@ -332,6 +366,7 @@ begin
           RNode.Extended:= true;
 
           tabCardTreeGuide.Tabs.Add(qTreeRoottg_content.AsString);
+          memCardTreeGuideID.Lines.Add(qTreeRoottg_id.AsString);
 
           qTreeRoot.Next;
         end;
@@ -348,6 +383,7 @@ procedure TfmMain.btnClientCardAppendClick(Sender: TObject);
 var
   i, c: Integer;
 begin
+  glModifyCard:= true;
   // очищаем рут
   for i:=0 to trvCardContentRoot.Nodes.Count-1 do
       trvCardContentRoot.Nodes[i].Nodes.Clear;
@@ -361,6 +397,7 @@ begin
       begin
         (pnTooths.Components[i] as TAdvGlassButton).Picture:= btnToothTmp.Picture;
         (pnTooths.Components[i] as TAdvGlassButton).Down:= false;
+        (pnTooths.Components[i] as TAdvGlassButton).Tag:= 0;
       end;
 
   tabCardTreeGuideChange(Sender);
@@ -376,9 +413,19 @@ var
   intPos: Integer;
   RNode, CNode: TAdvTreeViewNode;
 begin
+  glModifyCard:= false;
   // очищаем рут
   for i:=0 to trvCardContentRoot.Nodes.Count-1 do
       trvCardContentRoot.Nodes[i].Nodes.Clear;
+
+  // нормализуем кнопки
+  for i:= 0 to pnTooths.ComponentCount-1 do
+    if pnTooths.Components[i] is TAdvGlassButton then
+      begin
+        (pnTooths.Components[i] as TAdvGlassButton).Picture:= btnToothTmp.Picture;
+        (pnTooths.Components[i] as TAdvGlassButton).Down:= false;
+        (pnTooths.Components[i] as TAdvGlassButton).Tag:= 0;
+      end;
 
   with dmBase do
     begin
@@ -395,16 +442,16 @@ begin
           for j:= 0 to c do
             begin
               sNodePath:= qCardNodesViewtg_path.AsString;  // tg_path ветки для сравнения
-              // ищем вхождение tg_path рута в tg_path sNodePath, если 1 то искомое найдено
+              { ищем вхождение tg_path рута в tg_path sNodePath, если нашли с 1
+                позиции, то искомое найдено }
               if AnsiPos(sRootPath, sNodePath) = 1 then
                 begin
                   RNode:= trvCardContentRoot.Nodes[i];
                   CNode:= trvCardContentRoot.AddNode(RNode);
-                  CNode.Text[0]:= qCardNodesViewtg_path.AsString;
 
                   Delete(sNodePath,1,Length(sRootPath));  // удаляем path рута
                   sContent:= '';
-                  while AnsiPos('/',sNodePath) <> 0 do
+                  while AnsiPos('/',sNodePath) <> 0 do  // 7/12/13/25
                     begin
                       intPos:= AnsiPos('/',sNodePath);
                       sId:= Copy(sNodePath,1,intPos-1);  // 7/
@@ -416,9 +463,11 @@ begin
                         sContent:= sContent + '/';
                       sContent:= sContent + tTreeGuidetg_content.AsString;
 
-                      Delete(sNodePath,1,intPos);
+                      Delete(sNodePath,1,intPos);  // 12/13/25
                     end;
                   CNode.Text[0]:= sContent;
+                  CNode.Text[1]:= qCardNodesViewcn_tg_id.AsString;
+                  //!!!!CNode.Text[2]:=
                 end;
               qCardNodesView.Next;
             end;
@@ -428,34 +477,57 @@ begin
       for i:= 0 to txtCardEmployeeID.Items.Count-1 do
         if StrToInt(txtCardEmployeeID.Items[i]) = qCardClientViewcd_em_id.AsInteger then
           txtCardEmployee.ItemIndex:=i;
+
+      //
     end;
 end;
 
 procedure TfmMain.btnClientCardSaveClick(Sender: TObject);
 var
-  i, j:Integer;
+  i, j, k:Integer;
+  intRecNo, intCount: Integer;
 begin
   with dmBase do
     begin
-      tCards.Insert;
+      if glModifyCard = true then
+        tCards.Insert
+      else
+        tCards.Edit;
+
       tCardscd_data.AsDateTime:= txtCardDate.DateTime;
       tCardscd_cl_id.AsInteger:= tClientcl_id.AsInteger;
       txtCardEmployeeID.ItemIndex:= txtCardEmployee.ItemIndex;
       tCardscd_em_id.AsInteger:=StrToInt(txtCardEmployeeID.Text);
       tCards.Post;
-      tCards.Last;
+      if glModifyCard = true then
+        tCards.Last;
 
-      //Memo1.Lines.Clear;
       for i:= 0 to trvCardContentRoot.Nodes.Count-1 do
         for j:= 0 to trvCardContentRoot.Nodes[i].Nodes.Count-1 do
           begin
-            tCardNodes.Insert;
-            tCardNodescn_cd_id.AsInteger:= tCardscd_id.AsInteger;
-            tCardNodescn_tg_id.AsInteger:= StrToInt(trvCardContentRoot.Nodes[i].Nodes[j].Text[1]);
+            if glModifyCard = true then
+              begin
+                qCardNodesView.Active:= false;
+                qCardNodesView.Params[0].AsInteger:= 1;
+                qCardClientView.Active:= true;
+              end
+            else
+              begin
+                qCardNodesView.Last;
+                intCount:= qCardNodesView.RecordCount;
+                qCardNodesView.First;
+                for k := 0 to intCount - 1 do
+                  begin
+                    qCardNodesView.Delete;
+                    qCardNodesView.Next;
+                  end;
+              end;
+            qCardNodesView.Insert;
+            qCardNodesViewcn_cd_id.AsInteger:= tCardscd_id.AsInteger;
+            qCardNodesViewcn_tg_id.AsInteger:= StrToInt(trvCardContentRoot.Nodes[i].Nodes[j].Text[1]);
             if trvCardContentRoot.Nodes[i].Nodes[j].Text[2] <> '' then
-              tCardNodescn_tooth.AsString:= trvCardContentRoot.Nodes[i].Nodes[j].Text[2];
-            tCardNodes.Post;
-            //Memo1.Lines.Add(trvCardContentRoot.Nodes[i].Nodes[j].Text[1]);
+              qCardNodesViewcn_tooth.AsString:= trvCardContentRoot.Nodes[i].Nodes[j].Text[2];
+            qCardNodesView.Post;
           end;
     end;
 end;
@@ -642,6 +714,12 @@ begin
   trvCardContentNodes.Columns.Add.Text:= 'Наименование';
   trvCardContentNodes.Columns.Add.Text:= 'Код tg_id';
 
+  { тут мы строим ветки в зависимости от выбранной вкладки, сравниваем
+    наименования }
+  { ВНИМАНИЕ: если делать текст поле жирным, то тут необходимо удалить теги
+    перед сравниванием }
+  { ВНИМАНИЕ: в поле trvCardContentRoot.Nodes[i].Text[1] обязательно должен
+    лежать id рута}
   for i:= 0 to trvCardContentRoot.Nodes.Count-1 do
     if tabCardTreeGuide.Tabs[tabCardTreeGuide.TabIndex] = trvCardContentRoot.Nodes[i].Text[0] then
       aaaBuildAdvTree(StrToInt(trvCardContentRoot.Nodes[i].Text[1]), nil,trvCardContentNodes);
@@ -652,40 +730,54 @@ end;
 procedure TfmMain.trvCardContentNodesDblClick(Sender: TObject);
 var
   TNode: TAdvTreeViewNode;
-  s, t, id: String;
+  sContent, sTooths, sId: String;
   i: Integer;
 begin
-  t:= '';
+  sTooths:= '';
+  { перебираем все кнопки, если нашли "вдавленную" помечаем её картинкой из
+    кнопки шаблона и "выдавливаем") т.е. показываем пользователю что она была
+    ранее выбрана, сохраняя при этом коды зубов разделенных :, вносим данные в
+    поле Tag +1 (изначально Tag = 0), это нужно для того что бы отследить сколь раз выбиралась это
+    кнопка }
   for i:= 0 to pnTooths.ComponentCount-1 do
     if pnTooths.Components[i] is TAdvGlassButton then
       if (pnTooths.Components[i] as TAdvGlassButton).Down = true then
         begin
-          t:= t + IntToStr((pnTooths.Components[i] as TAdvGlassButton).GroupIndex) + ':';
+          sTooths:= sTooths + IntToStr((pnTooths.Components[i] as TAdvGlassButton).GroupIndex) + ':';
           (pnTooths.Components[i] as TAdvGlassButton).Picture:= btnToothTmp.PictureDisabled;
           (pnTooths.Components[i] as TAdvGlassButton).Down:= false;
+          (pnTooths.Components[i] as TAdvGlassButton).Tag:= (pnTooths.Components[i] as TAdvGlassButton).Tag + 1;
         end;
 
+  { если это листок, а не ветка, собираем наименование от корня к ноду добавляя
+    символ /}
   TNode:=trvCardContentNodes.SelectedNode;
   if TNode.GetChildCount = 0 then
     begin
-      s:= TNode.Text[0];
-      id:= TNode.Text[1];
+      sContent:= TNode.Text[0];
+      sId:= TNode.Text[1];  // сохраняем tg_id записи
       TNode:= TNode.GetParent;
       while TNode <> nil do
         begin
-          s:= TNode.Text[0] + '/' + s;
+          sContent:= TNode.Text[0] + '/' + sContent;
           TNode:= TNode.GetParent;
         end;
     end;
 
-  if s <> '' then
+  { тут стоит проверка на '' т.к. пользователь нажать может на "ветку" а не на
+    "листок" }
+  if sContent <> '' then
     begin
       trvCardContentRoot.BeginUpdate;
-      TNode:= trvCardContentRoot.AddNode(trvCardContentRoot.Nodes[tabCardTreeGuide.TabIndex]);
-      TNode.Text[2]:= t;
-      t:= '<b>' + t + '</b> ';
-      TNode.Text[0]:= t + s;
-      TNode.Text[1]:= id;
+      for i:= 0 to trvCardContentRoot.Nodes.Count-1 do
+        if trvCardContentRoot.Nodes[i].Text[1] = memCardTreeGuideID.Lines[tabCardTreeGuide.TabIndex] then
+          TNode:= trvCardContentRoot.AddNode(trvCardContentRoot.Nodes[i]);
+
+      TNode.Text[2]:= sTooths;
+      { ВНИМАНИЕ: при обработке нелобходимо сначала удалить теги}
+      sTooths:= '<b>' + sTooths + '</b> ';
+      TNode.Text[0]:= sTooths + sContent;
+      TNode.Text[1]:= sId;
       trvCardContentRoot.ExpandAll;
       trvCardContentRoot.EndUpdate;
     end;
@@ -693,6 +785,8 @@ end;
 
 procedure TfmMain.trvCardContentRootDblClick(Sender: TObject);
 var
+  i, a, b: Integer;
+  sTooth, sTooths: String;
   TNode: TAdvTreeViewNode;
 begin
   TNode:= trvCardContentRoot.SelectedNode;
@@ -700,6 +794,10 @@ begin
     if TNode.GetChildCount = 0 then
       begin
         trvCardContentRoot.BeginUpdate;
+
+        if trvCardContentRoot.SelectedNode.Text[2] <> '' then
+          aaaToothButtonUncheck;
+
         trvCardContentRoot.RemoveSelectedNodes;
         trvCardContentRoot.EndUpdate;
       end;
@@ -709,7 +807,7 @@ procedure TfmMain.FormCreate(Sender: TObject);
 begin
   aaaSQliteDataBaseConnection;
   aaaCardContentTreeCreate;
-  aaaSetToothButtons;
+  aaaToothButtonsSet;
   aaaSetEmployee;
 
   pnClientModify.Visible:= false;

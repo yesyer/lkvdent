@@ -2754,8 +2754,8 @@ object fmMain: TfmMain
             TabOrder = 4
           end
           object btnToothTmp: TAdvGlassButton
-            Left = 364
-            Top = 6
+            Left = 106
+            Top = 2
             Width = 24
             Height = 38
             ParentCustomHint = False
@@ -2858,7 +2858,6 @@ object fmMain: TfmMain
             TabOrder = 5
             TabStop = False
             Version = '1.3.0.2'
-            Visible = False
           end
         end
         object Panel14: TPanel
@@ -2870,8 +2869,6 @@ object fmMain: TfmMain
           BevelOuter = bvNone
           Caption = 'Panel14'
           TabOrder = 1
-          ExplicitLeft = 361
-          ExplicitWidth = 459
           object tabCardTreeGuide: TTabControl
             Left = 0
             Top = 0
@@ -2887,7 +2884,6 @@ object fmMain: TfmMain
               '5')
             TabIndex = 0
             OnChange = tabCardTreeGuideChange
-            ExplicitWidth = 459
             object trvCardContentNodes: TAdvTreeView
               Left = 4
               Top = 24
@@ -3316,8 +3312,19 @@ object fmMain: TfmMain
                 7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
                 7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
               Version = '1.1.0.6'
-              ExplicitWidth = 451
+              ExplicitLeft = 5
+              ExplicitTop = 25
             end
+          end
+          object memCardTreeGuideID: TMemo
+            Left = 192
+            Top = 208
+            Width = 89
+            Height = 185
+            Lines.Strings = (
+              'memCardTreeG'
+              'uideID')
+            TabOrder = 1
           end
         end
         object trvCardContentRoot: TAdvTreeView
@@ -3750,6 +3757,8 @@ object fmMain: TfmMain
             7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
             7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
           Version = '1.1.0.6'
+          ExplicitLeft = -1
+          ExplicitTop = 96
         end
       end
     end
