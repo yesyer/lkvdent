@@ -95,6 +95,7 @@ type
     txtCardEmployeeID: TComboBox;
     btnClientCardModify: TAdvGlassButton;
     memCardTreeGuideID: TMemo;
+    Splitter1: TSplitter;
     procedure sbReConnectClick(Sender: TObject);
     procedure trvTemplateNodesGetNodeIcon(Sender: TObject;
       ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
@@ -125,6 +126,12 @@ type
     procedure btnClientCardSaveClick(Sender: TObject);
     procedure btnClientCardModifyClick(Sender: TObject);
     procedure txtCardEmployeeChange(Sender: TObject);
+    procedure trvCardContentNodesGetNodeIcon(Sender: TObject;
+      ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
+      var AIcon: TGraphic);
+    procedure trvCardContentRootGetNodeIcon(Sender: TObject;
+      ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
+      var AIcon: TGraphic);
   private
     { Private declarations }
     glModifyNode: TAdvTreeViewVirtualNode; // сохраняем нод
@@ -135,7 +142,11 @@ type
       TTree: TAdvTreeView);
     procedure aaaClientModifyFieldClear;
     procedure aaaToothButtonsSet;
+    { вызываеться только при двойном клике (удалениенода) в окне
+      добавления/изменения карточки пациента}
     procedure aaaToothButtonUncheck;
+
+    procedure aaaToothButtonCheck;
     { вызываем когда добавляем или редактируем сотрудника, на данный момент
       меняем комбобокс выбора острудника при добавлении карты }
     procedure aaaSetEmployee;
@@ -294,7 +305,9 @@ begin
       sTooths:= trvCardContentRoot.SelectedNode.Text[2];
       while Length(sTooths) <> 0 do
         begin
+          // запоминаем строку ввида 48:47:46:
           sTooth:= Copy(sTooths, 1, AnsiPos(':',sTooths)-1);
+          // повторяем до тех пор пока количество символов больше 0
           for i:= 0 to pnTooths.ComponentCount-1 do
             if pnTooths.Components[i] is TAdvGlassButton then
               if (pnTooths.Components[i] as TAdvGlassButton).GroupIndex = StrToInt(sTooth) then
@@ -310,6 +323,43 @@ begin
           //a:= AnsiPos(':',trvCardContentRoot.SelectedNode.Text[2]);
         end;
     end;
+end;
+
+procedure TfmMain.aaaToothButtonCheck;
+var
+  i, j, b: Integer;
+  sTooth, sTooths: String;
+begin
+  for i:= 0 to trvCardContentRoot.Nodes.Count-1 do
+    for j:= 0 to trvCardContentRoot.Nodes[i].Nodes.Count-1 do
+      if trvCardContentRoot.Nodes[i].Nodes[j].Text[2] <> '' then
+        begin
+          // запоминаем строку ввида 48:47:46:
+          sTooths:= trvCardContentRoot.Nodes[i].Nodes[j].Text[2];
+          // повторяем до тех пор пока количество символов больше 0
+          while Length(sTooths) <> 0 do
+            begin
+              // выдергиваем первую пару цифр 48
+              sTooth:= Copy(sTooths, 1, AnsiPos(':',sTooths)-1);
+              for b:= 0 to pnTooths.ComponentCount-1 do
+                if pnTooths.Components[b] is TAdvGlassButton then
+                  if (pnTooths.Components[b] as TAdvGlassButton).GroupIndex = StrToInt(sTooth) then
+                    begin
+                      (pnTooths.Components[b] as TAdvGlassButton).Tag:= (pnTooths.Components[b] as TAdvGlassButton).Tag + 1;
+                      // проверка на 1 чтоб при последующих совпадений не присваивать почем зря
+                      if (pnTooths.Components[b] as TAdvGlassButton).Tag = 1 then
+                        begin
+                          (pnTooths.Components[b] as TAdvGlassButton).Picture:= btnToothTmp.PictureDisabled;
+                          // необязательно, т.к. форму мы кнопки мы только что нормализовали
+                          //(pnTooths.Components[i] as TAdvGlassButton).Down:= false;
+                        end;
+                    end;
+              // удаляем обработанные коды зубов, удалиться 48:, останеться 47:46:
+              Delete(sTooths,1,AnsiPos(':',sTooths));
+              //a:= AnsiPos(':',trvCardContentRoot.SelectedNode.Text[2]);
+            end;
+        end;
+
 end;
 
 procedure TfmMain.aaaSetEmployee;
@@ -427,6 +477,7 @@ begin
         (pnTooths.Components[i] as TAdvGlassButton).Tag:= 0;
       end;
 
+  trvCardContentRoot.BeginUpdate;
   with dmBase do
     begin
       qCardNodesView.Active:= false;
@@ -465,21 +516,25 @@ begin
 
                       Delete(sNodePath,1,intPos);  // 12/13/25
                     end;
-                  CNode.Text[0]:= sContent;
+                  CNode.Text[0]:= '<b>' + qCardNodesViewcn_tooth.AsString + '</b>' + sContent;
                   CNode.Text[1]:= qCardNodesViewcn_tg_id.AsString;
+                  CNode.Text[2]:= qCardNodesViewcn_tooth.AsString;
                   //!!!!CNode.Text[2]:=
                 end;
               qCardNodesView.Next;
             end;
         end;
 
+
       txtCardDate.DateTime:= qCardClientViewcd_data.AsDateTime;
       for i:= 0 to txtCardEmployeeID.Items.Count-1 do
         if StrToInt(txtCardEmployeeID.Items[i]) = qCardClientViewcd_em_id.AsInteger then
           txtCardEmployee.ItemIndex:=i;
-
-      //
     end;
+
+  aaaToothButtonCheck;
+  trvCardContentRoot.ExpandAll;
+  trvCardContentRoot.EndUpdate;
 end;
 
 procedure TfmMain.btnClientCardSaveClick(Sender: TObject);
@@ -686,6 +741,7 @@ begin
 
   trvTemplateRoot.Columns.Add;
   trvTemplateRoot.Columns.Add;
+  trvTemplateRoot.Columns[1].Visible:= false;
   dmBase.qTreeRoot.First;
   for i := 0 to c - 1 do
   begin
@@ -783,6 +839,14 @@ begin
     end;
 end;
 
+procedure TfmMain.trvCardContentNodesGetNodeIcon(Sender: TObject;
+  ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
+  var AIcon: TGraphic);
+begin
+  if (ANode.GetChildCount = 0) and (AColumn = 0) then
+    AIcon:=dmBase.PictureContainer1.Items[3].Picture;
+end;
+
 procedure TfmMain.trvCardContentRootDblClick(Sender: TObject);
 var
   i, a, b: Integer;
@@ -801,6 +865,14 @@ begin
         trvCardContentRoot.RemoveSelectedNodes;
         trvCardContentRoot.EndUpdate;
       end;
+end;
+
+procedure TfmMain.trvCardContentRootGetNodeIcon(Sender: TObject;
+  ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
+  var AIcon: TGraphic);
+begin
+  if (ANode.GetParent <> nil) and (ANode.GetChildCount = 0) and (AColumn = 0) then
+    AIcon:=dmBase.PictureContainer1.Items[3].Picture;
 end;
 
 procedure TfmMain.FormCreate(Sender: TObject);

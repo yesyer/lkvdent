@@ -564,7 +564,7 @@ object fmMain: TfmMain
     Top = 0
     Width = 829
     Height = 542
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 2
     object TabSheet1: TTabSheet
@@ -2654,6 +2654,13 @@ object fmMain: TfmMain
         Height = 514
         Align = alClient
         TabOrder = 0
+        object Splitter1: TSplitter
+          Left = 355
+          Top = 97
+          Height = 416
+          ExplicitLeft = 361
+          ExplicitTop = 91
+        end
         object Panel12: TPanel
           Left = 1
           Top = 1
@@ -2861,18 +2868,20 @@ object fmMain: TfmMain
           end
         end
         object Panel14: TPanel
-          Left = 529
+          Left = 358
           Top = 97
-          Width = 291
+          Width = 462
           Height = 416
           Align = alClient
           BevelOuter = bvNone
           Caption = 'Panel14'
           TabOrder = 1
+          ExplicitLeft = 529
+          ExplicitWidth = 291
           object tabCardTreeGuide: TTabControl
             Left = 0
             Top = 0
-            Width = 291
+            Width = 462
             Height = 416
             Align = alClient
             TabOrder = 0
@@ -2884,16 +2893,18 @@ object fmMain: TfmMain
               '5')
             TabIndex = 0
             OnChange = tabCardTreeGuideChange
+            ExplicitWidth = 291
             object trvCardContentNodes: TAdvTreeView
               Left = 4
               Top = 24
-              Width = 283
+              Width = 454
               Height = 388
               Align = alClient
               Color = clWhite
               TabOrder = 0
               TabStop = True
               OnDblClick = trvCardContentNodesDblClick
+              PictureContainer = dmBase.PictureContainer1
               Groups = <>
               GroupsAppearance.TopSize = 50.000000000000000000
               GroupsAppearance.BottomSize = 50.000000000000000000
@@ -3312,8 +3323,8 @@ object fmMain: TfmMain
                 7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
                 7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
               Version = '1.1.0.6'
-              ExplicitLeft = 5
-              ExplicitTop = 25
+              OnGetNodeIcon = trvCardContentNodesGetNodeIcon
+              ExplicitWidth = 283
             end
           end
           object memCardTreeGuideID: TMemo
@@ -3330,7 +3341,7 @@ object fmMain: TfmMain
         object trvCardContentRoot: TAdvTreeView
           Left = 1
           Top = 97
-          Width = 528
+          Width = 354
           Height = 416
           Align = alLeft
           Color = clWhite
@@ -3757,8 +3768,7 @@ object fmMain: TfmMain
             7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B
             7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
           Version = '1.1.0.6'
-          ExplicitLeft = -1
-          ExplicitTop = 96
+          OnGetNodeIcon = trvCardContentRootGetNodeIcon
         end
       end
     end
