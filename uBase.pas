@@ -9,7 +9,8 @@ uses
   FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs, FireDAC.VCLUI.Wait,
   FireDAC.Comp.UI, Data.DB, FireDAC.Comp.Client, FireDAC.Stan.Param,
   FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet,
-  System.ImageList, Vcl.ImgList, Vcl.Controls, PictureContainer;
+  System.ImageList, Vcl.ImgList, Vcl.Controls, PictureContainer, frxClass,
+  frxDBSet;
 
 type
   TdmBase = class(TDataModule)
@@ -47,11 +48,6 @@ type
     tCardNodescn_tg_id: TIntegerField;
     tCardNodescn_tooth: TWideMemoField;
     tCards: TFDTable;
-    tCardscd_id: TFDAutoIncField;
-    tCardscd_data: TDateTimeField;
-    tCardscd_cl_id: TIntegerField;
-    tCardscd_notes: TWideStringField;
-    tCardscd_em_id: TIntegerField;
     tEmployee: TFDTable;
     tEmployeeem_id: TFDAutoIncField;
     tEmployeeem_name: TWideStringField;
@@ -67,7 +63,7 @@ type
     qCardNodesViewcn_tooth: TWideMemoField;
     qCardNodesViewtg_path: TWideMemoField;
     qCardClientViewcd_id: TFDAutoIncField;
-    qCardClientViewcd_data: TDateTimeField;
+    qCardClientViewcd_date: TDateTimeField;
     qCardClientViewcd_cl_id: TIntegerField;
     qCardClientViewcl_fname: TWideStringField;
     qCardClientViewcl_name: TWideStringField;
@@ -80,6 +76,16 @@ type
     tTreeGuidetg_path: TWideMemoField;
     tTreeGuidetg_content: TWideMemoField;
     tTreeGuidetg_visible: TBooleanField;
+    frxDBDataset1: TfrxDBDataset;
+    frxReport1: TfrxReport;
+    frxDBDataset2: TfrxDBDataset;
+    FDQuery1: TFDQuery;
+    FDQuery2: TFDQuery;
+    tCardscd_id: TFDAutoIncField;
+    tCardscd_cl_id: TIntegerField;
+    tCardscd_notes: TWideStringField;
+    tCardscd_em_id: TIntegerField;
+    tCardscd_date: TDateTimeField;
   private
     { Private declarations }
   public

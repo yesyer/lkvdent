@@ -61,7 +61,7 @@ object dmBase: TdmBase
     Left = 40
     Top = 104
     Bitmap = {
-      494C010106000800640010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101060008006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -514,8 +514,8 @@ object dmBase: TdmBase
       '       WHERE  [tg_id] = :p1))'
       '       AND ([tg_parent_id] NOT NULL)'
       'ORDER  BY [tg_path];')
-    Left = 144
-    Top = 240
+    Left = 64
+    Top = 264
     ParamData = <
       item
         Name = 'P1'
@@ -634,7 +634,7 @@ object dmBase: TdmBase
     SQL.Strings = (
       'SELECT '
       '       [cd].[cd_id], '
-      '       [cd].[cd_data], '
+      '       [cd].[cd_date], '
       '       [cd].[cd_cl_id], '
       '       [cl].[cl_fname], '
       '       [cl].[cl_name],'
@@ -658,9 +658,9 @@ object dmBase: TdmBase
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
     end
-    object qCardClientViewcd_data: TDateTimeField
-      FieldName = 'cd_data'
-      Origin = 'cd_data'
+    object qCardClientViewcd_date: TDateTimeField
+      FieldName = 'cd_date'
+      Origin = 'cd_date'
     end
     object qCardClientViewcd_cl_id: TIntegerField
       FieldName = 'cd_cl_id'
@@ -746,15 +746,14 @@ object dmBase: TdmBase
       FieldName = 'cd_id'
       Origin = 'cd_id'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object tCardscd_data: TDateTimeField
-      FieldName = 'cd_data'
-      Origin = 'cd_data'
     end
     object tCardscd_cl_id: TIntegerField
       FieldName = 'cd_cl_id'
       Origin = 'cd_cl_id'
+    end
+    object tCardscd_date: TDateTimeField
+      FieldName = 'cd_date'
+      Origin = 'cd_date'
     end
     object tCardscd_notes: TWideStringField
       FieldName = 'cd_notes'
@@ -868,5 +867,97 @@ object dmBase: TdmBase
       Origin = 'tg_visible'
       Required = True
     end
+  end
+  object frxDBDataset1: TfrxDBDataset
+    UserName = 'frxDBDataset1'
+    CloseDataSource = False
+    DataSet = FDQuery1
+    BCDToCurrency = False
+    Left = 408
+    Top = 280
+  end
+  object frxReport1: TfrxReport
+    Version = '5.1.5'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 43571.643314027780000000
+    ReportOptions.LastChange = 43571.643314027780000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 328
+    Top = 280
+    Datasets = <>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 102.047310000000000000
+        Width = 718.110700000000000000
+        RowCount = 0
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 185.196970000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Left = 642.520100000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Page#]')
+        end
+      end
+    end
+  end
+  object frxDBDataset2: TfrxDBDataset
+    UserName = 'frxDBDataset2'
+    CloseDataSource = False
+    DataSet = FDQuery2
+    BCDToCurrency = False
+    Left = 408
+    Top = 328
+  end
+  object FDQuery1: TFDQuery
+    Connection = fdSQLiteConnection
+    SQL.Strings = (
+      'SELECT *'
+      'FROM   tb_Client cl'
+      'WHERE  [cl_id] = 2')
+    Left = 488
+    Top = 280
+  end
+  object FDQuery2: TFDQuery
+    Connection = fdSQLiteConnection
+    Left = 488
+    Top = 328
   end
 end

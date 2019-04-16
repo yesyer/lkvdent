@@ -431,7 +431,7 @@ end;
 
 procedure TfmMain.btnClientCardAppendClick(Sender: TObject);
 var
-  i, c: Integer;
+  i: Integer;
 begin
   glModifyCard:= true;
   // очищаем рут
@@ -452,12 +452,13 @@ begin
 
   tabCardTreeGuideChange(Sender);
   trvCardContentRoot.EndUpdate;
+  PageControl1.ActivePageIndex:=2;
 end;
 
 procedure TfmMain.btnClientCardModifyClick(Sender: TObject);
 var
   i, j, c: Integer;
-  sRootPath, sNodePath, t: String;
+  sRootPath, sNodePath: String;
 
   sContent, sId: String;
   intPos: Integer;
@@ -490,7 +491,7 @@ begin
         begin
           sRootPath:= trvCardContentRoot.Nodes[i].Text[2]; //tg_path
           qCardNodesView.First;
-          for j:= 0 to c do
+          for j:= 0 to c-1 do
             begin
               sNodePath:= qCardNodesViewtg_path.AsString;  // tg_path ветки для сравнения
               { ищем вхождение tg_path рута в tg_path sNodePath, если нашли с 1
@@ -526,7 +527,7 @@ begin
         end;
 
 
-      txtCardDate.DateTime:= qCardClientViewcd_data.AsDateTime;
+      txtCardDate.DateTime:= qCardClientViewcd_date.AsDateTime;
       for i:= 0 to txtCardEmployeeID.Items.Count-1 do
         if StrToInt(txtCardEmployeeID.Items[i]) = qCardClientViewcd_em_id.AsInteger then
           txtCardEmployee.ItemIndex:=i;
@@ -535,50 +536,54 @@ begin
   aaaToothButtonCheck;
   trvCardContentRoot.ExpandAll;
   trvCardContentRoot.EndUpdate;
+  PageControl1.ActivePageIndex:=2;
 end;
 
 procedure TfmMain.btnClientCardSaveClick(Sender: TObject);
 var
   i, j, k:Integer;
-  intRecNo, intCount: Integer;
+  c: Integer;
 begin
   with dmBase do
     begin
       if glModifyCard = true then
-        tCards.Insert
+        qCardClientView.Insert
       else
-        tCards.Edit;
+        qCardClientView.Edit;
 
-      tCardscd_data.AsDateTime:= txtCardDate.DateTime;
-      tCardscd_cl_id.AsInteger:= tClientcl_id.AsInteger;
+      qCardClientViewcd_date.AsDateTime:= txtCardDate.DateTime;
+      qCardClientViewcd_cl_id.AsInteger:= tClientcl_id.AsInteger;
+
       txtCardEmployeeID.ItemIndex:= txtCardEmployee.ItemIndex;
-      tCardscd_em_id.AsInteger:=StrToInt(txtCardEmployeeID.Text);
-      tCards.Post;
+      qCardClientViewcd_em_id.AsInteger:= StrToInt(txtCardEmployeeID.Text);
+      qCardClientView.Post;
+
       if glModifyCard = true then
-        tCards.Last;
+        qCardClientView.Last;
+
+      if glModifyCard = true then
+        begin
+          qCardNodesView.Active:= false;
+          qCardNodesView.Params[0].AsInteger:= 0;
+          qCardNodesView.Active:= true;
+        end
+      else
+        begin
+          qCardNodesView.Last;
+          c:= qCardNodesView.RecordCount;
+          qCardNodesView.First;
+          for k := 0 to c - 1 do
+            begin
+              qCardNodesView.Delete;
+              qCardNodesView.Next;
+            end;
+        end;
 
       for i:= 0 to trvCardContentRoot.Nodes.Count-1 do
         for j:= 0 to trvCardContentRoot.Nodes[i].Nodes.Count-1 do
           begin
-            if glModifyCard = true then
-              begin
-                qCardNodesView.Active:= false;
-                qCardNodesView.Params[0].AsInteger:= 1;
-                qCardClientView.Active:= true;
-              end
-            else
-              begin
-                qCardNodesView.Last;
-                intCount:= qCardNodesView.RecordCount;
-                qCardNodesView.First;
-                for k := 0 to intCount - 1 do
-                  begin
-                    qCardNodesView.Delete;
-                    qCardNodesView.Next;
-                  end;
-              end;
             qCardNodesView.Insert;
-            qCardNodesViewcn_cd_id.AsInteger:= tCardscd_id.AsInteger;
+            qCardNodesViewcn_cd_id.AsInteger:= qCardClientViewcd_id.AsInteger;
             qCardNodesViewcn_tg_id.AsInteger:= StrToInt(trvCardContentRoot.Nodes[i].Nodes[j].Text[1]);
             if trvCardContentRoot.Nodes[i].Nodes[j].Text[2] <> '' then
               qCardNodesViewcn_tooth.AsString:= trvCardContentRoot.Nodes[i].Nodes[j].Text[2];
@@ -717,6 +722,7 @@ begin
       qCardClientView.Params[0].AsInteger:= tClientcl_id.AsInteger;
       qCardClientView.Active:= true;
     end;
+  PageControl1.ActivePageIndex:=1;
 end;
 
 procedure TfmMain.btnClientAppendClick(Sender: TObject);
@@ -849,8 +855,6 @@ end;
 
 procedure TfmMain.trvCardContentRootDblClick(Sender: TObject);
 var
-  i, a, b: Integer;
-  sTooth, sTooths: String;
   TNode: TAdvTreeViewNode;
 begin
   TNode:= trvCardContentRoot.SelectedNode;
