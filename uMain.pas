@@ -756,8 +756,8 @@ begin
     advNode.Text[1]:=dmBase.qTreeRoot.FieldByName('tg_id').AsString;
     dmBase.qTreeRoot.Next;
   end;
-  trvTemplateRoot.SetFocus;
-  trvTemplateRoot.SelectedNodes[0];
+  //trvTemplateRoot.SetFocus;
+  //trvTemplateRoot.SelectedNodes[0];
   trvTemplateRoot.EndUpdate;
 end;
 
