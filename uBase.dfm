@@ -62,7 +62,7 @@ object dmBase: TdmBase
     Left = 40
     Top = 104
     Bitmap = {
-      494C010106000800700010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000800740010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -878,8 +878,8 @@ object dmBase: TdmBase
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 43572.518706203700000000
-    ReportOptions.LastChange = 43572.518706203700000000
+    ReportOptions.CreateDate = 43573.036130659700000000
+    ReportOptions.LastChange = 43573.036130659700000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -890,16 +890,16 @@ object dmBase: TdmBase
     Top = 8
     Datasets = <
       item
-        DataSet = frxDBDataset1
-        DataSetName = 'Clients'
+        DataSet = frxDBDataset3
+        DataSetName = 'CardNodes'
       end
       item
         DataSet = frxDBDataset2
         DataSetName = 'Cards'
       end
       item
-        DataSet = frxDBDataset3
-        DataSetName = 'CardNodes'
+        DataSet = frxDBDataset1
+        DataSetName = 'Clients'
       end>
     Variables = <>
     Style = <>
@@ -917,56 +917,35 @@ object dmBase: TdmBase
       BottomMargin = 10.000000000000000000
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
-        Height = 22.677180000000000000
+        Height = 41.574830000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
-        Height = 79.370130000000000000
-        Top = 102.047310000000000000
+        Height = 102.047310000000000000
+        Top = 120.944960000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDataset1
         DataSetName = 'Clients'
         RowCount = 0
-        object frxDBDataset1cl_fname: TfrxMemoView
-          Left = 7.559060000000000000
-          Top = 30.236240000000000000
+        StartNewPage = True
+        object Clientscl_fullname: TfrxMemoView
+          Left = 18.897650000000000000
+          Top = 34.015770000000000000
           Width = 400.630180000000000000
           Height = 18.897650000000000000
-          DataField = 'cl_fname'
+          DataField = 'cl_fullname'
           DataSet = frxDBDataset1
           DataSetName = 'Clients'
           Memo.UTF8W = (
-            '[Clients."cl_fname"]')
-        end
-        object frxDBDataset1cl_name: TfrxMemoView
-          Left = 7.559060000000000000
-          Top = 56.692950000000000000
-          Width = 400.630180000000000000
-          Height = 18.897650000000000000
-          DataField = 'cl_name'
-          DataSet = frxDBDataset1
-          DataSetName = 'Clients'
-          Memo.UTF8W = (
-            '[Clients."cl_name"]')
-        end
-        object frxDBDataset1cl_id: TfrxMemoView
-          Left = 7.559060000000000000
-          Top = 3.779530000000000000
-          Width = 400.630180000000000000
-          Height = 18.897650000000000000
-          DataField = 'cl_id'
-          DataSet = frxDBDataset1
-          DataSetName = 'Clients'
-          Memo.UTF8W = (
-            '[Clients."cl_id"]')
+            '[Clients."cl_fullname"]')
         end
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 347.716760000000000000
+        Top = 514.016080000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
           Left = 642.520100000000000000
@@ -979,15 +958,15 @@ object dmBase: TdmBase
       end
       object DetailData1: TfrxDetailData
         FillType = ftBrush
-        Height = 37.795300000000000000
-        Top = 204.094620000000000000
+        Fill.ForeColor = clNone
+        Height = 83.149660000000000000
+        Top = 245.669450000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDataset2
         DataSetName = 'Cards'
         RowCount = 0
-        object frxDBDataset2cd_date: TfrxMemoView
-          Left = 11.338590000000000000
-          Top = 7.559060000000000000
+        object Cardscd_date: TfrxMemoView
+          Top = 15.118120000000000000
           Width = 143.622140000000000000
           Height = 18.897650000000000000
           DataField = 'cd_date'
@@ -996,76 +975,73 @@ object dmBase: TdmBase
           Memo.UTF8W = (
             '[Cards."cd_date"]')
         end
-        object frxDBDataset2cd_cl_id: TfrxMemoView
-          Left = 181.417440000000000000
-          Top = 7.559060000000000000
-          Width = 124.724490000000000000
+        object Cardsem_name: TfrxMemoView
+          Top = 37.795300000000000000
+          Width = 400.630180000000000000
           Height = 18.897650000000000000
-          DataField = 'cd_cl_id'
+          DataField = 'em_name'
           DataSet = frxDBDataset2
           DataSetName = 'Cards'
           Memo.UTF8W = (
-            '[Cards."cd_cl_id"]')
-        end
-        object frxDBDataset2cd_em_id: TfrxMemoView
-          Left = 343.937230000000000000
-          Top = 7.559060000000000000
-          Width = 124.724490000000000000
-          Height = 18.897650000000000000
-          DataField = 'cd_em_id'
-          DataSet = frxDBDataset2
-          DataSetName = 'Cards'
-          Memo.UTF8W = (
-            '[Cards."cd_em_id"]')
+            '[Cards."em_name"]')
         end
       end
       object SubdetailData1: TfrxSubdetailData
         FillType = ftBrush
-        Height = 22.677180000000000000
-        Top = 264.567100000000000000
+        Height = 37.795300000000000000
+        Top = 415.748300000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDataset3
         DataSetName = 'CardNodes'
         RowCount = 0
-        object CardNodescn_id: TfrxMemoView
-          Left = 11.338590000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'cn_id'
-          DataSet = frxDBDataset3
-          DataSetName = 'CardNodes'
-          Memo.UTF8W = (
-            '[CardNodes."cn_id"]')
-        end
-        object CardNodescn_cd_id: TfrxMemoView
+        object CardNodesfpfp_path1: TfrxMemoView
+          Align = baLeft
           Left = 105.826840000000000000
-          Width = 79.370130000000000000
+          Top = 7.559060000000000000
+          Width = 604.724800000000000000
           Height = 18.897650000000000000
-          DataField = 'cn_cd_id'
+          DataField = 'fp.fp_path'
           DataSet = frxDBDataset3
           DataSetName = 'CardNodes'
           Memo.UTF8W = (
-            '[CardNodes."cn_cd_id"]')
-        end
-        object CardNodescn_tg_id: TfrxMemoView
-          Left = 196.535560000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'cn_tg_id'
-          DataSet = frxDBDataset3
-          DataSetName = 'CardNodes'
-          Memo.UTF8W = (
-            '[CardNodes."cn_tg_id"]')
+            '[CardNodes."fp.fp_path"]')
         end
         object CardNodescn_tooth: TfrxMemoView
-          Left = 283.464750000000000000
-          Width = 79.370130000000000000
+          Align = baLeft
+          Top = 7.559060000000000000
+          Width = 105.826840000000000000
           Height = 18.897650000000000000
+          AutoWidth = True
           DataField = 'cn_tooth'
           DataSet = frxDBDataset3
           DataSetName = 'CardNodes'
           Memo.UTF8W = (
             '[CardNodes."cn_tooth"]')
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        Height = 41.574830000000000000
+        Top = 351.496290000000000000
+        Width = 718.110700000000000000
+        Condition = 'CardNodes."tg.tg_content"'
+        object CardNodestgtg_content: TfrxMemoView
+          Left = -3.779530000000000000
+          Top = 7.559060000000000000
+          Width = 309.921460000000000000
+          Height = 18.897650000000000000
+          AutoWidth = True
+          DataField = 'tg.tg_content'
+          DataSet = frxDBDataset3
+          DataSetName = 'CardNodes'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[CardNodes."tg.tg_content"]')
+          ParentFont = False
         end
       end
     end
@@ -1089,6 +1065,7 @@ object dmBase: TdmBase
       FieldName = 'fp_id'
       Origin = 'tg_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object vi_tgFullPathReversefp_rid: TLargeintField
       AutoGenerateValue = arDefault
@@ -1123,8 +1100,21 @@ object dmBase: TdmBase
     Active = True
     Connection = fdSQLiteConnection
     SQL.Strings = (
-      'select *'
-      'from tb_Client')
+      'SELECT '
+      '       [cl_id], '
+      
+        '       [cl_fname] || '#39' '#39' || [cl_name] || '#39' '#39' || [cl_lname] [cl_f' +
+        'ullname], '
+      '       [cl_birthday],  '
+      '       CASE [cl_sex] WHEN 1 THEN '#39#1084#39' ELSE '#39#1078#39' END [cl_sex], '
+      '       [cl_proff], '
+      '       [cl_address1], '
+      '       [cl_address2], '
+      '       [cl_address3], '
+      '       [cl_fone1], '
+      '       [cl_fone2], '
+      '       [cl_notes]'
+      'FROM   [tb_Client];')
     Left = 488
     Top = 112
   end
@@ -1135,20 +1125,25 @@ object dmBase: TdmBase
     MasterFields = 'cl_id'
     Connection = fdSQLiteConnection
     SQL.Strings = (
-      'select *'
-      'from tb_Cards')
+      'select cd.cd_id, cd.cd_date, cd.cd_cl_id, em.em_name'
+      'from tb_Cards cd'
+      'join tb_Employee em on cd.cd_em_id = em.em_id')
     Left = 488
     Top = 160
   end
   object qRepCardNodes: TFDQuery
     Active = True
-    IndexFieldNames = 'cn_cd_id'
+    IndexFieldNames = 'cn.cn_cd_id'
     MasterSource = dsRepCards
     MasterFields = 'cd_id'
     Connection = fdSQLiteConnection
     SQL.Strings = (
-      'select *'
-      'from tb_CardNodes')
+      
+        'select cn.cn_id, cn.cn_cd_id, tg.tg_content, fp.fp_path, cn_toot' +
+        'h'
+      'from tb_CardNodes cn'
+      'join vi_tgFullPathReverse fp on cn.cn_tg_id = fp.fp_id'
+      'join tb_TreeGuide tg on fp.fp_rid = tg.tg_id')
     Left = 488
     Top = 208
   end

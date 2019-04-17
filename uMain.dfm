@@ -2788,6 +2788,7 @@ object fmMain: TfmMain
             Height = 21
             Style = csDropDownList
             TabOrder = 4
+            Visible = False
           end
           object btnToothTmp: TAdvGlassButton
             Left = 106
@@ -2894,6 +2895,7 @@ object fmMain: TfmMain
             TabOrder = 5
             TabStop = False
             Version = '1.3.0.2'
+            Visible = False
           end
         end
         object Panel14: TPanel
@@ -3350,8 +3352,6 @@ object fmMain: TfmMain
                 7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
               Version = '1.1.0.6'
               OnGetNodeIcon = trvCardContentNodesGetNodeIcon
-              ExplicitLeft = 5
-              ExplicitTop = 25
             end
           end
           object memCardTreeGuideID: TMemo
