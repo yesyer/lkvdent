@@ -564,7 +564,7 @@ object fmMain: TfmMain
     Top = 0
     Width = 829
     Height = 542
-    ActivePage = TabSheet1
+    ActivePage = TabSheet3
     Align = alClient
     TabOrder = 2
     object TabSheet1: TTabSheet
@@ -2030,6 +2030,52 @@ object fmMain: TfmMain
             Version = '1.3.0.2'
             OnClick = btnClientCardModifyClick
           end
+          object AdvGlassButton2: TAdvGlassButton
+            Left = 153
+            Top = 13
+            Width = 28
+            Height = 28
+            ParentCustomHint = False
+            BackColor = clSilver
+            CornerRadius = 2
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ForeColor = clWhite
+            GlowColor = clWhite
+            InnerBorderColor = clNone
+            OuterBorderColor = clGray
+            Picture.Data = {
+              89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+              F80000001974455874536F6674776172650041646F626520496D616765526561
+              647971C9653C000001B44944415478DA62FCFFFF3F03C560A3493DC3AF7F0C0C
+              A1E71AD1A51829B660BDF17F865F40337E4271EA05466469268A0C5F63F49FE1
+              2BD0E5DA2610FCFD2F03438FCE7FEA58B00A68F837A0E15A460C0C9F7E33307C
+              FD03B4C4186809D0FC5AADFF94590032FCC73F8881DFFE425C0EB2E02B90D632
+              8488751AD68394B2506438C8E09F40F60FA08341F1F01B8A453821E224473231
+              863FBA06A1EB2E3292164464184EBC05641A4E9C0514184ED8020A0DC76F0115
+              0CC7998A9E4E2EF8CFAB2AC3C0277A9D22C3B1FA0066388F8A14C5866358F06E
+              66F44198E18CCC4C0C7F859C28321CC5824F0B82D8586534AC6086FFFBFE8BE1
+              F7A7AF0C9F98F5C8361CC502363EE1426E75651664C37F7DF8C2F0EBFD1786E7
+              EF24C9321CC5027659A52C6C86FFFEF895E12F50EC09871DC986C32DB8BB244E
+              E3D1772E395C8683804CE12446720A5E70697AEBD9CF897F3E3F62F829F98541
+              82830DC5704686FF0CD2859319C9AD36C016ECB8F0DC898FFB2BC37719310655
+              213E0669E6DFBFD9BE7D38CFFCEFE76681B2352D94547A600BF69CBCCDE26FAA
+              F889FDD3AF434C7F997BC49AB61F64A01260A44AAB82949C4C6D001060001A32
+              88B2EE0DE8160000000049454E44AE426082}
+            ParentFont = False
+            ParentShowHint = False
+            ParentBiDiMode = False
+            ShineColor = clWhite
+            ShowCaption = False
+            ShowHint = False
+            TabOrder = 2
+            TabStop = False
+            Version = '1.3.0.2'
+            OnClick = AdvGlassButton2Click
+          end
         end
         object DBAdvGrid2: TDBAdvGrid
           Left = 1
@@ -2736,7 +2782,7 @@ object fmMain: TfmMain
             OnChange = txtCardEmployeeChange
           end
           object txtCardEmployeeID: TComboBox
-            Left = 654
+            Left = 1
             Top = 63
             Width = 145
             Height = 21
@@ -3304,6 +3350,8 @@ object fmMain: TfmMain
                 7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B7B7D7B0000}
               Version = '1.1.0.6'
               OnGetNodeIcon = trvCardContentNodesGetNodeIcon
+              ExplicitLeft = 5
+              ExplicitTop = 25
             end
           end
           object memCardTreeGuideID: TMemo

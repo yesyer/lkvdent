@@ -8,8 +8,7 @@ uses
   Vcl.Mask, Vcl.Controls, Vcl.ExtCtrls, Vcl.Graphics, Vcl.Grids,  Vcl.Dialogs,
   FireDAC.Comp.Client,
   AdvObj, AdvUtil,  AdvMenus, BaseGrid, AdvGrid, DBAdvGrid, AdvGlassButton,
-  AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView, Vcl.Buttons,
-  AdvGlowButton, AdvMetroButton, AdvCardList, AeroButtons, AdvBadge;
+  AdvGlowButton, AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView;
 
 
 type
@@ -96,6 +95,7 @@ type
     btnClientCardModify: TAdvGlassButton;
     memCardTreeGuideID: TMemo;
     Splitter1: TSplitter;
+    AdvGlassButton2: TAdvGlassButton;
     procedure sbReConnectClick(Sender: TObject);
     procedure trvTemplateNodesGetNodeIcon(Sender: TObject;
       ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
@@ -132,6 +132,7 @@ type
     procedure trvCardContentRootGetNodeIcon(Sender: TObject;
       ANode: TAdvTreeViewVirtualNode; AColumn: Integer; ALarge: Boolean;
       var AIcon: TGraphic);
+    procedure AdvGlassButton2Click(Sender: TObject);
   private
     { Private declarations }
     glModifyNode: TAdvTreeViewVirtualNode; // сохраняем нод
@@ -204,8 +205,11 @@ begin
     fdSQLiteConnection.Connected:= true;
 
     qTreeRoot.Active:= true;
+    FDTable1.Open;
+    FDTable2.Open;
     //qCardClientView.Active:= true;
     //qClient.Active:= true;
+    vi_tgFullPathReverse.Active:= true;
 
     tTreeGuide.Active:= true;
     tClient.Active:= true;
@@ -236,7 +240,10 @@ end;
 
 {рисуем кнопки "зубы"}
 procedure TfmMain.aaaToothButtonsSet;
-  procedure SetToothButton(Name, Top, Left: Integer);
+  { name - номер кнопки, добавляеть к имени и в GroupIndex
+    top, left - координаты, сверху, слева относительно контейнера
+    blGlyph - константа расположения изображения, blGlyphTop = 1, blGlyphBottom =3}
+  procedure SetToothButton(Name, Top, Left: Integer; blGlyph:TButtonLayout);
   var
     btnTooth: TAdvGlassButton;
   begin
@@ -259,36 +266,36 @@ procedure TfmMain.aaaToothButtonsSet;
     btnTooth.GlowColor:= clWhite;
     btnTooth.InnerBorderColor:= clNone;
     btnTooth.OuterBorderColor:= clGray;
-    btnTooth.Layout:= blGlyphTop;
+    btnTooth.Layout:= blGlyph;
     btnTooth.ShineColor:= clWhite;
     btnTooth.Picture:= btnToothTmp.Picture;
     btnTooth.PictureDown:= btnToothTmp.PictureDown;
   end;
 
 var
-  i, l: Integer;
+  i, Left, blGlyph: Integer;
 begin
-  l:= 8;
+  Left:= 8;
   for i:= 18 downto 11 do
     begin
-      SetToothButton(i,6,l);
-      l:= l +30;
+      SetToothButton(i,6,Left,blGlyphBottom);
+      Left:= Left +30;
     end;
   for i:= 21 to 28 do
     begin
-      SetToothButton(i,6,l);
-      l:= l +30;
+      SetToothButton(i,6,Left,blGlyphBottom);
+      Left:= Left +30;
     end;
-  l:= 8;
+  Left:= 8;
   for i:= 48 downto 41 do
     begin
-      SetToothButton(i,50,l);
-      l:= l +30;
+      SetToothButton(i,50,Left,blGlyphTop);
+      Left:= Left +30;
     end;
   for i:= 31 to 38 do
     begin
-      SetToothButton(i,50,l);
-      l:= l +30;
+      SetToothButton(i,50,Left,blGlyphTop);
+      Left:= Left +30;
     end;
 end;
 
@@ -323,6 +330,12 @@ begin
           //a:= AnsiPos(':',trvCardContentRoot.SelectedNode.Text[2]);
         end;
     end;
+end;
+
+procedure TfmMain.AdvGlassButton2Click(Sender: TObject);
+begin
+  dmBase.frxReport1.PrepareReport();
+  dmBase.frxReport1.ShowPreparedReport;
 end;
 
 procedure TfmMain.aaaToothButtonCheck;
@@ -487,45 +500,25 @@ begin
       qCardNodesView.Last;
       c:= qCardNodesView.RecordCount;
 
+      { заполняем рут}
       for i := 0 to trvCardContentRoot.Nodes.Count-1 do
         begin
-          sRootPath:= trvCardContentRoot.Nodes[i].Text[2]; //tg_path
           qCardNodesView.First;
           for j:= 0 to c-1 do
             begin
-              sNodePath:= qCardNodesViewtg_path.AsString;  // tg_path ветки для сравнения
-              { ищем вхождение tg_path рута в tg_path sNodePath, если нашли с 1
-                позиции, то искомое найдено }
-              if AnsiPos(sRootPath, sNodePath) = 1 then
-                begin
-                  RNode:= trvCardContentRoot.Nodes[i];
-                  CNode:= trvCardContentRoot.AddNode(RNode);
+              if vi_tgFullPathReverse.Locate('fp_id', qCardNodesViewcn_tg_id.AsInteger) then
+                if trvCardContentRoot.Nodes[i].Text[1] = vi_tgFullPathReversefp_rid.AsString then
+                  begin
+                    RNode:= trvCardContentRoot.Nodes[i];
+                    CNode:= trvCardContentRoot.AddNode(RNode);
 
-                  Delete(sNodePath,1,Length(sRootPath));  // удаляем path рута
-                  sContent:= '';
-                  while AnsiPos('/',sNodePath) <> 0 do  // 7/12/13/25
-                    begin
-                      intPos:= AnsiPos('/',sNodePath);
-                      sId:= Copy(sNodePath,1,intPos-1);  // 7/
-
-                      // ищем ID копируем
-                      tTreeGuide.Locate('tg_id',StrToInt(sId));
-
-                      if sContent <> '' then
-                        sContent:= sContent + '/';
-                      sContent:= sContent + tTreeGuidetg_content.AsString;
-
-                      Delete(sNodePath,1,intPos);  // 12/13/25
-                    end;
-                  CNode.Text[0]:= '<b>' + qCardNodesViewcn_tooth.AsString + '</b>' + sContent;
-                  CNode.Text[1]:= qCardNodesViewcn_tg_id.AsString;
-                  CNode.Text[2]:= qCardNodesViewcn_tooth.AsString;
-                  //!!!!CNode.Text[2]:=
-                end;
+                    CNode.Text[0]:= '<b>' + qCardNodesViewcn_tooth.AsString + '</b> ' + vi_tgFullPathReversefp_path.AsString;
+                    CNode.Text[1]:= qCardNodesViewcn_tg_id.AsString;
+                    CNode.Text[2]:= qCardNodesViewcn_tooth.AsString;
+                  end;
               qCardNodesView.Next;
             end;
         end;
-
 
       txtCardDate.DateTime:= qCardClientViewcd_date.AsDateTime;
       for i:= 0 to txtCardEmployeeID.Items.Count-1 do
@@ -785,7 +778,7 @@ begin
   for i:= 0 to trvCardContentRoot.Nodes.Count-1 do
     if tabCardTreeGuide.Tabs[tabCardTreeGuide.TabIndex] = trvCardContentRoot.Nodes[i].Text[0] then
       aaaBuildAdvTree(StrToInt(trvCardContentRoot.Nodes[i].Text[1]), nil,trvCardContentNodes);
-
+  trvCardContentNodes.ExpandAll;
   trvCardContentNodes.EndUpdate;
 end;
 
@@ -813,9 +806,15 @@ begin
 
   { если это листок, а не ветка, собираем наименование от корня к ноду добавляя
     символ /}
+  sContent:= '';
   TNode:=trvCardContentNodes.SelectedNode;
   if TNode.GetChildCount = 0 then
-    begin
+    if dmBase.vi_tgFullPathReverse.Locate('fp_id',TNode.Text[1]) then
+      sContent:= dmBase.vi_tgFullPathReversefp_path.AsString;
+    {begin
+      if dmBase.vi_tgFullPathReverse.Locate('fp_id',TNode.Text[1]) then
+        fmMain.Caption:= dmBase.vi_tgFullPathReversefp_path.AsString;
+
       sContent:= TNode.Text[0];
       sId:= TNode.Text[1];  // сохраняем tg_id записи
       TNode:= TNode.GetParent;
@@ -824,7 +823,7 @@ begin
           sContent:= TNode.Text[0] + '/' + sContent;
           TNode:= TNode.GetParent;
         end;
-    end;
+    end;}
 
   { тут стоит проверка на '' т.к. пользователь нажать может на "ветку" а не на
     "листок" }

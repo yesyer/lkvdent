@@ -76,16 +76,24 @@ type
     tTreeGuidetg_path: TWideMemoField;
     tTreeGuidetg_content: TWideMemoField;
     tTreeGuidetg_visible: TBooleanField;
-    frxDBDataset1: TfrxDBDataset;
     frxReport1: TfrxReport;
     frxDBDataset2: TfrxDBDataset;
-    FDQuery1: TFDQuery;
-    FDQuery2: TFDQuery;
     tCardscd_id: TFDAutoIncField;
     tCardscd_cl_id: TIntegerField;
     tCardscd_notes: TWideStringField;
     tCardscd_em_id: TIntegerField;
     tCardscd_date: TDateTimeField;
+    vi_tgFullPathReverse: TFDTable;
+    vi_tgFullPathReversefp_id: TFDAutoIncField;
+    vi_tgFullPathReversefp_rid: TLargeintField;
+    vi_tgFullPathReversefp_path: TWideStringField;
+    frxDBDataset1: TfrxDBDataset;
+    dsRepClients: TDataSource;
+    qRepClients: TFDQuery;
+    qRepCards: TFDQuery;
+    qRepCardNodes: TFDQuery;
+    dsRepCards: TDataSource;
+    frxDBDataset3: TfrxDBDataset;
   private
     { Private declarations }
   public
