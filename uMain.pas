@@ -8,7 +8,8 @@ uses
   Vcl.Mask, Vcl.Controls, Vcl.ExtCtrls, Vcl.Graphics, Vcl.Grids,  Vcl.Dialogs,
   FireDAC.Comp.Client,
   AdvObj, AdvUtil,  AdvMenus, BaseGrid, AdvGrid, DBAdvGrid, AdvGlassButton,
-  AdvGlowButton, AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView;
+  AdvGlowButton, AdvTreeViewBase, AdvTreeViewData, AdvCustomTreeView, AdvTreeView,
+  Vcl.OleAuto;
 
 
 type
@@ -205,8 +206,8 @@ begin
     fdSQLiteConnection.Connected:= true;
 
     qTreeRoot.Active:= true;
-    FDTable1.Open;
-    FDTable2.Open;
+    //FDTable1.Open;
+    //FDTable2.Open;
     //qCardClientView.Active:= true;
     //qClient.Active:= true;
     vi_tgFullPathReverse.Active:= true;
@@ -333,9 +334,24 @@ begin
 end;
 
 procedure TfmMain.AdvGlassButton2Click(Sender: TObject);
+var verr,verr1:string;
+   i,verrI:integer;
+   MsWord: Variant;
+const DigiChar = ['0','1','2','3','4','5','6','7','8','9'];
 begin
-  dmBase.frxReport1.PrepareReport();
-  dmBase.frxReport1.ShowPreparedReport;
+ try
+  MsWord:=CreateOleObject('Word.Application');
+  MsWord.Visible:=true;
+ except
+  //error(1,'Microsoft Word не установлен');
+ end;
+ verr:=Trim(Version);
+ verr1:='';
+ for i:=1 to Length(verr) do
+  if not(verr[i] in DigiChar) then break
+  else verr1:=verr1+verr[i];
+ verrI:=StrToInt(verr1);
+ //if verrI<9 then error(1,'Требуется WORD 2000/XP или выше');
 end;
 
 procedure TfmMain.aaaToothButtonCheck;

@@ -564,7 +564,7 @@ object fmMain: TfmMain
     Top = 0
     Width = 829
     Height = 542
-    ActivePage = TabSheet3
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 2
     object TabSheet1: TTabSheet

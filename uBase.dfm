@@ -62,7 +62,7 @@ object dmBase: TdmBase
     Left = 40
     Top = 104
     Bitmap = {
-      494C010106000800740010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000800780010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -720,7 +720,6 @@ object dmBase: TdmBase
       FieldName = 'cn_id'
       Origin = 'cn_id'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object tCardNodescn_cd_id: TIntegerField
       FieldName = 'cn_cd_id'
@@ -730,10 +729,10 @@ object dmBase: TdmBase
       FieldName = 'cn_tg_id'
       Origin = 'cn_tg_id'
     end
-    object tCardNodescn_tooth: TWideMemoField
+    object tCardNodescn_tooth: TWideStringField
       FieldName = 'cn_tooth'
       Origin = 'cn_tooth'
-      BlobType = ftWideMemo
+      Size = 200
     end
   end
   object tCards: TFDTable
@@ -917,57 +916,137 @@ object dmBase: TdmBase
       BottomMargin = 10.000000000000000000
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
-        Height = 41.574830000000000000
+        Height = 22.677180000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
-        Height = 102.047310000000000000
-        Top = 120.944960000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Times New Roman'
+        Font.Style = []
+        Height = 162.519790000000000000
+        ParentFont = False
+        Top = 102.047310000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDataset1
         DataSetName = 'Clients'
         RowCount = 0
         StartNewPage = True
-        object Clientscl_fullname: TfrxMemoView
-          Left = 18.897650000000000000
-          Top = 34.015770000000000000
-          Width = 400.630180000000000000
-          Height = 18.897650000000000000
-          DataField = 'cl_fullname'
-          DataSet = frxDBDataset1
-          DataSetName = 'Clients'
+        object Memo2: TfrxMemoView
+          Top = 3.779530000000000000
+          Width = 718.110700000000000000
+          Height = 41.574830000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = 'Times New Roman'
+          Font.Style = [fsBold]
+          HAlign = haCenter
           Memo.UTF8W = (
-            '[Clients."cl_fullname"]')
+            #1057#1058#1054#1052#1040#1058#1054#1051#1054#1043#1048#1071#1051#1067#1178' '#1053#1040#1059#1178#1040#1057#1058#1067#1186' '#1052#1045#1044#1048#1062#1048#1053#1040#1051#1067#1178' '#1050#1040#1056#1058#1040#1057#1067
+            #1052#1045#1044#1048#1062#1048#1053#1057#1050#1040#1071' '#1050#1040#1056#1058#1040' '#1057#1058#1054#1052#1040#1058#1054#1051#1054#1043#1048#1063#1045#1057#1050#1054#1043#1054' '#1041#1054#1051#1068#1053#1054#1043#1054' ')
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          Top = 68.031540000000000000
+          Width = 718.110700000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Times New Roman'
+          Font.Style = []
+          Memo.UTF8W = (
+            
+              #1058#1077#1075#1110', '#1072#1090#1099', '#1241#1082#1077#1089#1110#1085#1110#1187' '#1072#1090#1099'/'#1060#1072#1084#1080#1083#1080#1103', '#1080#1084#1103', '#1086#1090#1095#1077#1089#1090#1074#1086': [Clients."cl_ful' +
+              'lname"]')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          Top = 86.929190000000000000
+          Width = 718.110700000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Times New Roman'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1058#1091#1171#1072#1085' '#1082#1199#1085#1110'/'#1044#1072#1090#1072' '#1088#1086#1078#1076#1077#1085#1080#1103': [Clients."cl_birthday"]')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          Top = 105.826840000000000000
+          Width = 718.110700000000000000
+          Height = 41.574830000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Times New Roman'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1046#1099#1085#1099#1089#1099' ('#1077'. '#1241'.)/'#1055#1086#1083' ('#1084'. '#1078'.): [Clients."cl_sex"]')
+          ParentFont = False
+          Formats = <
+            item
+            end
+            item
+            end>
+        end
+        object Memo6: TfrxMemoView
+          Top = 124.724490000000000000
+          Width = 442.205010000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Times New Roman'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1052#1077#1082#1077#1085'-'#1078#1072#1081#1099'/'#1040#1076#1088#1077#1089': [Clients."cl_address"]')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          Top = 143.622140000000000000
+          Width = 442.205010000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Times New Roman'
+          Font.Style = []
+          Memo.UTF8W = (
+            #1050#1241#1089#1110#1073#1110'/'#1055#1088#1086#1092#1077#1089#1089#1080#1103': [Clients."cl_proff"]')
+          ParentFont = False
         end
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 514.016080000000000000
+        Top = 461.102660000000000000
         Width = 718.110700000000000000
-        object Memo1: TfrxMemoView
-          Left = 642.520100000000000000
-          Width = 75.590600000000000000
-          Height = 18.897650000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Page#]')
-        end
       end
       object DetailData1: TfrxDetailData
         FillType = ftBrush
         Fill.ForeColor = clNone
-        Height = 83.149660000000000000
-        Top = 245.669450000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Times New Roman'
+        Font.Style = []
+        Height = 26.456710000000000000
+        ParentFont = False
+        Top = 287.244280000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDataset2
         DataSetName = 'Cards'
         RowCount = 0
         object Cardscd_date: TfrxMemoView
-          Top = 15.118120000000000000
-          Width = 143.622140000000000000
+          Top = 3.779530000000000000
+          Width = 75.590600000000000000
           Height = 18.897650000000000000
           DataField = 'cd_date'
           DataSet = frxDBDataset2
@@ -975,30 +1054,32 @@ object dmBase: TdmBase
           Memo.UTF8W = (
             '[Cards."cd_date"]')
         end
-        object Cardsem_name: TfrxMemoView
-          Top = 37.795300000000000000
-          Width = 400.630180000000000000
+        object Memo8: TfrxMemoView
+          Left = 83.149660000000000000
+          Top = 3.779530000000000000
+          Width = 634.961040000000000000
           Height = 18.897650000000000000
-          DataField = 'em_name'
-          DataSet = frxDBDataset2
-          DataSetName = 'Cards'
           Memo.UTF8W = (
-            '[Cards."em_name"]')
+            #1042#1088#1072#1095': [Cards."em_name"]')
         end
       end
       object SubdetailData1: TfrxSubdetailData
         FillType = ftBrush
-        Height = 37.795300000000000000
-        Top = 415.748300000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Times New Roman'
+        Font.Style = []
+        Height = 18.897650000000000000
+        ParentFont = False
+        Top = 381.732530000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDataset3
         DataSetName = 'CardNodes'
         RowCount = 0
-        object CardNodesfpfp_path1: TfrxMemoView
-          Align = baLeft
-          Left = 105.826840000000000000
-          Top = 7.559060000000000000
-          Width = 604.724800000000000000
+        object CardNodesfpfp_path: TfrxMemoView
+          Left = 113.385900000000000000
+          Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataField = 'fp.fp_path'
           DataSet = frxDBDataset3
@@ -1007,11 +1088,9 @@ object dmBase: TdmBase
             '[CardNodes."fp.fp_path"]')
         end
         object CardNodescn_tooth: TfrxMemoView
-          Align = baLeft
-          Top = 7.559060000000000000
-          Width = 105.826840000000000000
+          Left = 585.827150000000000000
+          Width = 400.630180000000000000
           Height = 18.897650000000000000
-          AutoWidth = True
           DataField = 'cn_tooth'
           DataSet = frxDBDataset3
           DataSetName = 'CardNodes'
@@ -1021,27 +1100,27 @@ object dmBase: TdmBase
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
-        Height = 41.574830000000000000
-        Top = 351.496290000000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Times New Roman'
+        Font.Style = []
+        Height = 22.677180000000000000
+        ParentFont = False
+        Top = 336.378170000000000000
         Width = 718.110700000000000000
         Condition = 'CardNodes."tg.tg_content"'
         object CardNodestgtg_content: TfrxMemoView
-          Left = -3.779530000000000000
-          Top = 7.559060000000000000
+          Left = 83.149660000000000000
+          Top = 3.779530000000000000
           Width = 309.921460000000000000
           Height = 18.897650000000000000
           AutoWidth = True
           DataField = 'tg.tg_content'
           DataSet = frxDBDataset3
           DataSetName = 'CardNodes'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
           Memo.UTF8W = (
             '[CardNodes."tg.tg_content"]')
-          ParentFont = False
         end
       end
     end
@@ -1108,9 +1187,9 @@ object dmBase: TdmBase
       '       [cl_birthday],  '
       '       CASE [cl_sex] WHEN 1 THEN '#39#1084#39' ELSE '#39#1078#39' END [cl_sex], '
       '       [cl_proff], '
-      '       [cl_address1], '
-      '       [cl_address2], '
-      '       [cl_address3], '
+      
+        '       [cl_address1] || '#39' '#39' || [cl_address2] || '#39' '#39' || [cl_addre' +
+        'ss3] [cl_address], '
       '       [cl_fone1], '
       '       [cl_fone2], '
       '       [cl_notes]'

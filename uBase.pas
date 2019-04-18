@@ -43,10 +43,6 @@ type
     qCardClientView: TFDQuery;
     ds_qCardClientView: TDataSource;
     tCardNodes: TFDTable;
-    tCardNodescn_id: TFDAutoIncField;
-    tCardNodescn_cd_id: TIntegerField;
-    tCardNodescn_tg_id: TIntegerField;
-    tCardNodescn_tooth: TWideMemoField;
     tCards: TFDTable;
     tEmployee: TFDTable;
     tEmployeeem_id: TFDAutoIncField;
@@ -94,6 +90,10 @@ type
     qRepCardNodes: TFDQuery;
     dsRepCards: TDataSource;
     frxDBDataset3: TfrxDBDataset;
+    tCardNodescn_id: TFDAutoIncField;
+    tCardNodescn_cd_id: TIntegerField;
+    tCardNodescn_tg_id: TIntegerField;
+    tCardNodescn_tooth: TWideStringField;
   private
     { Private declarations }
   public
