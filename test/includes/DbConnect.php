@@ -8,14 +8,15 @@
 		}
 		
 		function connect(){
-			require_once 'Constants.php';
-			$this->$con new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+			include_once dirname(__FILE__).'\Consntants.php';
+			
+			$this->con = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 			
 			if (mysqli_connect_errno()){
 				echo "Ошибка подключения к БД".mysql_connect_err();
 			}
 			
-			return $this->$con;
+			return $this->con;
 		}
 	}
 ?>
